@@ -1,7 +1,7 @@
 [
     {
         "id": "1",
-        "image": "foto_1\\strumento_1.png",
+        "image": "vetrina_1\\foto_1\\strumento_1.png",
         "nome": "Apparecchio per le forze",
         "stato": "Italia",
         "citta": "Avellino",
@@ -14,7 +14,7 @@
     },
     {
         "id": "31",
-        "image": "foto_1\\strumento_31.png",
+        "image": "vetrina_1\\foto_1\\strumento_31.png",
         "nome": "Macchina rotatoria",
         "stato": "Italia",
         "citta": "Avellino",
