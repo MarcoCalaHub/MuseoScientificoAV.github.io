@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Strumento Antico</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="nome">Caricamento...</h1>
+    <img id="immagine" src="" alt="Immagine dello strumento" />
+    <p id="descrizione"></p>
+    <p><strong>Materiali:</strong> <span id="materiali"></span></p>
+    <p><strong>Nazione:</strong> <span id="nazione"></span></p>
+    <p><strong>Anno:</strong> <span id="anno"></span></p>
+    <script>
+        async function caricaDati() {
+            // Ottieni l'ID dallo URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id');
+
+            // Leggi il database JSON
+            const response = await fetch('strumenti.json');
+            const data = await response.json();
+
+            // Trova l'oggetto con l'ID specifico
+            const item = data.find(obj => obj.id === id);
+
+            // Aggiorna la pagina con i dati
+            if (item) {
+                document.getElementById('immagine').src = item.immagine;
+                document.getElementById('nome').innerText = item.nome;
+
+                document.getElementById('stato').innerText = item.stato;
+                document.getElementById('citta').innerText = item.citta;
+                document.getElementById('scuola').innerText = item.scuola;
+
+                document.getElementById('materiali').innerText = item.materiali;
+                document.getElementById('accessori').innerText = item.accessori;
+
+                document.getElementById('stato_conservazione').innerText = item.stato_conservazione;
+                document.getElementById('descrizione').innerText = item.descrizione;
+
+            } else {
+                document.body.innerHTML = '<h1>Strumento non trovato</h1>';
+            }
+        }
+
+        // Carica i dati quando la pagina è pronta
+        caricaDati();
+    </script>
+</body>
+</html>
