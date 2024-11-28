@@ -27,7 +27,7 @@
         async function caricaDati() {
             // Ottieni l'ID dallo URL
             const urlParams = new URLSearchParams(window.location.search);
-            const id = urlParams.get('id');
+            const id = urlParams.get('id_vetrina');
 
             // Leggi il database JSON
             const response = await fetch('strumenti.json');
@@ -44,7 +44,7 @@
                 document.getElementById('descrizione_vetrina').innerText = item.descrizione_vetrina;
 
             } else {
-                document.body.innerHTML = '<h1>Strumento non trovato</h1>';
+                document.body.innerHTML = '<h1>Vetrina non trovata</h1>';
             }
         }
 
