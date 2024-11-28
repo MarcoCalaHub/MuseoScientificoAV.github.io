@@ -26,7 +26,7 @@
 
 
     <p><strong>Materiali:</strong> <span id="materiali"></span></p>
-    <p><strong>Accesori:</strong> <span id="accesori"></span></p>
+    <p><strong>Accessori:</strong> <span id="accessori"></span></p>
 
     <p><strong>Stato di conservazione:</strong> <span id="stato_conservazione"></span></p>
 
@@ -47,7 +47,8 @@
 
             // Aggiorna la pagina con i dati
             if (item) {
-                document.getElementById('immagine').src = item.immagine;
+                // document.getElementById('immagine').src = item.immagine;
+                document.getElementById('immagine').src = "tools_photo\\" + item.immagine;
                 document.getElementById('nome').innerText = item.nome;
 
                 document.getElementById('stato').innerText = item.stato;
