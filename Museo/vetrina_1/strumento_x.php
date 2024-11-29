@@ -1,12 +1,12 @@
-<!DOCTYPE hmtl>
+<!DOCTYPE html>
 <html>
 
 <head>
     <title>Sito per il Museo</title>
     <meta charset="utf-8" />
-    <meta nome="author" content="Marco Calabrese" />
-    <meta nome="keyword" lang="it" content="museo,strumenti,guida" />
-    <meta nome="description" content="informazione sugli strumenti del museo" />
+    <meta name="author" content="Marco Calabrese" />
+    <meta name="keyword" lang="it" content="museo,strumenti,guida" />
+    <meta name="description" content="informazione sugli strumenti del museo" />
 
     <link rel="icon" href="img/code.ico" type="image/png" />
     <link rel="stylesheet" type="text/css" href="../museo_style.css">
