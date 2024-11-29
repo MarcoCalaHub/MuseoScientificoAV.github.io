@@ -1,50 +1,120 @@
-* {
-    background-color: rgb(153, 153, 153);
-    box-sizing: border-box;
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
 }
 
-.header {
-    background-color: rgb(153, 153, 153);
-    text-align: center;
-    width: 100%;
-    height: 20%;
-    padding: 50px;
-    font-size: 2em;
-    overflow: hidden;
-}
-
-.container {
-    width: 100%;
-    height: 75%;
-    margin: 20px, 30px, 200px, 30px;
-}
-
-div h2 {
-    color: orange;
-    text-align: center;
-}
-
-.footer {
-    background-color: rgb(153, 153, 153);
-    text-align: center;
-    width: 100%;
-    height: 5%;
-}
-
-.footer a {
-    text-decoration: none;
+header {
+    background-color: #4CAF50;
     color: white;
+    padding: 20px;
+    text-align: center;
 }
 
-.column {
-    float: left;
-    width: 33.33%;
-    background-color: rgb(153, 153, 153);
-    margin-bottom: 15px;
+main {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-article {
-    margin-bottom: 15px;
+.details {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.details img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+}
+
+.showcase {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.showcase img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.showcase h2 {
+    margin-bottom: 10px;
+}
+
+.showcase p {
+    margin-bottom: 20px;
+}
+
+.showcase ul {
+    list-style: none;
+    padding: 0;
+}
+
+.showcase ul li {
+    margin-bottom: 10px;
+}
+
+.showcase ul li a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.showcase ul li a:hover {
+    text-decoration: underline;
+}
+
+
+footer {
+    background-color: #333;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+footer .column {
+    flex: 1;
+    padding: 10px;
+    min-width: 200px;
+}
+
+footer .column h4 {
+    border-bottom: 2px solid #4CAF50;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column;
+    }
+
+    footer .column {
+        margin-bottom: 20px;
+    }
+}
+
+.author-bar {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+}
+.author-bar a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+.author-bar a:hover {
+    text-decoration: underline;
 }
