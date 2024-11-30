@@ -29,9 +29,9 @@ Vetrina 3:  mancano due bilance
 Vetrina 4:  quasi COMPLETA
             37 XX 1 28
             29 24 35
-Vetrina 5:
-            45 47 XX
-            XX 50 XX
+Vetrina 5:  COMPLETA
+            45 47 52
+            54 50 53
             46  8 51
 Vetrina 6:  COMPLETA
             12
