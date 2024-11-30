@@ -33,10 +33,10 @@ Vetrina 5:
             45 47 XX
             XX XX XX
             46  8 XX
-Vetrina 6:
+Vetrina 6:  COMPLETA
             12
             18 19 
-             7 XX 43 
+             7 49 43 
 Vetrina 7:
             XX XX XX
                XX
