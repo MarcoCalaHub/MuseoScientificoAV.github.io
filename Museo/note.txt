@@ -50,7 +50,7 @@ Vetrina 9:
             XX XX 11
             XX XX XX
 Vetrina 10:
-            XX XX XX
+            60 59 XX
             XX XX XX
             XX XX XX
 Vetrina 11:
