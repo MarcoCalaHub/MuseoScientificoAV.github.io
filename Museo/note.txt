@@ -7,6 +7,9 @@ strumento18,19: nella doc non c'è settore. ho messo ottica
 
 Strumento 31: costruttore Paravia. sta sempre a Torino?
 strumento6: costruttore manca il luogo
+strumento38: costruttore manca il luogo
+
+rileggere strumento 36, 40
 
 ****** Proposte ******
 STrumenti9,10,11: elettrologia o elettricità
