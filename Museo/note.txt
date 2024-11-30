@@ -52,12 +52,12 @@ Vetrina 9:
 Vetrina 10:
             60 59 XX
             XX XX XX
-            XX XX XX
+            61 XX 62
 Vetrina 11:
             XX XX 10
                XX
             XX XX
-            XX XX 9 XX
+            XX XX 9 63
 Vetrina 12:
 Vetrina 13:
 Vetrina 14:
