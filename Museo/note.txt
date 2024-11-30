@@ -31,8 +31,8 @@ Vetrina 4:  quasi COMPLETA
             29 24 35
 Vetrina 5:
             45 47 XX
-            XX XX XX
-            46  8 XX
+            XX 50 XX
+            46  8 51
 Vetrina 6:  COMPLETA
             12
             18 19 
