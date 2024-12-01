@@ -4,6 +4,9 @@ Denominazione e oggetto discordante: strumento 21, 22, 23
 Strumento 28 (vasi comunicanti) categoria meccanica? doubt
 strumento18,19: nella doc non c'è settore. ho messo ottica
 strumento80: nella doc non c'è settore. ho messo termologia
+strumento81: nella doc non c'è settore.
+
+82 non presente in museo
 
 Strumento 31: costruttore Paravia. sta sempre a Torino?
 strumento6: costruttore manca il luogo
