@@ -44,11 +44,11 @@ Vetrina 7:
 Vetrina 8:
             64
             56
-            XX
+            76
 Vetrina 9:
             XX XX
             68 11
-            XX 66 XX
+            XX 66 75
 Vetrina 10:
             60 59 XX
             XX 69 74
