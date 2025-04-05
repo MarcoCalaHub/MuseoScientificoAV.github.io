@@ -2,7 +2,7 @@ Incontro del 05/05/2025
 
 Aggiungere tasto return_home
 Aggiungere stile per ridurre foto delle vetrine
-Prendersi foto con qualità migliore degli strumenti dal libro
+Prendersi foto con qualità migliore degli strumenti dal libro (es. 15,54,12 [pg21])
 Aggiungere stile (tipo giustificato) nella descrizione della home
 
 
@@ -11,3 +11,5 @@ Vedere bilance vetrina3 (pg 46)
   dx  metallo (foto sul libro pg 19)
 
 Il prof mi deve dire la differenza dei pensoli esposti #89
+
+Strumento 81 non carica la pagina
