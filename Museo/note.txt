@@ -30,9 +30,9 @@ museo irpino sezione scientifica
 
 REPORT VETRINE
 
-Vetrina 1:  quasi COMPLETA
+Vetrina 1:  COMPLETA
             93 22 23
-            14 31 XX
+            14 31 (accessori 33)
 Vetrina 2:  COMPLETA
             25 13 2
             20 33 34
