@@ -112,6 +112,35 @@ main {
     text-decoration: underline;
 }
 
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+    padding: 0 20px;
+    /* un po’ di padding laterale su schermi piccoli */
+}
+
+.btn {
+    display: inline-block;
+    padding: clamp(12px, 2vw, 18px) clamp(24px, 5vw, 36px);
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    box-shadow: 0 4px 8px rgba(0, 128, 0, 0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn:hover,
+.btn:focus {
+    background-color: #45a049;
+    box-shadow: 0 6px 12px rgba(0, 128, 0, 0.5);
+    outline: none;
+}
+
 footer {
     background-color: #333;
     color: white;
