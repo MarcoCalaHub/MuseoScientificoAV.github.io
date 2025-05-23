@@ -5,10 +5,29 @@ body {
 }
 
 header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #4CAF50;
     color: white;
     padding: 20px;
+    position: relative;
+}
+
+header a {
+    position: absolute;
+    left: 20px;
+}
+
+header img {
+    height: 30px;
+    /* o la dimensione che preferisci */
+}
+
+header h1 {
+    margin: 0;
     text-align: center;
+    flex: 1;
 }
 
 main {
@@ -72,7 +91,6 @@ main {
     text-decoration: underline;
 }
 
-
 footer {
     background-color: #333;
     color: white;
@@ -98,7 +116,6 @@ footer .column h4 {
     footer {
         flex-direction: column;
     }
-
     footer .column {
         margin-bottom: 20px;
     }
@@ -110,11 +127,13 @@ footer .column h4 {
     padding: 10px 0;
     font-size: 14px;
 }
+
 .author-bar a {
     color: #4CAF50;
     text-decoration: none;
     font-weight: bold;
 }
+
 .author-bar a:hover {
     text-decoration: underline;
 }
