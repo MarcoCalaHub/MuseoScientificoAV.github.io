@@ -11,8 +11,10 @@
 
 <body>
     <header>
-        <a href="index.html"><img src="logo.png" alt="Logo Museo"></a>
-        <h1>Museo Irpino - Galleria Fotografica</h1>
+        <a href="home.html">
+            <img src="home.png" alt="Home page">
+        </a>
+        <h1>Museo Irpino Sezione Scientifica - Galleria Fotografica</h1>
     </header>
 
     <main>
@@ -22,28 +24,34 @@
 
             <div class="grid">
                 <div class="card">
-                    <img src="gallery/thumb1.jpg" alt="Reperto storico 1">
-
+                    <img src="gallery/reperto_1.png" alt="Reperto storico 1">
                 </div>
                 <div class="card">
-                    <img src="gallery/thumb2.jpg" alt="Reperto storico 2">
-
+                    <img src="gallery/reperto_2.png" alt="Reperto storico 2">
                 </div>
                 <div class="card">
-                    <img src="gallery/thumb3.jpg" alt="Reperto storico 3">
-
+                    <img src="gallery/reperto_3.png" alt="Reperto storico 3">
                 </div>
                 <div class="card">
-                    <img src="gallery/thumb4.jpg" alt="Reperto storico 4">
-
+                    <img src="gallery/reperto_4.png" alt="Reperto storico 4">
                 </div>
                 <div class="card">
-                    <img src="gallery/thumb5.jpg" alt="Reperto storico 5">
-
+                    <img src="gallery/reperto_5.png" alt="Reperto storico 5">
                 </div>
                 <div class="card">
-                    <img src="gallery/thumb6.jpg" alt="Reperto storico 6">
-
+                    <img src="gallery/reperto_6.png" alt="Reperto storico 6">
+                </div>
+                <div class="card">
+                    <img src="gallery/reperto_7.png" alt="Reperto storico 7">
+                </div>
+                <div class="card">
+                    <img src="gallery/reperto_8.png" alt="Reperto storico 8">
+                </div>
+                <div class="card">
+                    <img src="gallery/reperto_9.png" alt="Reperto storico 9">
+                </div>
+                <div class="card">
+                    <img src="gallery/reperto_10.png" alt="Reperto storico 10">
                 </div>
             </div>
         </section>
@@ -67,6 +75,29 @@
     <div class="author-bar">
         Autore: <a href="https://www.linkedin.com/in/marco-calabrese-lin/" target="_blank">Marco Calabrese</a>
     </div>
+
+    <div class="lightbox" id="lightbox">
+        <img src="" alt="Immagine ingrandita" />
+    </div>
+
+    <script>
+        // Script per il lightbox semplice
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = lightbox.querySelector('img');
+        const galleryImages = document.querySelectorAll('.card img');
+
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImage.src = img.src;
+                lightbox.style.display = 'flex';
+            });
+        });
+
+        lightbox.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+            lightboxImage.src = ''; // libera memoria e migliora l'accessibilità
+        });
+    </script>
 </body>
 
 </html>
