@@ -1,9 +1,9 @@
 Incontro del 05/05/2025
 
-Aggiungere tasto return_home
+Aggiungere tasto return_home  FATTO
 Aggiungere stile per ridurre foto delle vetrine
 Prendersi foto con qualità migliore degli strumenti dal libro (es. 15,54,12 [pg21])
-Aggiungere stile (tipo giustificato) nella descrizione della home
+Aggiungere stile (tipo giustificato) nella descrizione della home FATTO
 
 
 Vedere bilance vetrina3 (pg 46)
