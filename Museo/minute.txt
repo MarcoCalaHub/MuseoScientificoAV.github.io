@@ -1,23 +1,34 @@
 Incontro del 05/05/2025
 
-Aggiungere tasto return_home  FATTO
-Aggiungere stile per ridurre foto delle vetrine
-Prendersi foto con qualità migliore degli strumenti dal libro (es. 15,54,12 [pg21])
-Aggiungere stile (tipo giustificato) nella descrizione della home FATTO
+  Aggiungere tasto return_home  FATTO
+  Aggiungere stile per ridurre foto delle vetrine
+  Prendersi foto con qualità migliore degli strumenti dal libro (es. 15,54,12 [pg21])
+  Aggiungere stile (tipo giustificato) nella descrizione della home FATTO
 
 
-Vedere bilance vetrina3 (pg 46)
-  sx  materiale legno
-  dx  metallo (foto sul libro pg 19)
+  Vedere bilance vetrina3 (pg 46)
+    sx  materiale legno
+    dx  metallo (foto sul libro pg 19)
 
-Il prof mi deve dire la differenza dei pensoli esposti #89
+  Il prof mi deve dire la differenza dei pensoli esposti #89
 
-Strumento 81 non carica la pagina
+  Strumento 81 non carica la pagina
 
 Incontro del 24/05/2025
 
-ipotizzare pagina con credential di tutte le persone che hanno partecipato
+  ipotizzare pagina con credential di tutte le persone che hanno partecipato
 
-aggiungere tipo "meccanica vetrina 3" nel titolo
+  aggiungere tipo "meccanica vetrina 3" nel titolo
 
-1-4 meccanica 5-8 ottica
+  1-4 meccanica 5-8 ottica
+
+  aggiungere bilance vetrina 3. prendere da volume 94
+  strumento 28 da volume 94
+  strumento 35 da volume 94
+  strumento 29 da volume 94
+  strumento 54 da volume 94
+  strumento 46 da volume 94
+
+  strumento 7 da valumo 96
+
+  strumento 24: flippare
