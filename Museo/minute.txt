@@ -16,21 +16,13 @@ Incontro del 05/05/2025
 
 Incontro del 24/05/2025
 
-  ipotizzare pagina con credential di tutte le persone che hanno partecipato
+  ipotizzare pagina con crediti di tutte le persone che hanno partecipato
 
   aggiungere tipo "meccanica vetrina 3" nel titolo
 
   1-4 meccanica 5-8 ottica
 
   aggiungere bilance vetrina 3. prendere da volume 94
-  strumento 35 da volume 94
-  strumento 29 da volume 94
-  strumento 54 da volume 94
-  strumento 46 da volume 94
 
-  strumento 7 da valume 96
-  strumento 69 da volume 94
-
-  strumento 24: flippare
 
   vetrina 11 aggiungere arco scaricatore
