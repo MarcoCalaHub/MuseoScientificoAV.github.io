@@ -38,7 +38,7 @@ Vetrina 2:  COMPLETA
             20 33 34
 Vetrina 3:  mancano due bilance
             27 38 36 21
-            XX  26 XX
+            40  26 XX
 Vetrina 4:  COMPLETA
             37 92 1 28
             29 24 35
@@ -54,7 +54,7 @@ Vetrina 7:
             67 79 80
                XX
             42 41 XX
-Vetrina 8:
+Vetrina 8:  COMPLETA
             64
             56
             76
@@ -62,9 +62,9 @@ Vetrina 9:
             84 XX
             68 11
             86 66 75
-Vetrina 10:
+Vetrina 10: COMPLETA
             60 59 78
-            XX 69 74
+            65 69 74
             61 91 62
 Vetrina 11:
             XX XX 10
