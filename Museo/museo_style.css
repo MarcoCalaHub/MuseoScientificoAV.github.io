@@ -179,6 +179,28 @@ footer .column h4 {
     margin: 0 auto;
 }
 
+.mappa-fissa {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1000; /* sopra agli altri elementi */
+}
+
+.mappa-fissa-responsive {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    max-width: 80%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    z-index: 1000;
+}
+
+
 .author-bar {
     background-color: #f1f1f1;
     text-align: center;
