@@ -171,6 +171,14 @@ footer .column h4 {
     }
 }
 
+.responsive-img {
+    width: 80%;
+    height: auto;
+    display: block;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
 .author-bar {
     background-color: #f1f1f1;
     text-align: center;
