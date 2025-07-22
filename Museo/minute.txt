@@ -18,9 +18,9 @@ Incontro del 24/05/2025
 
   ipotizzare pagina con crediti di tutte le persone che hanno partecipato
 
-  aggiungere tipo "meccanica vetrina 3" nel titolo
+  aggiungere tipo "meccanica vetrina 3" nel titolo  DONE
 
-  1-4 meccanica 5-8 ottica
+  1-4 meccanica 5-8 ottica  DONE
 
   aggiungere bilance vetrina 3. prendere da volume 94
 
