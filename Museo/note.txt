@@ -70,7 +70,7 @@ Vetrina 11:
             73 XX 10
                71
             72 70
-            XX 97 9 63
+            99 97 9 63
 Vetrina 12:
 Vetrina 13:
 Vetrina 14:
