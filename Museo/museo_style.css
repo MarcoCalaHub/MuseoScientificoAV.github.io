@@ -185,7 +185,8 @@ footer .column h4 {
     left: 0;
     width: 100%;
     height: auto;
-    z-index: 1000; /* sopra agli altri elementi */
+    z-index: 1000;
+    /* sopra agli altri elementi */
 }
 
 .mappa-fissa-responsive {
@@ -199,7 +200,6 @@ footer .column h4 {
     margin: 0 auto;
     z-index: 1000;
 }
-
 
 .author-bar {
     background-color: #f1f1f1;
@@ -345,4 +345,32 @@ footer .column h4 {
 
 .lightbox img:hover {
     transform: scale(1.02);
+}
+
+
+/* --- Layout immagine a sinistra / testo a destra --- */
+
+.details {
+    display: flex;
+    /* Attiva layout orizzontale */
+    align-items: flex-start;
+    /* Allinea in alto */
+    gap: 20px;
+    /* Spazio tra foto e testo */
+    flex-wrap: wrap;
+    /* Va a capo su schermi piccoli */
+}
+
+.details img {
+    max-width: 300px;
+    /* Limita la larghezza dell'immagine */
+    height: auto;
+    border-radius: 8px;
+    /* Angoli leggermente arrotondati (opzionale) */
+}
+
+.details p,
+.details h2 {
+    margin-top: 0;
+    /* Rimuove spazi inutili */
 }
