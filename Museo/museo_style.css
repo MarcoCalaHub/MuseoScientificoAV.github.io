@@ -419,3 +419,29 @@ a {
 a:hover {
     color: #2d7a2e;
 }
+
+
+/*  nav style   */
+
+.bottom-nav {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.1em;
+}
+
+.bottom-nav a {
+    text-decoration: none;
+    color: #2d7a2e;
+    margin: 0 10px;
+}
+
+.bottom-nav a:hover {
+    text-decoration: underline;
+}
+
+.bottom-nav .disabled {
+    color: #aaa;
+    cursor: not-allowed;
+    text-decoration: none;
+    padding: 6px 12px;
+}
