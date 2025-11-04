@@ -26,3 +26,8 @@ Incontro del 24/05/2025
 
 
   vetrina 11 aggiungere arco scaricatore  DONE
+
+
+NEW FIX TO DO:
+Immagine 18 troppo grande
+Fixare next e prev di vetrina 7,9,10,11
