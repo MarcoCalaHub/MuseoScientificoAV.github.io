@@ -486,3 +486,84 @@ a:hover {
     line-height: 1.2;
     /* riduce lo spazio verticale */
 }
+
+
+/*Zoom strumenti*/
+
+
+/* Modal lightbox */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+
+/* Immagine ingrandita nel modal */
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 90%;
+    max-width: 1200px;
+    animation: zoom 0.3s;
+}
+
+
+/* Animazione zoom */
+
+@keyframes zoom {
+    from {
+        transform: scale(0.5)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+
+/* Pulsante chiudi (X) */
+
+.close {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    color: #f1f1f1;
+    font-size: 50px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+}
+
+
+/* Cursore pointer sull'immagine */
+
+img {
+    cursor: zoom-in;
+}
+
+
+/* Responsive per schermi piccoli */
+
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+    }
+    .close {
+        right: 20px;
+        font-size: 35px;
+    }
+}
