@@ -555,6 +555,13 @@ img {
     cursor: zoom-in;
 }
 
+header a img.no-zoom:hover {
+    transform: none;
+    /* Blocca l'ingrandimento dell'immagine */
+    cursor: pointer;
+    /* Forza la "manina" invece della lente */
+}
+
 
 /* Responsive per schermi piccoli */
 
