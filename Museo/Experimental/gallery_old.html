@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Marco Calabrese">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galleria Fotografica - Museo Scientifico</title>
+    <link rel="stylesheet" href="museo_style.css">
+</head>
+
+<body>
+    <header>
+        <a href="home.html">
+            <img class="no-zoom" src="home.png" alt="Home page">
+        </a>
+        <h1>Museo Irpino Sezione Scientifica - Galleria Fotografica</h1>
+    </header>
+
+    <main>
+        <section class="gallery">
+            <h2>Esplora la Galleria</h2>
+            <p>Una raccolta di immagini del passato.</p>
+
+            <div class="grid">
+                <div class="card">
+                    <img src="gallery/reperto_1.png" alt="Reperto storico 1">
+                </div>
+                <div class="card">
+                    <img src="gallery/reperto_2.png" alt="Reperto storico 2">
+                </div>
+                <div class="card">
+                    <img src="gallery/reperto_3.png" alt="Reperto storico 3">
+                </div>
+                <div class="card">
+                    <img src="gallery/reperto_4.png" alt="Reperto storico 4">
+                </div>
+                <div class="card">
+                    <img src="gallery/reperto_5.png" alt="Reperto storico 5">
+                </div>
+                <div class="card">
+                    <img src="gallery/reperto_6.png" alt="Reperto storico 6">
+                </div>
+                <div class="card">
+                    <img src="gallery/reperto_7.png" alt="Reperto storico 7">
+                </div>
+                <div class="card">
+                    <img src="gallery/reperto_8.png" alt="Reperto storico 8">
+                </div>
+                <div class="card">
+                    <img src="gallery/reperto_9.png" alt="Reperto storico 9">
+                </div>
+                <div class="card">
+                    <img src="gallery/reperto_10.png" alt="Reperto storico 10">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="column">
+            <h4>Indirizzo</h4>
+            <p>Complesso Monumentale Carcere Borbonico<br>Piazza Alfredo De Marsico, Avellino 83100</p>
+        </div>
+        <div class="column">
+            <h4>Contatti Telefonici</h4>
+            <p>+39 0825 790 733 | 539 - Museo Irpino</p>
+        </div>
+        <div class="column">
+            <h4>Informazioni e Email</h4>
+            <p>Email: info@museoirpino.it</p>
+        </div>
+    </footer>
+
+    <div class="author-bar">
+        Autore: <a href="https://www.linkedin.com/in/marco-calabrese-lin/" target="_blank">Marco Calabrese</a>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <img src="" alt="Immagine ingrandita" />
+    </div>
+
+    <script>
+        // Script per il lightbox semplice
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = lightbox.querySelector('img');
+        const galleryImages = document.querySelectorAll('.card img');
+
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImage.src = img.src;
+                lightbox.style.display = 'flex';
+            });
+        });
+
+        lightbox.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+            lightboxImage.src = ''; // libera memoria e migliora l'accessibilità
+        });
+    </script>
+</body>
+
+</html>

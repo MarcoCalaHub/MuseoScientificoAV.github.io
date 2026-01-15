@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galleria Museo - Layout Masonry</title>
+    <link rel="stylesheet" href="../museo_style.css">
+    <style>
+        body {
+            font-family: 'Lato', Arial, sans-serif;
+            line-height: 1.7;
+            font-size: 18px;
+            color: #333333;
+            background-color: #fafafa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            display: flex;
+            align-items: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        header a img {
+            height: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        header a img.no-zoom:hover {
+            transform: none;
+            cursor: pointer;
+        }
+        
+        header h1 {
+            margin: 0;
+            flex: 1;
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+        
+        main {
+            padding: 30px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .page-title {
+            text-align: center;
+            color: #003366;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+        
+        .page-subtitle {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+        
+        .memories-masonry {
+            column-count: 4;
+            column-gap: 20px;
+        }
+        
+        .memories-masonry img {
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            break-inside: avoid;
+            display: block;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .memories-masonry img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        @media (max-width: 1200px) {
+            .memories-masonry {
+                column-count: 3;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .memories-masonry {
+                column-count: 2;
+                column-gap: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .memories-masonry {
+                column-count: 1;
+            }
+        }
+        /* Lightbox */
+        
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.92);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 45px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .lightbox-close:hover {
+            color: #4CAF50;
+        }
+        
+        .photo-counter {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 18px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 10px 20px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html"><img src="../home.png" alt="Home" class="no-zoom"></a>
+        <h1>Galleria Fotografica - Stile Masonry</h1>
+    </header>
+
+    <main>
+        <h2 class="page-title">Collezione Completa</h2>
+        <p class="page-subtitle">41 fotografie tra reperti, laboratorio e restauro</p>
+
+        <div class="memories-masonry">
+            <!-- Reperti -->
+            <img src="gallery/reperto_1.png" alt="Reperto 1">
+            <img src="gallery/reperto_2.png" alt="Reperto 2">
+            <img src="gallery/reperto_3.png" alt="Reperto 3">
+            <img src="gallery/reperto_4.png" alt="Reperto 4">
+            <img src="gallery/reperto_5.png" alt="Reperto 5">
+            <img src="gallery/reperto_6.png" alt="Reperto 6">
+            <img src="gallery/reperto_7.png" alt="Reperto 7">
+            <img src="gallery/reperto_8.png" alt="Reperto 8">
+            <img src="gallery/reperto_9.png" alt="Reperto 9">
+            <img src="gallery/reperto_10.png" alt="Reperto 10">
+
+            <!-- Lab -->
+            <img src="gallery/Lab/IMG_0386.JPG" alt="Laboratorio 1">
+            <img src="gallery/Lab/IMG_8900.JPG" alt="Laboratorio 2">
+            <img src="gallery/Lab/IMG_9294.JPG" alt="Laboratorio 3">
+            <img src="gallery/Lab/IMG_9748.JPG" alt="Laboratorio 4">
+            <img src="gallery/Lab/Museo_4033.jpg" alt="Laboratorio 5">
+            <img src="gallery/Lab/Spet_1605.JPG" alt="Laboratorio 6">
+
+            <!-- Restauro -->
+            <img src="gallery/Restauro/AAR_6739.jpg" alt="Restauro 1">
+            <img src="gallery/Restauro/IMG_6870.JPG" alt="Restauro 2">
+            <img src="gallery/Restauro/IMG_6884.JPG" alt="Restauro 3">
+            <img src="gallery/Restauro/IMG_7043.JPG" alt="Restauro 4">
+            <img src="gallery/Restauro/IMG_7383.JPG" alt="Restauro 5">
+            <img src="gallery/Restauro/IMG_7447.JPG" alt="Restauro 6">
+            <img src="gallery/Restauro/IMG_7471.JPG" alt="Restauro 7">
+            <img src="gallery/Restauro/IMG_7475.JPG" alt="Restauro 8">
+            <img src="gallery/Restauro/IMG_7602.JPG" alt="Restauro 9">
+            <img src="gallery/Restauro/IMG_7838.JPG" alt="Restauro 10">
+            <img src="gallery/Restauro/IMG_7847.JPG" alt="Restauro 11">
+            <img src="gallery/Restauro/IMG_8142.JPG" alt="Restauro 12">
+            <img src="gallery/Restauro/IMG_8223.JPG" alt="Restauro 13">
+            <img src="gallery/Restauro/IMG_8320.JPG" alt="Restauro 14">
+            <img src="gallery/Restauro/IMG_8395.JPG" alt="Restauro 15">
+            <img src="gallery/Restauro/IMG_8399.JPG" alt="Restauro 16">
+            <img src="gallery/Restauro/IMG_8485.JPG" alt="Restauro 17">
+            <img src="gallery/Restauro/IMG_8547.JPG" alt="Restauro 18">
+            <img src="gallery/Restauro/IMG_8654.JPG" alt="Restauro 19">
+            <img src="gallery/Restauro/IMG_8799.JPG" alt="Restauro 20">
+            <img src="gallery/Restauro/IMG_8890.JPG" alt="Restauro 21">
+            <img src="gallery/Restauro/IMG_8893.JPG" alt="Restauro 22">
+            <img src="gallery/Restauro/IMG_8991.JPG" alt="Restauro 23">
+            <img src="gallery/Restauro/IMG_9236.JPG" alt="Restauro 24">
+            <img src="gallery/Restauro/Proiettore con lampada.jpg" alt="Proiettore con lampada">
+        </div>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="Immagine ingrandita">
+        <div class="photo-counter" id="photo-counter"></div>
+    </div>
+
+    <script>
+        const images = document.querySelectorAll('.memories-masonry img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const photoCounter = document.getElementById('photo-counter');
+        let currentIndex = 0;
+
+        images.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                currentIndex = index;
+                openLightbox(img.src, index);
+            });
+        });
+
+        function openLightbox(src, index) {
+            lightbox.classList.add('active');
+            lightboxImg.src = src;
+            photoCounter.textContent = `${index + 1} / ${images.length}`;
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowRight' && lightbox.classList.contains('active')) {
+                currentIndex = (currentIndex + 1) % images.length;
+                openLightbox(images[currentIndex].src, currentIndex);
+            } else if (e.key === 'ArrowLeft' && lightbox.classList.contains('active')) {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                openLightbox(images[currentIndex].src, currentIndex);
+            }
+        });
+    </script>
+</body>
+
+</html>

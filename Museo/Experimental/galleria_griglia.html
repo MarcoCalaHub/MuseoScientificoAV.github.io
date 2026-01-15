@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galleria Ricordi - Griglia + Lightbox</title>
+    <link rel="stylesheet" href="museo_style.css">
+    <style>
+        /* Griglia foto ricordi - ottimizzata per tante immagini */
+        .memories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+            padding: 0 15px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .memories-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .memories-grid img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 1024px) {
+            .memories-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .memories-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .memories-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Lightbox migliorato */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .lightbox-close:hover {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="home.png" alt="Home" class="no-zoom"></a>
+        <h1>Galleria Ricordi - Stile Griglia</h1>
+    </header>
+
+    <main>
+        <section class="gallery">
+            <h2>I Nostri Ricordi</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 20px;">
+                Clicca su una foto per ingrandirla
+            </p>
+
+            <div class="memories-grid">
+                <!-- Esempio con 40 placeholder - sostituisci con le tue immagini -->
+                <img src="https://via.placeholder.com/300x200/4CAF50/ffffff?text=Foto+1" alt="Ricordo 1">
+                <img src="https://via.placeholder.com/300x200/2196F3/ffffff?text=Foto+2" alt="Ricordo 2">
+                <img src="https://via.placeholder.com/300x200/FF9800/ffffff?text=Foto+3" alt="Ricordo 3">
+                <img src="https://via.placeholder.com/300x200/E91E63/ffffff?text=Foto+4" alt="Ricordo 4">
+                <img src="https://via.placeholder.com/300x200/9C27B0/ffffff?text=Foto+5" alt="Ricordo 5">
+                <img src="https://via.placeholder.com/300x200/00BCD4/ffffff?text=Foto+6" alt="Ricordo 6">
+                <img src="https://via.placeholder.com/300x200/CDDC39/333333?text=Foto+7" alt="Ricordo 7">
+                <img src="https://via.placeholder.com/300x200/FF5722/ffffff?text=Foto+8" alt="Ricordo 8">
+                <img src="https://via.placeholder.com/300x200/607D8B/ffffff?text=Foto+9" alt="Ricordo 9">
+                <img src="https://via.placeholder.com/300x200/8BC34A/333333?text=Foto+10" alt="Ricordo 10">
+                <img src="https://via.placeholder.com/300x200/3F51B5/ffffff?text=Foto+11" alt="Ricordo 11">
+                <img src="https://via.placeholder.com/300x200/FFC107/333333?text=Foto+12" alt="Ricordo 12">
+                <img src="https://via.placeholder.com/300x200/795548/ffffff?text=Foto+13" alt="Ricordo 13">
+                <img src="https://via.placeholder.com/300x200/009688/ffffff?text=Foto+14" alt="Ricordo 14">
+                <img src="https://via.placeholder.com/300x200/F44336/ffffff?text=Foto+15" alt="Ricordo 15">
+                <img src="https://via.placeholder.com/300x200/673AB7/ffffff?text=Foto+16" alt="Ricordo 16">
+                <img src="https://via.placeholder.com/300x200/4CAF50/ffffff?text=Foto+17" alt="Ricordo 17">
+                <img src="https://via.placeholder.com/300x200/2196F3/ffffff?text=Foto+18" alt="Ricordo 18">
+                <img src="https://via.placeholder.com/300x200/FF9800/ffffff?text=Foto+19" alt="Ricordo 19">
+                <img src="https://via.placeholder.com/300x200/E91E63/ffffff?text=Foto+20" alt="Ricordo 20">
+                <img src="https://via.placeholder.com/300x200/9C27B0/ffffff?text=Foto+21" alt="Ricordo 21">
+                <img src="https://via.placeholder.com/300x200/00BCD4/ffffff?text=Foto+22" alt="Ricordo 22">
+                <img src="https://via.placeholder.com/300x200/CDDC39/333333?text=Foto+23" alt="Ricordo 23">
+                <img src="https://via.placeholder.com/300x200/FF5722/ffffff?text=Foto+24" alt="Ricordo 24">
+                <img src="https://via.placeholder.com/300x200/607D8B/ffffff?text=Foto+25" alt="Ricordo 25">
+                <img src="https://via.placeholder.com/300x200/8BC34A/333333?text=Foto+26" alt="Ricordo 26">
+                <img src="https://via.placeholder.com/300x200/3F51B5/ffffff?text=Foto+27" alt="Ricordo 27">
+                <img src="https://via.placeholder.com/300x200/FFC107/333333?text=Foto+28" alt="Ricordo 28">
+                <img src="https://via.placeholder.com/300x200/795548/ffffff?text=Foto+29" alt="Ricordo 29">
+                <img src="https://via.placeholder.com/300x200/009688/ffffff?text=Foto+30" alt="Ricordo 30">
+                <img src="https://via.placeholder.com/300x200/F44336/ffffff?text=Foto+31" alt="Ricordo 31">
+                <img src="https://via.placeholder.com/300x200/673AB7/ffffff?text=Foto+32" alt="Ricordo 32">
+                <img src="https://via.placeholder.com/300x200/4CAF50/ffffff?text=Foto+33" alt="Ricordo 33">
+                <img src="https://via.placeholder.com/300x200/2196F3/ffffff?text=Foto+34" alt="Ricordo 34">
+                <img src="https://via.placeholder.com/300x200/FF9800/ffffff?text=Foto+35" alt="Ricordo 35">
+                <img src="https://via.placeholder.com/300x200/E91E63/ffffff?text=Foto+36" alt="Ricordo 36">
+                <img src="https://via.placeholder.com/300x200/9C27B0/ffffff?text=Foto+37" alt="Ricordo 37">
+                <img src="https://via.placeholder.com/300x200/00BCD4/ffffff?text=Foto+38" alt="Ricordo 38">
+                <img src="https://via.placeholder.com/300x200/CDDC39/333333?text=Foto+39" alt="Ricordo 39">
+                <img src="https://via.placeholder.com/300x200/FF5722/ffffff?text=Foto+40" alt="Ricordo 40">
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="Immagine ingrandita">
+    </div>
+
+    <script>
+        // Script per la lightbox
+        const images = document.querySelectorAll('.memories-grid img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                lightbox.classList.add('active');
+                lightboxImg.src = img.src;
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+
+        // Chiudi lightbox cliccando sullo sfondo
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Chiudi con ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galleria Ricordi - Sezioni Tematiche</title>
+    <link rel="stylesheet" href="museo_style.css">
+    <style>
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 15px;
+        }
+
+        .memory-section {
+            margin-bottom: 50px;
+        }
+
+        .memory-section h3 {
+            color: #003366;
+            border-bottom: 3px solid #4CAF50;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .memory-grid-small {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .memory-grid-small img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .memory-grid-small img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-description {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .memory-grid-small {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .memory-grid-small {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .lightbox-close:hover {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="home.png" alt="Home" class="no-zoom"></a>
+        <h1>Galleria Ricordi - Per Temi</h1>
+    </header>
+
+    <main>
+        <div class="gallery-container">
+            <h2 style="text-align: center; color: #003366; margin-bottom: 40px;">I Nostri Ricordi</h2>
+
+            <!-- Sezione 1: Anni '70-'80 -->
+            <section class="memory-section">
+                <h3>🕰️ Anni '70-'80</h3>
+                <p class="section-description">I primi anni, le origini della nostra storia</p>
+                <div class="memory-grid-small">
+                    <img src="https://via.placeholder.com/300x250/8B4513/ffffff?text=1970" alt="Anni 70 - 1">
+                    <img src="https://via.placeholder.com/300x250/A0522D/ffffff?text=1975" alt="Anni 70 - 2">
+                    <img src="https://via.placeholder.com/300x250/CD853F/ffffff?text=1978" alt="Anni 70 - 3">
+                    <img src="https://via.placeholder.com/300x250/DEB887/333333?text=1980" alt="Anni 80 - 1">
+                    <img src="https://via.placeholder.com/300x250/D2691E/ffffff?text=1982" alt="Anni 80 - 2">
+                    <img src="https://via.placeholder.com/300x250/8B4513/ffffff?text=1985" alt="Anni 80 - 3">
+                    <img src="https://via.placeholder.com/300x250/A0522D/ffffff?text=1987" alt="Anni 80 - 4">
+                    <img src="https://via.placeholder.com/300x250/CD853F/ffffff?text=1989" alt="Anni 80 - 5">
+                </div>
+            </section>
+
+            <!-- Sezione 2: Anni '90 -->
+            <section class="memory-section">
+                <h3>📼 Anni '90</h3>
+                <p class="section-description">Un decennio di cambiamenti e crescita</p>
+                <div class="memory-grid-small">
+                    <img src="https://via.placeholder.com/300x250/4169E1/ffffff?text=1990" alt="Anni 90 - 1">
+                    <img src="https://via.placeholder.com/300x250/1E90FF/ffffff?text=1992" alt="Anni 90 - 2">
+                    <img src="https://via.placeholder.com/300x250/00BFFF/ffffff?text=1994" alt="Anni 90 - 3">
+                    <img src="https://via.placeholder.com/300x250/87CEEB/333333?text=1995" alt="Anni 90 - 4">
+                    <img src="https://via.placeholder.com/300x250/4682B4/ffffff?text=1996" alt="Anni 90 - 5">
+                    <img src="https://via.placeholder.com/300x250/5F9EA0/ffffff?text=1997" alt="Anni 90 - 6">
+                    <img src="https://via.placeholder.com/300x250/6495ED/ffffff?text=1998" alt="Anni 90 - 7">
+                    <img src="https://via.placeholder.com/300x250/00CED1/ffffff?text=1999" alt="Anni 90 - 8">
+                </div>
+            </section>
+
+            <!-- Sezione 3: Feste e Celebrazioni -->
+            <section class="memory-section">
+                <h3>🎉 Feste e Celebrazioni</h3>
+                <p class="section-description">Momenti di gioia condivisi insieme</p>
+                <div class="memory-grid-small">
+                    <img src="https://via.placeholder.com/300x250/FF1493/ffffff?text=Compleanno" alt="Festa 1">
+                    <img src="https://via.placeholder.com/300x250/FF69B4/ffffff?text=Matrimonio" alt="Festa 2">
+                    <img src="https://via.placeholder.com/300x250/FFB6C1/333333?text=Natale" alt="Festa 3">
+                    <img src="https://via.placeholder.com/300x250/FFC0CB/333333?text=Pasqua" alt="Festa 4">
+                    <img src="https://via.placeholder.com/300x250/DB7093/ffffff?text=Capodanno" alt="Festa 5">
+                    <img src="https://via.placeholder.com/300x250/C71585/ffffff?text=Laurea" alt="Festa 6">
+                </div>
+            </section>
+
+            <!-- Sezione 4: Viaggi -->
+            <section class="memory-section">
+                <h3>✈️ Viaggi e Avventure</h3>
+                <p class="section-description">Alla scoperta di nuovi luoghi</p>
+                <div class="memory-grid-small">
+                    <img src="https://via.placeholder.com/300x250/32CD32/ffffff?text=Mare" alt="Viaggio 1">
+                    <img src="https://via.placeholder.com/300x250/228B22/ffffff?text=Montagna" alt="Viaggio 2">
+                    <img src="https://via.placeholder.com/300x250/7CFC00/333333?text=Campagna" alt="Viaggio 3">
+                    <img src="https://via.placeholder.com/300x250/00FF00/333333?text=Città" alt="Viaggio 4">
+                    <img src="https://via.placeholder.com/300x250/ADFF2F/333333?text=Estero" alt="Viaggio 5">
+                    <img src="https://via.placeholder.com/300x250/9ACD32/ffffff?text=Gita" alt="Viaggio 6">
+                    <img src="https://via.placeholder.com/300x250/6B8E23/ffffff?text=Escursione" alt="Viaggio 7">
+                    <img src="https://via.placeholder.com/300x250/556B2F/ffffff?text=Weekend" alt="Viaggio 8">
+                </div>
+            </section>
+
+            <!-- Sezione 5: Vita Quotidiana -->
+            <section class="memory-section">
+                <h3>🏡 Momenti Quotidiani</h3>
+                <p class="section-description">La bellezza delle piccole cose</p>
+                <div class="memory-grid-small">
+                    <img src="https://via.placeholder.com/300x250/FF8C00/ffffff?text=Casa" alt="Quotidiano 1">
+                    <img src="https://via.placeholder.com/300x250/FFA500/ffffff?text=Famiglia" alt="Quotidiano 2">
+                    <img src="https://via.placeholder.com/300x250/FFD700/333333?text=Amici" alt="Quotidiano 3">
+                    <img src="https://via.placeholder.com/300x250/DAA520/ffffff?text=Lavoro" alt="Quotidiano 4">
+                    <img src="https://via.placeholder.com/300x250/B8860B/ffffff?text=Hobby" alt="Quotidiano 5">
+                    <img src="https://via.placeholder.com/300x250/CD853F/ffffff?text=Cucina" alt="Quotidiano 6">
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="Immagine ingrandita">
+    </div>
+
+    <script>
+        const images = document.querySelectorAll('.memory-grid-small img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                lightbox.classList.add('active');
+                lightboxImg.src = img.src;
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>

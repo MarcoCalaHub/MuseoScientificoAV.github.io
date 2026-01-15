@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Marco Calabrese">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galleria Fotografica - Museo Scientifico</title>
+    <link rel="stylesheet" href="museo_style.css">
+
+    <style>
+        /* Stili per la galleria ibrida con effetto vintage */
+        
+        .vintage-gallery {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .vintage-gallery h2 {
+            text-align: center;
+            font-size: 2em;
+            color: #003366;
+            margin-bottom: 10px;
+        }
+        
+        .vintage-gallery p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        /* Grid per desktop */
+        
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .photo-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        .photo-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            cursor: pointer;
+            transition: filter 0.3s ease;
+        }
+        /* Effetto vintage sulle foto */
+        
+        .vintage-photo {
+            filter: sepia(0.3) contrast(1.1) brightness(0.95);
+        }
+        /* Vignettatura (bordi scuri) */
+        
+        .photo-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.25));
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .photo-item:hover::after {
+            opacity: 1;
+        }
+        /* Didascalia opzionale */
+        
+        .photo-caption {
+            padding: 12px;
+            font-size: 0.9em;
+            color: #555;
+            background: #f9f9f9;
+            text-align: center;
+        }
+        /* Carousel per mobile */
+        
+        .carousel-container {
+            display: none;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+        }
+        
+        .carousel-slide img {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            background: #f0f0f0;
+            border-radius: 8px;
+        }
+        /* Pulsanti navigazione carousel */
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(76, 175, 80, 0.8);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 24px;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 10;
+            transition: background 0.3s ease;
+        }
+        
+        .carousel-btn:hover {
+            background: rgba(76, 175, 80, 1);
+        }
+        
+        .carousel-btn.prev {
+            left: 10px;
+        }
+        
+        .carousel-btn.next {
+            right: 10px;
+        }
+        /* Indicatori carousel */
+        
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .indicator.active {
+            background: #4CAF50;
+        }
+        /* Media query per mobile */
+        
+        @media (max-width: 768px) {
+            .photo-grid {
+                display: none;
+            }
+            .carousel-container {
+                display: block;
+            }
+            .vintage-gallery h2 {
+                font-size: 1.5em;
+            }
+        }
+        /* Lightbox migliorato */
+        
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: color 0.3s ease;
+        }
+        
+        .lightbox-close:hover {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="home.html">
+            <img class="no-zoom" src="home.png" alt="Home page">
+        </a>
+        <h1>Museo Irpino Sezione Scientifica - Galleria Fotografica</h1>
+    </header>
+
+    <main>
+        <section class="vintage-gallery">
+            <h2>Vecchi Ricordi</h2>
+            <p>Una collezione di fotografie storiche del museo</p>
+
+            <!-- Grid per Desktop -->
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="gallery/reperto_1.png" alt="Ricordo storico 1" class="vintage-photo">
+                    <div class="photo-caption">Reperto storico 1</div>
+                </div>
+                <div class="photo-item">
+                    <img src="gallery/reperto_2.png" alt="Ricordo storico 2" class="vintage-photo">
+                    <div class="photo-caption">Reperto storico 2</div>
+                </div>
+                <div class="photo-item">
+                    <img src="gallery/reperto_3.png" alt="Ricordo storico 3" class="vintage-photo">
+                    <div class="photo-caption">Reperto storico 3</div>
+                </div>
+                <div class="photo-item">
+                    <img src="gallery/reperto_4.png" alt="Ricordo storico 4" class="vintage-photo">
+                    <div class="photo-caption">Reperto storico 4</div>
+                </div>
+                <div class="photo-item">
+                    <img src="gallery/reperto_5.png" alt="Ricordo storico 5" class="vintage-photo">
+                    <div class="photo-caption">Reperto storico 5</div>
+                </div>
+                <div class="photo-item">
+                    <img src="gallery/reperto_6.png" alt="Ricordo storico 6" class="vintage-photo">
+                    <div class="photo-caption">Reperto storico 6</div>
+                </div>
+                <div class="photo-item">
+                    <img src="gallery/reperto_7.png" alt="Ricordo storico 7" class="vintage-photo">
+                    <div class="photo-caption">Reperto storico 7</div>
+                </div>
+                <div class="photo-item">
+                    <img src="gallery/reperto_8.png" alt="Ricordo storico 8" class="vintage-photo">
+                    <div class="photo-caption">Reperto storico 8</div>
+                </div>
+                <div class="photo-item">
+                    <img src="gallery/reperto_9.png" alt="Ricordo storico 9" class="vintage-photo">
+                    <div class="photo-caption">Reperto storico 9</div>
+                </div>
+                <div class="photo-item">
+                    <img src="gallery/reperto_10.png" alt="Ricordo storico 10" class="vintage-photo">
+                    <div class="photo-caption">Reperto storico 10</div>
+                </div>
+                <!-- Aggiungi le altre 30 foto seguendo lo stesso formato -->
+            </div>
+
+            <!-- Carousel per Mobile -->
+            <div class="carousel-container">
+                <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide">
+                        <img src="gallery/reperto_1.png" alt="Ricordo storico 1" class="vintage-photo">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="gallery/reperto_2.png" alt="Ricordo storico 2" class="vintage-photo">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="gallery/reperto_3.png" alt="Ricordo storico 3" class="vintage-photo">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="gallery/reperto_4.png" alt="Ricordo storico 4" class="vintage-photo">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="gallery/reperto_5.png" alt="Ricordo storico 5" class="vintage-photo">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="gallery/reperto_6.png" alt="Ricordo storico 6" class="vintage-photo">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="gallery/reperto_7.png" alt="Ricordo storico 7" class="vintage-photo">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="gallery/reperto_8.png" alt="Ricordo storico 8" class="vintage-photo">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="gallery/reperto_9.png" alt="Ricordo storico 9" class="vintage-photo">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="gallery/reperto_10.png" alt="Ricordo storico 10" class="vintage-photo">
+                    </div>
+                    <!-- Aggiungi le altre 30 foto seguendo lo stesso formato -->
+                </div>
+                <button class="carousel-btn next" onclick="moveSlide(1)">❯</button>
+
+                <div class="carousel-indicators" id="indicators"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="column">
+            <h4>Indirizzo</h4>
+            <p>Complesso Monumentale Carcere Borbonico<br>Piazza Alfredo De Marsico, Avellino 83100</p>
+        </div>
+        <div class="column">
+            <h4>Contatti Telefonici</h4>
+            <p>+39 0825 790 733 | 539 - Museo Irpino</p>
+        </div>
+        <div class="column">
+            <h4>Informazioni e Email</h4>
+            <p>Email: info@museoirpino.it</p>
+        </div>
+    </footer>
+
+    <div class="author-bar">
+        Autore: <a href="https://www.linkedin.com/in/marco-calabrese-lin/" target="_blank">Marco Calabrese</a>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">×</button>
+        <img src="" alt="Immagine ingrandita" />
+    </div>
+
+    <script>
+        // Script per il lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = lightbox.querySelector('img');
+        const galleryImages = document.querySelectorAll('.photo-item img');
+
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImage.src = img.src;
+                lightbox.classList.add('active');
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            lightboxImage.src = '';
+        }
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Script per il carousel
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+
+        // Crea gli indicatori
+        const indicatorsContainer = document.getElementById('indicators');
+        for (let i = 0; i < totalSlides; i++) {
+            const indicator = document.createElement('div');
+            indicator.classList.add('indicator');
+            if (i === 0) indicator.classList.add('active');
+            indicator.addEventListener('click', () => goToSlide(i));
+            indicatorsContainer.appendChild(indicator);
+        }
+
+        function updateCarousel() {
+            const track = document.getElementById('carouselTrack');
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            // Aggiorna indicatori
+            document.querySelectorAll('.indicator').forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function moveSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        // Swipe per mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        const carouselContainer = document.querySelector('.carousel-container');
+
+        carouselContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        carouselContainer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) moveSlide(1);
+            if (touchEndX > touchStartX + 50) moveSlide(-1);
+        }
+    </script>
+</body>
+
+</html>
