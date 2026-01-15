@@ -7,6 +7,281 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galleria Fotografica - Museo Scientifico</title>
     <link rel="stylesheet" href="museo_style.css">
+
+    <style>
+        body {
+            font-family: 'Lato', Arial, sans-serif;
+            line-height: 1.7;
+            font-size: 18px;
+            color: #333333;
+            background-color: #fafafa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            display: flex;
+            align-items: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        header a img {
+            height: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        header a img.no-zoom:hover {
+            transform: none;
+            cursor: pointer;
+        }
+        
+        header h1 {
+            margin: 0;
+            flex: 1;
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+        
+        main {
+            padding: 30px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .page-title {
+            text-align: center;
+            color: #003366;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+        
+        .page-subtitle {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 50px;
+        }
+        /* Sezioni con categorie */
+        
+        .gallery-section {
+            margin-bottom: 60px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            color: #003366;
+            font-size: 2rem;
+            font-family: 'Playfair Display', Georgia, serif;
+            display: inline-block;
+            border-bottom: 3px solid #4CAF50;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .section-description {
+            color: #666;
+            font-style: italic;
+            font-size: 1rem;
+        }
+        /* Layout Masonry */
+        
+        .memories-masonry {
+            column-count: 4;
+            column-gap: 20px;
+        }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .masonry-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .masonry-item img {
+            width: 100%;
+            display: block;
+            cursor: pointer;
+            transition: filter 0.3s ease;
+            filter: sepia(0.3) contrast(1.1) brightness(0.95);
+        }
+        
+        .masonry-item:hover img {
+            filter: sepia(0.4) contrast(1.15) brightness(0.92);
+        }
+        /* Vignettatura vintage */
+        
+        .masonry-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.25));
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .masonry-item:hover::after {
+            opacity: 1;
+        }
+        /* Responsive per tablet */
+        
+        @media (max-width: 1200px) {
+            .memories-masonry {
+                column-count: 3;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .memories-masonry {
+                column-count: 2;
+            }
+            .page-title {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .memories-masonry {
+                column-count: 1;
+            }
+        }
+        /* Lightbox */
+        
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            animation: zoomIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: color 0.3s ease;
+            z-index: 10000;
+        }
+        
+        .lightbox-close:hover {
+            color: #4CAF50;
+        }
+        /* Footer */
+        
+        footer {
+            background-color: #333;
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        
+        footer .column {
+            flex: 1;
+            padding: 10px;
+            min-width: 200px;
+        }
+        
+        footer .column h4 {
+            border-bottom: 2px solid #4CAF50;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            footer {
+                flex-direction: column;
+            }
+            footer .column {
+                margin-bottom: 20px;
+            }
+        }
+        
+        .author-bar {
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+        
+        .author-bar a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .author-bar a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,40 +293,147 @@
     </header>
 
     <main>
-        <section class="gallery">
-            <h2>Esplora la Galleria</h2>
-            <p>Una raccolta di immagini del passato.</p>
+        <h1 class="page-title">Vecchi Ricordi</h1>
+        <p class="page-subtitle">Una collezione di fotografie, testimonianze e ricordi del museo.</p>
 
-            <div class="grid">
-                <div class="card">
-                    <img src="gallery/reperto_1.png" alt="Reperto storico 1">
+        <!-- SEZIONE RESTAURO -->
+        <section class="gallery-section">
+            <div class="section-header">
+                <h2 class="section-title">🔧 Restauro</h2>
+                <p class="section-description">Il lavoro di conservazione degli strumenti scientifici</p>
+            </div>
+
+            <div class="memories-masonry">
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/AAR_6739.jpg" alt="Restauro">
                 </div>
-                <div class="card">
-                    <img src="gallery/reperto_2.png" alt="Reperto storico 2">
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_2323.JPG" alt="Restauro">
                 </div>
-                <div class="card">
-                    <img src="gallery/reperto_3.png" alt="Reperto storico 3">
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_6695.JPG" alt="Restauro">
                 </div>
-                <div class="card">
-                    <img src="gallery/reperto_4.png" alt="Reperto storico 4">
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_6870.JPG" alt="Restauro">
                 </div>
-                <div class="card">
-                    <img src="gallery/reperto_5.png" alt="Reperto storico 5">
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_6882.JPG" alt="Restauro">
                 </div>
-                <div class="card">
-                    <img src="gallery/reperto_6.png" alt="Reperto storico 6">
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_6884.JPG" alt="Restauro">
                 </div>
-                <div class="card">
-                    <img src="gallery/reperto_7.png" alt="Reperto storico 7">
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_6988.JPG" alt="Restauro">
                 </div>
-                <div class="card">
-                    <img src="gallery/reperto_8.png" alt="Reperto storico 8">
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_7043.JPG" alt="Restauro">
                 </div>
-                <div class="card">
-                    <img src="gallery/reperto_9.png" alt="Reperto storico 9">
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_7206.JPG" alt="Restauro">
                 </div>
-                <div class="card">
-                    <img src="gallery/reperto_10.png" alt="Reperto storico 10">
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_7230.JPG" alt="Restauro">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_7383.JPG" alt="Restauro">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_7447.JPG" alt="Restauro">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_7471.JPG" alt="Restauro">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_7475.JPG" alt="Restauro">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_7602.JPG" alt="Restauro">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_7838.JPG" alt="Restauro">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_7847.JPG" alt="Restauro">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_8142.JPG" alt="Restauro">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_8223.JPG" alt="Restauro">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_8320.JPG" alt="Restauro">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_8395.JPG" alt="Restauro">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_8399.JPG" alt="Restauro">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_8485.JPG" alt="Restauro">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_8547.JPG" alt="Restauro">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_8654.JPG" alt="Restauro">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_8799.JPG" alt="Restauro">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_8890.JPG" alt="Restauro">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_8893.JPG" alt="Restauro">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_8991.JPG" alt="Restauro">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_9236.JPG" alt="Restauro">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/IMG_9264.JPG" alt="Restauro">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Restauro/Proiettore con lampada.jpg" alt="Proiettore con lampada">
+                </div>
+            </div>
+        </section>
+
+        <!-- SEZIONE LABORATORIO -->
+        <section class="gallery-section">
+            <div class="section-header">
+                <h2 class="section-title">📸 Laboratorio</h2>
+                <p class="section-description">Immagini dal laboratorio scientifico</p>
+            </div>
+
+            <div class="memories-masonry">
+                <div class="masonry-item">
+                    <img src="gallery/Lab/IMG_0386.JPG" alt="Laboratorio">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Lab/IMG_8900.JPG" alt="Laboratorio">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Lab/IMG_9294.JPG" alt="Laboratorio">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Lab/IMG_9302.JPG" alt="Laboratorio">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Lab/IMG_9748.JPG" alt="Laboratorio">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Lab/Museo_4033.JPG" alt="Museo">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Lab/Spet_1605.JPG" alt="Spettroscopio">
+                </div>
+                <div class="masonry-item">
+                    <img src="gallery/Lab/_MG_4230.JPG" alt="Laboratorio">
                 </div>
             </div>
         </section>
@@ -76,26 +458,41 @@
         Autore: <a href="https://www.linkedin.com/in/marco-calabrese-lin/" target="_blank">Marco Calabrese</a>
     </div>
 
+    <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
-        <img src="" alt="Immagine ingrandita" />
+        <button class="lightbox-close" onclick="closeLightbox()">×</button>
+        <img src="" alt="Immagine ingrandita">
     </div>
 
     <script>
-        // Script per il lightbox semplice
+        // Script per il lightbox
         const lightbox = document.getElementById('lightbox');
         const lightboxImage = lightbox.querySelector('img');
-        const galleryImages = document.querySelectorAll('.card img');
+        const galleryImages = document.querySelectorAll('.masonry-item img');
 
         galleryImages.forEach(img => {
             img.addEventListener('click', () => {
                 lightboxImage.src = img.src;
-                lightbox.style.display = 'flex';
+                lightbox.classList.add('active');
             });
         });
 
-        lightbox.addEventListener('click', () => {
-            lightbox.style.display = 'none';
-            lightboxImage.src = ''; // libera memoria e migliora l'accessibilità
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            lightboxImage.src = '';
+        }
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target.classList.contains('lightbox-close')) {
+                closeLightbox();
+            }
+        });
+
+        // Chiudi lightbox con ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
         });
     </script>
 </body>
