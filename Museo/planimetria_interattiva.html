@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planimetria Interattiva Museo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        
+        .map-container {
+            position: relative;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        #planimetria {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+        
+        area {
+            cursor: pointer;
+        }
+        
+        area:hover {
+            opacity: 0.7;
+        }
+        
+        .info-box {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f4f8;
+            border-left: 4px solid #2196F3;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .info-box.active {
+            display: block;
+        }
+        
+        .info-box h2 {
+            margin-top: 0;
+            color: #1976D2;
+        }
+        
+        .instructions {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🏛️ Planimetria Interattiva del Museo</h1>
+
+        <div class="instructions">
+            <strong>📍 Istruzioni:</strong> Clicca su una vetrina nella planimetria per visualizzare i dettagli. Le vetrine sono identificate con lettere (A-V) e numeri (1-15).
+        </div>
+
+        <div class="map-container">
+            <img src="piantina_3_cut_PLUS.png" id="planimetria" usemap="#vetrine-map" alt="Planimetria Museo">
+
+            <map name="vetrine-map">
+                <!-- Vetrine lettere -->
+                <!-- Riga inferiore -->
+                <area shape="rect" coords="1175,350,1235,440" href="esposto\strumento_32.html" onclick="mostraVetrina('A'); return false;" alt="Vetrina A" title="Vetrina A">
+                <area shape="rect" coords="960,410,1050,490" href="vetrina1/info_vetrina_1.html" onclick="mostraVetrina('1'); return false;" alt="Vetrina 1" title="Vetrina 1">
+                <area shape="rect" coords="845,410,945,490" href="vetrina3/info_vetrina_3.html" onclick="mostraVetrina('3'); return false;" alt="Vetrina 3" title="Vetrina 3">
+                <area shape="rect" coords="TBD" href="esposto\strumento_88.html" onclick="mostraVetrina('B'); return false;" alt="Vetrina B" title="Vetrina B">
+                <area shape="rect" coords="TBD" href="esposto\strumento_89.html" onclick="mostraVetrina('C'); return false;" alt="Vetrina C" title="Vetrina C">
+                <area shape="rect" coords="615,410,675,490" href="esposto\strumento_15.html" onclick="mostraVetrina('F'); return false;" alt="Vetrina F" title="Vetrina F">
+                <area shape="rect" coords="540,410,600,490" href="esposto\strumento_30.html" onclick="mostraVetrina('G'); return false;" alt="Vetrina G" title="Vetrina G">
+                <area shape="rect" coords="433,410,533,490" href="esposto\strumento_87.html" onclick="mostraVetrina('H'); return false;" alt="Vetrina H" title="Vetrina H">
+                <area shape="rect" coords="185,410,245,490" href="vetrina5/info_vetrina_5.html" onclick="mostraVetrina('5'); return false;" alt="Vetrina 5" title="Vetrina 5">
+                <area shape="rect" coords="245,410,345,490" href="esposto\strumento_48.html" onclick="mostraVetrina('M'); return false;" alt="Vetrina M" title="Vetrina M">
+                <area shape="rect" coords="TBD" href="esposto\strumento_5.html" onclick="mostraVetrina('N'); return false;" alt="Vetrina N" title="Vetrina N">
+                <area shape="rect" coords="95,410,185,490" href="vetrina7/info_vetrina_7.html" onclick="mostraVetrina('7'); return false;" alt="Vetrina 7" title="Vetrina 7">
+
+                <!-- Riga centrale -->
+                <area shape="rect" coords="967,265,1085,345" href="vetrina2/info_vetrina_2.html" onclick="mostraVetrina('2'); return false;" alt="Vetrina 2" title="Vetrina 2">
+                <area shape="rect" coords="845,265,945,345" href="vetrina4/info_vetrina_4.html" onclick="mostraVetrina('4'); return false;" alt="Vetrina 4" title="Vetrina 4">
+                <area shape="rect" coords="TBD" href="esposto\strumento_90.html" onclick="mostraVetrina('E'); return false;" alt="Vetrina E" title="Vetrina E">
+                <area shape="rect" coords="TBD" href="esposto\strumento_3.html" onclick="mostraVetrina('D'); return false;" alt="Vetrina D" title="Vetrina D">
+                <area shape="rect" coords="TBD" href="esposto\strumento_44.html" onclick="mostraVetrina('I'); return false;" alt="Vetrina I" title="Vetrina I">
+                <area shape="rect" coords="540,265,600,345" href="esposto\strumento_81.html" onclick="mostraVetrina('L'); return false;" alt="Vetrina L" title="Vetrina L">
+                <area shape="rect" coords="245,265,345,345" href="vetrina6/info_vetrina_6.html" onclick="mostraVetrina('6'); return false;" alt="Vetrina 6" title="Vetrina 6">
+                <area shape="rect" coords="95,265,185,345" href="vetrina8/info_vetrina_8.html" onclick="mostraVetrina('8'); return false;" alt="Vetrina 8" title="Vetrina 8">
+                <area shape="rect" coords="185,265,245,345" href="esposto\strumento_55.html" onclick="mostraVetrina('P'); return false;" alt="Vetrina P" title="Vetrina P">
+                <area shape="rect" coords="TBD" href="vetrina5/strumento_54.html" onclick="mostraVetrina('O'); return false;" alt="Vetrina O" title="Vetrina O">
+
+                <!-- Riga superiore -->
+                <area shape="rect" coords="1000,170,1070,255" href="esposto\strumento_58.html" onclick="mostraVetrina('U'); return false;" alt="Vetrina U" title="Vetrina U">
+                <area shape="rect" coords="925,190,985,255" href="esposto\strumento_83.html" onclick="mostraVetrina('T'); return false;" alt="Vetrina T" title="Vetrina T">
+                <area shape="rect" coords="845,190,915,255" href="esposto\strumento_57.html" onclick="mostraVetrina('S'); return false;" alt="Vetrina S" title="Vetrina S">
+                <area shape="rect" coords="680,190,740,255" href="esposto\strumento_17.html" onclick="mostraVetrina('R'); return false;" alt="Vetrina R" title="Vetrina R">
+                <area shape="rect" coords="635,190,695,255" href="esposto\strumento_16.html" onclick="mostraVetrina('Q'); return false;" alt="Vetrina Q" title="Vetrina Q">
+                <area shape="rect" coords="280,190,340,255" href="vetrina15/info_vetrina_15.html" onclick="mostraVetrina('15'); return false;" alt="Vetrina 15" title="Vetrina 15">
+
+                <!-- Riga superiore top -->
+                <area shape="rect" coords="867,32,937,110" href="vetrina9/info_vetrina_9.html" onclick="mostraVetrina('9'); return false;" alt="Vetrina 9" title="Vetrina 9">
+                <area shape="rect" coords="765,32,835,110" href="vetrina10/info_vetrina_10.html" onclick="mostraVetrina('10'); return false;" alt="Vetrina 10" title="Vetrina 10">
+                <area shape="rect" coords="663,32,733,110" href="vetrina11/info_vetrina_11.html" onclick="mostraVetrina('11'); return false;" alt="Vetrina 11" title="Vetrina 11">
+                <area shape="rect" coords="663,32,733,110" href="esposto\strumento_77.html" onclick="mostraVetrina('V'); return false;" alt="Vetrina V" title="Vetrina V">
+                <area shape="rect" coords="433,32,520,110" href="vetrina12/info_vetrina_12.html" onclick="mostraVetrina('12'); return false;" alt="Vetrina 12" title="Vetrina 12">
+                <area shape="rect" coords="347,32,433,110" href="vetrina13/info_vetrina_13.html" onclick="mostraVetrina('13'); return false;" alt="Vetrina 13" title="Vetrina 13">
+                <area shape="rect" coords="261,32,347,110" href="vetrina14/info_vetrina_14.html" onclick="mostraVetrina('14'); return false;" alt="Vetrina 14" title="Vetrina 14">
+            </map>
+        </div>
+
+        <div id="info-display" class="info-box">
+            <h2 id="vetrina-title"></h2>
+            <p id="vetrina-description"></p>
+            <button onclick="apriPaginaVetrina()" style="padding: 10px 20px; background-color: #2196F3; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
+                📄 Apri Pagina Completa Vetrina
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Dati delle vetrine estratti dal file vetrine.html
+        const vetrine = {
+            'A': {
+                nome: 'Vetrina A',
+                descrizione: 'Macchina pneumatica a olio di Geryc o di Fleus',
+                anchor: 'A'
+            },
+            '1': {
+                nome: 'Vetrina 1',
+                descrizione: 'Meccanica #1',
+                anchor: '1'
+            },
+            '2': {
+                nome: 'Vetrina 2',
+                descrizione: 'Meccanica #2',
+                anchor: '2'
+            },
+            '3': {
+                nome: 'Vetrina 3',
+                descrizione: 'Meccanica #3',
+                anchor: '3'
+            },
+            '4': {
+                nome: 'Vetrina 4',
+                descrizione: 'Meccanica #4',
+                anchor: '4'
+            },
+            'F': {
+                nome: 'Vetrina F',
+                descrizione: 'Macchina di Atwood',
+                anchor: 'F'
+            },
+            'G': {
+                nome: 'Vetrina G',
+                descrizione: 'Macchina a doppio effetto',
+                anchor: 'G'
+            },
+            'H': {
+                nome: 'Vetrina H',
+                descrizione: 'Bilancia analitica',
+                anchor: 'H'
+            },
+            'I': {
+                nome: 'Vetrina I',
+                descrizione: 'Specchi coniugati',
+                anchor: 'I'
+            },
+            'L': {
+                nome: 'Vetrina L',
+                descrizione: 'Apparecchio di Dalton per la tensione dei vapori',
+                anchor: 'L'
+            },
+            'M': {
+                nome: 'Vetrina M',
+                descrizione: 'Spettroscopio',
+                anchor: 'M'
+            },
+            'N': {
+                nome: 'Vetrina N',
+                descrizione: 'Spettroscopio',
+                anchor: 'N'
+            },
+            'O': {
+                nome: 'Vetrina O',
+                descrizione: 'Spettroscopio',
+                anchor: 'O'
+            },
+            'P': {
+                nome: 'Vetrina P',
+                descrizione: 'Lanterna di proiezione',
+                anchor: 'P'
+            },
+            'Q': {
+                nome: 'Vetrina Q',
+                descrizione: 'Macchina di Wimshurst',
+                anchor: 'Q'
+            },
+            'R': {
+                nome: 'Vetrina R',
+                descrizione: 'Macchina di Wimshurst',
+                anchor: 'R'
+            },
+            'S': {
+                nome: 'Vetrina S',
+                descrizione: 'Macchina elettrostatica',
+                anchor: 'S'
+            },
+            'T': {
+                nome: 'Vetrina T',
+                descrizione: 'Tubo di Geissler',
+                anchor: 'T'
+            },
+            'U': {
+                nome: 'Vetrina U',
+                descrizione: 'Macchina di Winter',
+                anchor: 'U'
+            },
+            'V': {
+                nome: 'Vetrina V',
+                descrizione: 'Macchina di Winter',
+                anchor: 'V'
+            },
+            '5': {
+                nome: 'Vetrina 5',
+                descrizione: 'Ottica #5',
+                anchor: '5'
+            },
+            '6': {
+                nome: 'Vetrina 6',
+                descrizione: 'Ottica #6',
+                anchor: '6'
+            },
+            '7': {
+                nome: 'Vetrina 7',
+                descrizione: 'Ottica #7',
+                anchor: '7'
+            },
+            '8': {
+                nome: 'Vetrina 8',
+                descrizione: 'Ottica #8',
+                anchor: '8'
+            },
+            '9': {
+                nome: 'Vetrina 9',
+                descrizione: 'Elettromagnetismo #9',
+                anchor: '9'
+            },
+            '10': {
+                nome: 'Vetrina 10',
+                descrizione: 'Elettromagnetismo #10',
+                anchor: '10'
+            },
+            '11': {
+                nome: 'Vetrina 11',
+                descrizione: 'Elettromagnetismo #11',
+                anchor: '11'
+            },
+            '12': {
+                nome: 'Vetrina 12',
+                descrizione: 'Vetrina 12',
+                anchor: '12'
+            },
+            '13': {
+                nome: 'Vetrina 13',
+                descrizione: 'Vetrina 13',
+                anchor: '13'
+            },
+            '14': {
+                nome: 'Vetrina 14',
+                descrizione: 'Vetrina 14',
+                anchor: '14'
+            },
+            '15': {
+                nome: 'Vetrina 15',
+                descrizione: 'Vetrina 15',
+                anchor: '15'
+            }
+        };
+
+        let vetrinaCorrente = null;
+
+        function mostraVetrina(id) {
+            const vetrina = vetrine[id];
+            if (!vetrina) {
+                alert('Vetrina non trovata!');
+                return;
+            }
+
+            vetrinaCorrente = id;
+
+            document.getElementById('vetrina-title').textContent = vetrina.nome;
+            document.getElementById('vetrina-description').textContent = vetrina.descrizione;
+
+            const infoBox = document.getElementById('info-display');
+            infoBox.classList.add('active');
+
+            // Scroll alla info box
+            infoBox.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest'
+            });
+        }
+
+        function apriPaginaVetrina() {
+            if (!vetrinaCorrente) {
+                alert('Nessuna vetrina selezionata!');
+                return;
+            }
+
+            const vetrina = vetrine[vetrinaCorrente];
+            // Apre il file vetrine.html all'ancora della vetrina specifica
+            window.open('vetrine.html#' + vetrina.anchor, '_blank');
+        }
+
+        // Aggiungi effetto hover sulle aree
+        document.addEventListener('DOMContentLoaded', function() {
+            const areas = document.querySelectorAll('area');
+            areas.forEach(area => {
+                area.addEventListener('mouseenter', function() {
+                    this.style.cursor = 'pointer';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
