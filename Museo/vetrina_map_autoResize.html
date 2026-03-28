@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esposizione delle Vetrine</title>
+    <style>
+         :root {
+            --maxw: 1400px;
+        }
+        
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+        }
+        
+        .page {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 12px;
+        }
+        
+        h1 {
+            font-size: 1.4rem;
+            margin: 0 0 12px;
+        }
+        
+        .map-wrap {
+            position: relative;
+            width: 100%;
+        }
+        
+        .map-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .hotspot {
+            position: absolute;
+            display: block;
+            background: rgba(255, 0, 0, 0);
+        }
+        
+        .hotspot:hover {
+            outline: 2px solid rgba(255, 140, 0, .8);
+            background: rgba(255, 140, 0, .12);
+        }
+        
+        .legend {
+            margin-top: 12px;
+            font-size: .95rem;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <h1>Esposizione delle Vetrine</h1>
+        <div class="map-wrap" id="mapWrap">
+            <img src="piantina_3_cut_PLUS.png" alt="Piantina esposizione vetrine" id="mapImg">
+        </div>
+        <div class="legend">Clicca su una vetrina per aprire la relativa pagina.</div>
+    </div>
+
+    <script>
+        const originalW = 1400;
+        const originalH = 550;
+        const items = [{
+            id: '1',
+            href: 'vetrina1/info_vetrina_1.html',
+            x: 930,
+            y: 405,
+            w: 110,
+            h: 46
+        }, {
+            id: '2',
+            href: 'vetrina2/info_vetrina_2.html',
+            x: 1035,
+            y: 298,
+            w: 120,
+            h: 42
+        }, {
+            id: '3',
+            href: 'vetrina3/info_vetrina_3.html',
+            x: 855,
+            y: 405,
+            w: 110,
+            h: 46
+        }, {
+            id: '4',
+            href: 'vetrina4/info_vetrina_4.html',
+            x: 845,
+            y: 295,
+            w: 108,
+            h: 42
+        }, {
+            id: '5',
+            href: 'vetrina5/info_vetrina_5.html',
+            x: 198,
+            y: 430,
+            w: 110,
+            h: 42
+        }, {
+            id: '6',
+            href: 'vetrina6/info_vetrina_6.html',
+            x: 250,
+            y: 285,
+            w: 120,
+            h: 34
+        }, {
+            id: '7',
+            href: 'vetrina7/info_vetrina_7.html',
+            x: 92,
+            y: 430,
+            w: 105,
+            h: 46
+        }, {
+            id: '8',
+            href: 'vetrina8/info_vetrina_8.html',
+            x: 163,
+            y: 280,
+            w: 95,
+            h: 34
+        }, {
+            id: '9',
+            href: 'vetrina9/info_vetrina_9.html',
+            x: 915,
+            y: 20,
+            w: 120,
+            h: 42
+        }, {
+            id: '10',
+            href: 'vetrina10/info_vetrina_10.html',
+            x: 791,
+            y: 18,
+            w: 110,
+            h: 42
+        }, {
+            id: '11',
+            href: 'vetrina11/info_vetrina_11.html',
+            x: 646,
+            y: 18,
+            w: 110,
+            h: 42
+        }, {
+            id: '12',
+            href: 'vetrina12/info_vetrina_12.html',
+            x: 408,
+            y: 18,
+            w: 80,
+            h: 42
+        }, {
+            id: '13',
+            href: 'vetrina13/info_vetrina_13.html',
+            x: 335,
+            y: 18,
+            w: 70,
+            h: 42
+        }, {
+            id: '14',
+            href: 'vetrina14/info_vetrina_14.html',
+            x: 268,
+            y: 18,
+            w: 65,
+            h: 42
+        }, {
+            id: '15',
+            href: 'vetrina15/info_vetrina_15.html',
+            x: 335,
+            y: 205,
+            w: 122,
+            h: 38
+        }, {
+            id: 'A',
+            href: 'esposto\strumento_32.html',
+            x: 1190,
+            y: 352,
+            w: 90,
+            h: 78
+        }, {
+            id: 'B',
+            href: 'esposto\strumento_88.html',
+            x: 744,
+            y: 447,
+            w: 26,
+            h: 26
+        }, {
+            id: 'C',
+            href: 'esposto\strumento_89.html',
+            x: 716,
+            y: 414,
+            w: 26,
+            h: 26
+        }, {
+            id: 'D',
+            href: 'esposto\strumento_3.html',
+            x: 709,
+            y: 300,
+            w: 26,
+            h: 26
+        }, {
+            id: 'E',
+            href: 'esposto\strumento_90.html',
+            x: 737,
+            y: 281,
+            w: 26,
+            h: 26
+        }, {
+            id: 'F',
+            href: 'esposto\strumento_15.html',
+            x: 615,
+            y: 431,
+            w: 68,
+            h: 38
+        }, {
+            id: 'G',
+            href: 'esposto\strumento_30.html',
+            x: 535,
+            y: 433,
+            w: 42,
+            h: 34
+        }, {
+            id: 'H',
+            href: 'esposto\strumento_87.html',
+            x: 451,
+            y: 433,
+            w: 66,
+            h: 38
+        }, {
+            id: 'I',
+            href: 'esposto\strumento_44.html',
+            x: 644,
+            y: 310,
+            w: 28,
+            h: 28
+        }, {
+            id: 'L',
+            href: 'esposto\strumento_81.html',
+            x: 526,
+            y: 305,
+            w: 38,
+            h: 34
+        }, {
+            id: 'M',
+            href: 'esposto\strumento_48.html',
+            x: 216,
+            y: 435,
+            w: 34,
+            h: 30
+        }, {
+            id: 'N1',
+            href: 'esposto\strumento_5.html',
+            x: 200,
+            y: 490,
+            w: 21,
+            h: 22
+        }, {
+            id: 'N2',
+            href: 'esposto\strumento_4.html',
+            x: 227,
+            y: 490,
+            w: 21,
+            h: 22
+        }, {
+            id: 'O',
+            href: 'vetrina5/strumento_54.html',
+            x: 46,
+            y: 363,
+            w: 42,
+            h: 52
+        }, {
+            id: 'P',
+            href: 'esposto\strumento_55.html',
+            x: 95,
+            y: 300,
+            w: 80,
+            h: 40
+        }, {
+            id: 'Q',
+            href: 'esposto\strumento_16.html',
+            x: 625,
+            y: 210,
+            w: 40,
+            h: 52
+        }, {
+            id: 'R',
+            href: 'esposto\strumento_17.html',
+            x: 666,
+            y: 210,
+            w: 40,
+            h: 52
+        }, {
+            id: 'S',
+            href: 'esposto\strumento_57.html',
+            x: 875,
+            y: 210,
+            w: 52,
+            h: 52
+        }, {
+            id: 'T',
+            href: 'esposto\strumento_83.html',
+            x: 963,
+            y: 215,
+            w: 46,
+            h: 34
+        }, {
+            id: 'U',
+            href: 'esposto\strumento_58.html',
+            x: 1040,
+            y: 180,
+            w: 92,
+            h: 92
+        }, {
+            id: 'V',
+            href: 'esposto\strumento_77.html',
+            x: 583,
+            y: 46,
+            w: 20,
+            h: 34
+        }];
+
+        const wrap = document.getElementById('mapWrap');
+
+        function render() {
+            wrap.querySelectorAll('.hotspot').forEach(el => el.remove());
+            const rect = wrap.getBoundingClientRect();
+            const scaleX = rect.width / originalW;
+            const scaleY = rect.height / originalH;
+            items.forEach(item => {
+                const a = document.createElement('a');
+                a.className = 'hotspot';
+                a.href = item.href;
+                a.title = item.id;
+                a.style.left = (item.x * scaleX) + 'px';
+                a.style.top = (item.y * scaleY) + 'px';
+                a.style.width = (item.w * scaleX) + 'px';
+                a.style.height = (item.h * scaleY) + 'px';
+                a.setAttribute('aria-label', item.id);
+                wrap.appendChild(a);
+            });
+        }
+        window.addEventListener('load', render);
+        window.addEventListener('resize', render);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Marco Calabrese" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indice Vetrine - Museo Scientifico</title>
+
+    <link rel="stylesheet" href="museo_style.css">
+</head>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const img = document.querySelector(".responsive-img");
+        img.style.cursor = "zoom-in";
+
+        img.addEventListener("click", () => {
+            if (img.style.transform === "scale(1.5)") {
+                img.style.transform = "scale(1)";
+                img.style.transition = "transform 0.3s ease";
+                img.style.cursor = "zoom-in";
+            } else {
+                img.style.transform = "scale(1.5)";
+                img.style.transition = "transform 0.3s ease";
+                img.style.cursor = "zoom-out";
+            }
+        });
+    });
+</script>
+
+
+<body>
+    <header>
+        <a href="home.html">
+            <img class="no-zoom" src="home.png" alt="Home page">
+        </a>
+        <h1>Museo Irpino Sezione Scientifica</h1>
+    </header>
+    <div class="wip-banner">
+        ⚠️ Sito in costruzione - Work in Progress
+    </div>
+    <main>
+        <section class="gallery">
+            <h2>Esposizione delle Vetrine</h2>
+            <div class="mappa-container">
+                <div class="map-wrap" id="mapWrap">
+                    <img src="piantina_3_cut_PLUS.png" alt="Piantina esposizione vetrine" id="mapImg">
+                </div>
+            </div>
+            <div class="cards-container">
+                <div class="grid">
+                    <a href="esposto\strumento_32.html" class="card">
+                        <img src="esposto\strumento_32.png" alt="Macchina pneumatica a olio di Geryc o di Fleus">
+                        <h3>A - Macchina pneumatica a olio di Geryc o di Fleus</h3>
+                    </a>
+                    <a href="vetrina1/info_vetrina_1.html" class="card">
+                        <img src="vetrina1/vetrina_1.jpg" alt="Meccanica #1">
+                        <h3>Meccanica #1</h3>
+                    </a>
+                    <a href="vetrina2/info_vetrina_2.html" class="card">
+                        <img src="vetrina2/vetrina_2.jpg" alt="Meccanica #2">
+                        <h3>Meccanica #2</h3>
+                    </a>
+                    <a href="vetrina3/info_vetrina_3.html" class="card">
+                        <img src="vetrina3/vetrina_3.jpg" alt="Meccanica #3">
+                        <h3>Meccanica #3</h3>
+                    </a>
+                    <a href="vetrina4/info_vetrina_4.html" class="card">
+                        <img src="vetrina4/vetrina_4.jpg" alt="Meccanica #4">
+                        <h3>Meccanica #4</h3>
+                    </a>
+                    <a href="esposto\strumento_88.html" class="card">
+                        <img src="esposto\strumento_88.png" alt="Pendolo con un peso">
+                        <h3>B - Pendolo con un peso</h3>
+                    </a>
+                    <a href="esposto\strumento_89.html" class="card">
+                        <img src="esposto\strumento_89.png" alt="Pendolo reversibile">
+                        <h3>C - Pendolo reversibile</h3>
+                    </a>
+                    <a href="esposto\strumento_3.html" class="card">
+                        <img src="esposto\strumento_3.png" alt="Pendolo">
+                        <h3>D - Pendolo</h3>
+                    </a>
+                    <a href="esposto\strumento_90.html" class="card">
+                        <img src="esposto\strumento_90.png" alt="Pendolo">
+                        <h3>E - Pendolo</h3>
+                    </a>
+                    <a href="esposto\strumento_15.html" class="card">
+                        <img src="esposto\strumento_15.png" alt="Macchina di Atvood">
+                        <h3>F - Macchina di Atvood</h3>
+                    </a>
+                    <a href="esposto\strumento_30.html" class="card">
+                        <img src="esposto\strumento_30.png" alt="Macchina a doppio effetto">
+                        <h3>G - Macchina a doppio effetto</h3>
+                    </a>
+                    <a href="esposto\strumento_87.html" class="card">
+                        <img src="esposto\strumento_87.png" alt="Bilancia analitica">
+                        <h3>H - Bilancia analitica</h3>
+                    </a>
+                    <a href="esposto\strumento_44.html" class="card">
+                        <img src="esposto\strumento_44.png" alt="Specchi coniugati">
+                        <h3>I - Specchi coniugati</h3>
+                    </a>
+                    <a href="esposto\strumento_81.html" class="card">
+                        <img src="esposto\strumento_81.png" alt="Apparecchio di Dalton per la tensione dei vapori">
+                        <h3>L - Apparecchio di Dalton per la tensione dei vapori</h3>
+                    </a>
+                    <a href="vetrina5/info_vetrina_5.html" class="card">
+                        <img src="vetrina5/vetrina_5.jpg" alt="Ottica #5">
+                        <h3>Ottica #5</h3>
+                    </a>
+                    <a href="vetrina6/info_vetrina_6.html" class="card">
+                        <img src="vetrina6/vetrina_6.jpg" alt="Ottica #6">
+                        <h3>Ottica #6</h3>
+                    </a>
+                    <a href="vetrina7/info_vetrina_7.html" class="card">
+                        <img src="vetrina7/vetrina_7.jpg" alt="Ottica #7">
+                        <h3>Ottica #7</h3>
+                    </a>
+                    <a href="esposto\strumento_48.html" class="card">
+                        <img src="esposto\strumento_48.png" alt="Spettroscopio">
+                        <h3>M - Spettroscopio</h3>
+                    </a>
+                    <a href="esposto\strumento_5.html" class="card">
+                        <img src="esposto\strumento_5.png" alt="Barometro">
+                        <h3>N - Barometro</h3>
+                    </a>
+                    <a href="esposto\strumento_4.html" class="card">
+                        <img src="esposto\strumento_4.png" alt="Barometro">
+                        <h3>N - Barometro</h3>
+                    </a>
+                    <a href="vetrina8/info_vetrina_8.html" class="card">
+                        <img src="vetrina8/vetrina_8.jpg" alt="Ottica #8">
+                        <h3>Ottica #8</h3>
+                    </a>
+                    <a href="vetrina5/strumento_54.html" class="card">
+                        <img src="vetrina5/strumento_54.png" alt="Camera oscura a prisma di Chevalier">
+                        <h3>O - Camera oscura a prisma di Chevalier</h3>
+                    </a>
+                    <a href="esposto\strumento_55.html" class="card">
+                        <img src="esposto\strumento_55.png" alt="Lanterna di proiezione">
+                        <h3>P - Lanterna di proiezione</h3>
+                    </a>
+                    <a href="vetrina9/info_vetrina_9.html" class="card">
+                        <img src="vetrina9/vetrina_9.jpg" alt="Elettromagnetismo #9">
+                        <h3>Elettromagnetismo #9</h3>
+                    </a>
+                    <a href="esposto\strumento_16.html" class="card">
+                        <img src="esposto\strumento_16.png" alt="Macchina di Wimshurst">
+                        <h3>Q - Macchina di Wimshurst</h3>
+                    </a>
+                    <a href="esposto\strumento_17.html" class="card">
+                        <img src="esposto\strumento_17.png" alt="Macchina di Wimshurst">
+                        <h3>R - Macchina di Wimshurst</h3>
+                    </a>
+                    <a href="esposto\strumento_57.html" class="card">
+                        <img src="esposto\strumento_57.png" alt="Macchina elettrostatica">
+                        <h3>S - Macchina elettrostatica</h3>
+                    </a>
+                    <a href="esposto\strumento_83.html" class="card">
+                        <img src="esposto\strumento_83.png" alt="Tubo di Geissler">
+                        <h3>T - Tubo di Geissler</h3>
+                    </a>
+                    <a href="esposto\strumento_58.html" class="card">
+                        <img src="esposto\strumento_58.png" alt="Macchina di Winter">
+                        <h3>U - Macchina di Winter</h3>
+                    </a>
+                    <a href="vetrina10/info_vetrina_10.html" class="card">
+                        <img src="vetrina10/vetrina_10.jpg" alt="Elettromagnetismo #10">
+                        <h3>Elettromagnetismo #10</h3>
+                    </a>
+                    <a href="vetrina11/info_vetrina_11.html" class="card">
+                        <img src="vetrina11/vetrina_11.jpg" alt="Elettromagnetismo #11">
+                        <h3>Elettromagnetismo #11</h3>
+                    </a>
+                    <a href="esposto\strumento_77.html" class="card">
+                        <img src="esposto\strumento_77.png" alt="Apparecchio di Buff">
+                        <h3>V - Apparecchio di Buff</h3>
+                    </a>
+                    <a href="vetrina12/info_vetrina_12.html" class="card">
+                        <img src="vetrina12/vetrina_12_13_14.jpg" alt="Vetrina 12">
+                        <h3>Vetrina 12</h3>
+                    </a>
+                    <a href="vetrina13/info_vetrina_13.html" class="card">
+                        <img src="vetrina13/vetrina_12_13_14.jpg" alt="Vetrina 13">
+                        <h3>Vetrina 13</h3>
+                    </a>
+                    <a href="vetrina14/info_vetrina_14.html" class="card">
+                        <img src="vetrina14/vetrina_12_13_14.jpg" alt="Vetrina 14">
+                        <h3>Vetrina 14</h3>
+                    </a>
+                    <a href="vetrina15/info_vetrina_15.html" class="card">
+                        <img src="vetrina15/vetrina_15.jpg" alt="Vetrina 15">
+                        <h3>Vetrina 15</h3>
+                    </a>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <div class="column">
+            <h4>Indirizzo</h4>
+            <p>Complesso Monumentale Carcere Borbonico<br>Piazza Alfredo De Marsico, Avellino 83100</p>
+        </div>
+        <div class="column">
+            <h4>Contatti Telefonici</h4>
+            <p>+39 0825 790 733 | 539 - Museo Irpino</p>
+        </div>
+        <div class="column">
+            <h4>Informazioni e Email</h4>
+            <p>Email: info@museoirpino.it</p>
+        </div>
+    </footer>
+
+    <div class="author-bar">
+        Autore: <a href="https://www.linkedin.com/in/marco-calabrese-lin/" target="_blank"> Marco Calabrese</a>
+    </div>
+</body>
+
+</html>
