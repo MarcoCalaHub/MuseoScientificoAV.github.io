@@ -11,26 +11,6 @@
 <script>try{document.documentElement.dataset.theme=localStorage.getItem("museo-theme")||"editorial"}catch(e){document.documentElement.dataset.theme="editorial"}</script><script src="theme-switcher.js" defer></script>
 </head>
 
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const img = document.querySelector(".responsive-img");
-        img.style.cursor = "zoom-in";
-
-        img.addEventListener("click", () => {
-            if (img.style.transform === "scale(1.5)") {
-                img.style.transform = "scale(1)";
-                img.style.transition = "transform 0.3s ease";
-                img.style.cursor = "zoom-in";
-            } else {
-                img.style.transform = "scale(1.5)";
-                img.style.transition = "transform 0.3s ease";
-                img.style.cursor = "zoom-out";
-            }
-        });
-    });
-</script>
-
-
 <body>
     <header>
         <a href="home.html">
@@ -44,15 +24,14 @@
     <main>
         <section class="gallery">
             <h2>Esposizione delle Vetrine</h2>
-            <div class="mappa-container">
-                <!-- <img src="piantina_3_cut.png" alt="Mappa delle vetrine" class="mappa-fissa responsive-img"> -->
-                <img src="piantina_3_cut_PLUS.png" alt="Mappa delle vetrine" class="mappa-fissa responsive-img">
-                <!-- <img src="piantina_3_cut.png" alt="Mappa delle vetrine" class="mappa-fissa"> -->
+            <div class="mappa-interactive" id="mappaInterattiva">
+                <img src="piantina_3_cut_PLUS.png" alt="Mappa delle vetrine" class="mappa-img">
             </div>
+            <p class="mappa-hint">Clicca su una vetrina nella mappa per aprirne la pagina.</p>
             <div class="cards-container">
                 <div class="grid">
-                    <a href="esposto\strumento_32.html" class="card">
-                        <img src="esposto\strumento_32.png" alt="Macchina pneumatica a olio di Geryc o di Fleus">
+                    <a href="esposto/strumento_32.html" class="card">
+                        <img src="esposto/strumento_32.png" alt="Macchina pneumatica a olio di Geryc o di Fleus">
                         <h3>A - Macchina pneumatica a olio di Geryc o di Fleus</h3>
                     </a>
                     <a href="vetrina1/info_vetrina_1.html" class="card">
@@ -71,40 +50,40 @@
                         <img src="vetrina4/vetrina_4.jpg" alt="Meccanica #4">
                         <h3>Meccanica #4</h3>
                     </a>
-                    <a href="esposto\strumento_88.html" class="card">
-                        <img src="esposto\strumento_88.png" alt="Pendolo con un peso">
+                    <a href="esposto/strumento_88.html" class="card">
+                        <img src="esposto/strumento_88.png" alt="Pendolo con un peso">
                         <h3>B - Pendolo con un peso</h3>
                     </a>
-                    <a href="esposto\strumento_89.html" class="card">
-                        <img src="esposto\strumento_89.png" alt="Pendolo reversibile">
+                    <a href="esposto/strumento_89.html" class="card">
+                        <img src="esposto/strumento_89.png" alt="Pendolo reversibile">
                         <h3>C - Pendolo reversibile</h3>
                     </a>
-                    <a href="esposto\strumento_3.html" class="card">
-                        <img src="esposto\strumento_3.png" alt="Pendolo">
+                    <a href="esposto/strumento_3.html" class="card">
+                        <img src="esposto/strumento_3.png" alt="Pendolo">
                         <h3>D - Pendolo</h3>
                     </a>
-                    <a href="esposto\strumento_90.html" class="card">
-                        <img src="esposto\strumento_90.png" alt="Pendolo">
+                    <a href="esposto/strumento_90.html" class="card">
+                        <img src="esposto/strumento_90.png" alt="Pendolo">
                         <h3>E - Pendolo</h3>
                     </a>
-                    <a href="esposto\strumento_15.html" class="card">
-                        <img src="esposto\strumento_15.png" alt="Macchina di Atvood">
+                    <a href="esposto/strumento_15.html" class="card">
+                        <img src="esposto/strumento_15.png" alt="Macchina di Atvood">
                         <h3>F - Macchina di Atvood</h3>
                     </a>
-                    <a href="esposto\strumento_30.html" class="card">
-                        <img src="esposto\strumento_30.png" alt="Macchina a doppio effetto">
+                    <a href="esposto/strumento_30.html" class="card">
+                        <img src="esposto/strumento_30.png" alt="Macchina a doppio effetto">
                         <h3>G - Macchina a doppio effetto</h3>
                     </a>
-                    <a href="esposto\strumento_87.html" class="card">
-                        <img src="esposto\strumento_87.png" alt="Bilancia analitica">
+                    <a href="esposto/strumento_87.html" class="card">
+                        <img src="esposto/strumento_87.png" alt="Bilancia analitica">
                         <h3>H - Bilancia analitica</h3>
                     </a>
-                    <a href="esposto\strumento_44.html" class="card">
-                        <img src="esposto\strumento_44.png" alt="Specchi coniugati">
+                    <a href="esposto/strumento_44.html" class="card">
+                        <img src="esposto/strumento_44.png" alt="Specchi coniugati">
                         <h3>I - Specchi coniugati</h3>
                     </a>
-                    <a href="esposto\strumento_81.html" class="card">
-                        <img src="esposto\strumento_81.png" alt="Apparecchio di Dalton per la tensione dei vapori">
+                    <a href="esposto/strumento_81.html" class="card">
+                        <img src="esposto/strumento_81.png" alt="Apparecchio di Dalton per la tensione dei vapori">
                         <h3>L - Apparecchio di Dalton per la tensione dei vapori</h3>
                     </a>
                     <a href="vetrina5/info_vetrina_5.html" class="card">
@@ -119,16 +98,16 @@
                         <img src="vetrina7/vetrina_7.jpg" alt="Ottica #7">
                         <h3>Ottica #7</h3>
                     </a>
-                    <a href="esposto\strumento_48.html" class="card">
-                        <img src="esposto\strumento_48.png" alt="Spettroscopio">
+                    <a href="esposto/strumento_48.html" class="card">
+                        <img src="esposto/strumento_48.png" alt="Spettroscopio">
                         <h3>M - Spettroscopio</h3>
                     </a>
-                    <a href="esposto\strumento_5.html" class="card">
-                        <img src="esposto\strumento_5.png" alt="Barometro">
+                    <a href="esposto/strumento_5.html" class="card">
+                        <img src="esposto/strumento_5.png" alt="Barometro">
                         <h3>N - Barometro</h3>
                     </a>
-                    <a href="esposto\strumento_4.html" class="card">
-                        <img src="esposto\strumento_4.png" alt="Barometro">
+                    <a href="esposto/strumento_4.html" class="card">
+                        <img src="esposto/strumento_4.png" alt="Barometro">
                         <h3>N - Barometro</h3>
                     </a>
                     <a href="vetrina8/info_vetrina_8.html" class="card">
@@ -139,32 +118,32 @@
                         <img src="vetrina5/strumento_54.png" alt="Camera oscura a prisma di Chevalier">
                         <h3>O - Camera oscura a prisma di Chevalier</h3>
                     </a>
-                    <a href="esposto\strumento_55.html" class="card">
-                        <img src="esposto\strumento_55.png" alt="Lanterna di proiezione">
+                    <a href="esposto/strumento_55.html" class="card">
+                        <img src="esposto/strumento_55.png" alt="Lanterna di proiezione">
                         <h3>P - Lanterna di proiezione</h3>
                     </a>
                     <a href="vetrina9/info_vetrina_9.html" class="card">
                         <img src="vetrina9/vetrina_9.jpg" alt="Elettromagnetismo #9">
                         <h3>Elettromagnetismo #9</h3>
                     </a>
-                    <a href="esposto\strumento_16.html" class="card">
-                        <img src="esposto\strumento_16.png" alt="Macchina di Wimshurst">
+                    <a href="esposto/strumento_16.html" class="card">
+                        <img src="esposto/strumento_16.png" alt="Macchina di Wimshurst">
                         <h3>Q - Macchina di Wimshurst</h3>
                     </a>
-                    <a href="esposto\strumento_17.html" class="card">
-                        <img src="esposto\strumento_17.png" alt="Macchina di Wimshurst">
+                    <a href="esposto/strumento_17.html" class="card">
+                        <img src="esposto/strumento_17.png" alt="Macchina di Wimshurst">
                         <h3>R - Macchina di Wimshurst</h3>
                     </a>
-                    <a href="esposto\strumento_57.html" class="card">
-                        <img src="esposto\strumento_57.png" alt="Macchina elettrostatica">
+                    <a href="esposto/strumento_57.html" class="card">
+                        <img src="esposto/strumento_57.png" alt="Macchina elettrostatica">
                         <h3>S - Macchina elettrostatica</h3>
                     </a>
-                    <a href="esposto\strumento_83.html" class="card">
-                        <img src="esposto\strumento_83.png" alt="Tubo di Geissler">
+                    <a href="esposto/strumento_83.html" class="card">
+                        <img src="esposto/strumento_83.png" alt="Tubo di Geissler">
                         <h3>T - Tubo di Geissler</h3>
                     </a>
-                    <a href="esposto\strumento_58.html" class="card">
-                        <img src="esposto\strumento_58.png" alt="Macchina di Winter">
+                    <a href="esposto/strumento_58.html" class="card">
+                        <img src="esposto/strumento_58.png" alt="Macchina di Winter">
                         <h3>U - Macchina di Winter</h3>
                     </a>
                     <a href="vetrina10/info_vetrina_10.html" class="card">
@@ -175,8 +154,8 @@
                         <img src="vetrina11/vetrina_11.jpg" alt="Elettromagnetismo #11">
                         <h3>Elettromagnetismo #11</h3>
                     </a>
-                    <a href="esposto\strumento_77.html" class="card">
-                        <img src="esposto\strumento_77.png" alt="Apparecchio di Buff">
+                    <a href="esposto/strumento_77.html" class="card">
+                        <img src="esposto/strumento_77.png" alt="Apparecchio di Buff">
                         <h3>V - Apparecchio di Buff</h3>
                     </a>
                     <a href="vetrina12/info_vetrina_12.html" class="card">
@@ -219,6 +198,87 @@
     <div class="author-bar">
         Autore: <a href="https://www.linkedin.com/in/marco-calabrese-lin/" target="_blank"> Marco Calabrese</a>
     </div>
+
+    <script>
+    (function () {
+        const MAP_W = 1400;
+        const MAP_H = 550;
+        const items = [
+            { id: '1',  href: 'vetrina1/info_vetrina_1.html',   x: 930,  y: 405, w: 110, h: 46, label: 'Vetrina 1 — Meccanica' },
+            { id: '2',  href: 'vetrina2/info_vetrina_2.html',   x: 1035, y: 298, w: 120, h: 42, label: 'Vetrina 2 — Meccanica' },
+            { id: '3',  href: 'vetrina3/info_vetrina_3.html',   x: 855,  y: 405, w: 110, h: 46, label: 'Vetrina 3 — Meccanica' },
+            { id: '4',  href: 'vetrina4/info_vetrina_4.html',   x: 845,  y: 295, w: 108, h: 42, label: 'Vetrina 4 — Meccanica' },
+            { id: '5',  href: 'vetrina5/info_vetrina_5.html',   x: 198,  y: 430, w: 110, h: 42, label: 'Vetrina 5 — Ottica' },
+            { id: '6',  href: 'vetrina6/info_vetrina_6.html',   x: 250,  y: 285, w: 120, h: 34, label: 'Vetrina 6 — Ottica' },
+            { id: '7',  href: 'vetrina7/info_vetrina_7.html',   x: 92,   y: 430, w: 105, h: 46, label: 'Vetrina 7 — Ottica' },
+            { id: '8',  href: 'vetrina8/info_vetrina_8.html',   x: 163,  y: 280, w: 95,  h: 34, label: 'Vetrina 8 — Ottica' },
+            { id: '9',  href: 'vetrina9/info_vetrina_9.html',   x: 915,  y: 20,  w: 120, h: 42, label: 'Vetrina 9 — Elettromagnetismo' },
+            { id: '10', href: 'vetrina10/info_vetrina_10.html', x: 791,  y: 18,  w: 110, h: 42, label: 'Vetrina 10 — Elettromagnetismo' },
+            { id: '11', href: 'vetrina11/info_vetrina_11.html', x: 646,  y: 18,  w: 110, h: 42, label: 'Vetrina 11 — Elettromagnetismo' },
+            { id: '12', href: 'vetrina12/info_vetrina_12.html', x: 408,  y: 18,  w: 80,  h: 42, label: 'Vetrina 12' },
+            { id: '13', href: 'vetrina13/info_vetrina_13.html', x: 335,  y: 18,  w: 70,  h: 42, label: 'Vetrina 13' },
+            { id: '14', href: 'vetrina14/info_vetrina_14.html', x: 268,  y: 18,  w: 65,  h: 42, label: 'Vetrina 14' },
+            { id: '15', href: 'vetrina15/info_vetrina_15.html', x: 335,  y: 205, w: 122, h: 38, label: 'Vetrina 15' },
+            { id: 'A',  href: 'esposto/strumento_32.html',      x: 1190, y: 352, w: 90,  h: 78, label: 'A — Macchina pneumatica' },
+            { id: 'B',  href: 'esposto/strumento_88.html',      x: 744,  y: 447, w: 26,  h: 26, label: 'B — Pendolo con un peso' },
+            { id: 'C',  href: 'esposto/strumento_89.html',      x: 716,  y: 414, w: 26,  h: 26, label: 'C — Pendolo reversibile' },
+            { id: 'D',  href: 'esposto/strumento_3.html',       x: 709,  y: 300, w: 26,  h: 26, label: 'D — Pendolo' },
+            { id: 'E',  href: 'esposto/strumento_90.html',      x: 737,  y: 281, w: 26,  h: 26, label: 'E — Pendolo' },
+            { id: 'F',  href: 'esposto/strumento_15.html',      x: 615,  y: 431, w: 68,  h: 38, label: 'F — Macchina di Atwood' },
+            { id: 'G',  href: 'esposto/strumento_30.html',      x: 535,  y: 433, w: 42,  h: 34, label: 'G — Macchina a doppio effetto' },
+            { id: 'H',  href: 'esposto/strumento_87.html',      x: 451,  y: 433, w: 66,  h: 38, label: 'H — Bilancia analitica' },
+            { id: 'I',  href: 'esposto/strumento_44.html',      x: 644,  y: 310, w: 28,  h: 28, label: 'I — Specchi coniugati' },
+            { id: 'L',  href: 'esposto/strumento_81.html',      x: 526,  y: 305, w: 38,  h: 34, label: 'L — Apparecchio di Dalton' },
+            { id: 'M',  href: 'esposto/strumento_48.html',      x: 216,  y: 435, w: 34,  h: 30, label: 'M — Spettroscopio' },
+            { id: 'N1', href: 'esposto/strumento_5.html',       x: 200,  y: 490, w: 21,  h: 22, label: 'N — Barometro' },
+            { id: 'N2', href: 'esposto/strumento_4.html',       x: 227,  y: 490, w: 21,  h: 22, label: 'N — Barometro' },
+            { id: 'O',  href: 'vetrina5/strumento_54.html',     x: 46,   y: 363, w: 42,  h: 52, label: 'O — Camera oscura' },
+            { id: 'P',  href: 'esposto/strumento_55.html',      x: 95,   y: 300, w: 80,  h: 40, label: 'P — Lanterna di proiezione' },
+            { id: 'Q',  href: 'esposto/strumento_16.html',      x: 625,  y: 210, w: 40,  h: 52, label: 'Q — Macchina di Wimshurst' },
+            { id: 'R',  href: 'esposto/strumento_17.html',      x: 666,  y: 210, w: 40,  h: 52, label: 'R — Macchina di Wimshurst' },
+            { id: 'S',  href: 'esposto/strumento_57.html',      x: 875,  y: 210, w: 52,  h: 52, label: 'S — Macchina elettrostatica' },
+            { id: 'T',  href: 'esposto/strumento_83.html',      x: 963,  y: 215, w: 46,  h: 34, label: 'T — Tubo di Geissler' },
+            { id: 'U',  href: 'esposto/strumento_58.html',      x: 1040, y: 180, w: 92,  h: 92, label: 'U — Macchina di Winter' },
+            { id: 'V',  href: 'esposto/strumento_77.html',      x: 583,  y: 46,  w: 20,  h: 34, label: 'V — Apparecchio di Buff' }
+        ];
+
+        const wrap = document.getElementById('mappaInterattiva');
+        const img = wrap.querySelector('.mappa-img');
+
+        const hotspots = items.map(item => {
+            const a = document.createElement('a');
+            a.className = 'hotspot';
+            a.href = item.href;
+            a.title = item.label;
+            a.setAttribute('aria-label', item.label);
+            wrap.appendChild(a);
+            return { el: a, data: item };
+        });
+
+        function position() {
+            const wrapRect = wrap.getBoundingClientRect();
+            const imgRect  = img.getBoundingClientRect();
+            const offsetX = imgRect.left - wrapRect.left;
+            const offsetY = imgRect.top  - wrapRect.top;
+            const sx = imgRect.width  / MAP_W;
+            const sy = imgRect.height / MAP_H;
+            hotspots.forEach(h => {
+                const s = h.el.style;
+                s.left   = (offsetX + h.data.x * sx) + 'px';
+                s.top    = (offsetY + h.data.y * sy) + 'px';
+                s.width  = (h.data.w * sx) + 'px';
+                s.height = (h.data.h * sy) + 'px';
+            });
+        }
+
+        if (img.complete) position();
+        img.addEventListener('load', position);
+        window.addEventListener('resize', position);
+        if ('ResizeObserver' in window) {
+            new ResizeObserver(position).observe(img);
+        }
+    })();
+    </script>
 </body>
 
 </html>
