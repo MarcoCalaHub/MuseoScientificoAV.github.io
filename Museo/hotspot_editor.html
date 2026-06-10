@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor hotspot — Museo Scientifico</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            margin: 0;
+            padding: 16px;
+            background: #f4f4f4;
+            color: #222;
+        }
+        h1 { font-size: 1.3em; margin: 0 0 4px; }
+        .hint {
+            font-size: 13px;
+            color: #555;
+            margin: 4px 0 14px;
+        }
+        .hint kbd {
+            background: #eee;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding: 0 5px;
+            font-family: monospace;
+            font-size: 11px;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 340px;
+            gap: 16px;
+            align-items: start;
+        }
+        @media (max-width: 1100px) {
+            .layout { grid-template-columns: 1fr; }
+        }
+
+        /* ====== Mappa ====== */
+        .map-wrap {
+            position: relative;
+            background: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            user-select: none;
+            line-height: 0;
+        }
+        .map-wrap img {
+            display: block;
+            width: 100%;
+            height: auto;
+            pointer-events: none;
+        }
+        .hotspot {
+            position: absolute;
+            background: rgba(30, 60, 200, 0.28);
+            border: 2px solid rgba(10, 30, 130, 0.85);
+            cursor: move;
+        }
+        .hotspot.esposto {
+            background: rgba(220, 120, 0, 0.28);
+            border-color: rgba(160, 70, 0, 0.85);
+        }
+        .hotspot.selected {
+            box-shadow: 0 0 0 2px #2196F3, 0 0 0 4px rgba(33, 150, 243, 0.3);
+        }
+        .hotspot .label {
+            position: absolute;
+            top: 1px; left: 1px;
+            background: #fff;
+            color: #000;
+            font: bold 11px/1.2 monospace;
+            padding: 1px 4px;
+            border: 1px solid #999;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .hotspot .handle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border: 1px solid #333;
+            display: none;
+        }
+        .hotspot.selected .handle { display: block; }
+        .hotspot .handle.nw { top: -6px; left: -6px; cursor: nwse-resize; }
+        .hotspot .handle.ne { top: -6px; right: -6px; cursor: nesw-resize; }
+        .hotspot .handle.sw { bottom: -6px; left: -6px; cursor: nesw-resize; }
+        .hotspot .handle.se { bottom: -6px; right: -6px; cursor: nwse-resize; }
+
+        /* ====== Panel laterale ====== */
+        .panel {
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 12px;
+            font-size: 13px;
+            position: sticky;
+            top: 16px;
+        }
+        .panel h2 {
+            font-size: 1.05em;
+            margin: 0 0 8px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+        .panel section + section {
+            margin-top: 14px;
+        }
+        .panel label {
+            display: block;
+            font-size: 11px;
+            color: #666;
+            margin: 6px 0 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .panel input[type=text],
+        .panel input[type=number],
+        .panel textarea {
+            width: 100%;
+            padding: 4px 6px;
+            border: 1px solid #bbb;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 13px;
+        }
+        .panel textarea {
+            min-height: 160px;
+            resize: vertical;
+            line-height: 1.4;
+        }
+        .panel button {
+            padding: 6px 12px;
+            margin: 6px 4px 0 0;
+            border: 1px solid #888;
+            background: #fff;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .panel button:hover { background: #f0f0f0; }
+        .panel button.primary {
+            background: #2196F3;
+            color: #fff;
+            border-color: #1976D2;
+        }
+        .panel button.primary:hover { background: #1976D2; }
+        .panel button.danger {
+            background: #fff;
+            color: #c62828;
+            border-color: #c62828;
+        }
+        .panel button.danger:hover { background: #ffebee; }
+        .coords {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+        }
+        .coords > div label { margin-top: 0; }
+
+        .empty-sel {
+            color: #999;
+            font-style: italic;
+            font-size: 12px;
+        }
+
+        /* ====== Lista ====== */
+        .list-wrap {
+            margin-top: 16px;
+            background: #fff;
+            border: 1px solid #ccc;
+        }
+        .list-wrap h2 {
+            font-size: 1.05em;
+            margin: 0;
+            padding: 8px 12px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .list-wrap h2 .count {
+            font-size: 12px;
+            color: #666;
+            font-weight: normal;
+        }
+        .list {
+            max-height: 220px;
+            overflow-y: auto;
+        }
+        .list-item {
+            padding: 5px 12px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            font: 12px/1.4 monospace;
+            display: grid;
+            grid-template-columns: 36px 1fr 130px;
+            gap: 8px;
+            align-items: center;
+        }
+        .list-item:hover { background: #f8f8f8; }
+        .list-item.selected {
+            background: #e3f2fd;
+            border-left: 3px solid #2196F3;
+            padding-left: 9px;
+        }
+        .list-item .id-badge {
+            display: inline-block;
+            padding: 1px 6px;
+            background: #1e3cc8;
+            color: white;
+            border-radius: 3px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .list-item.esposto .id-badge {
+            background: #c87800;
+        }
+        .list-item .coords-mini {
+            color: #777;
+            text-align: right;
+            font-size: 11px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Editor degli hotspot</h1>
+    <p class="hint">
+        Click su un hotspot per selezionarlo. Trascina al centro per spostarlo, agli angoli per ridimensionarlo.
+        Click e trascina su area vuota della mappa per <strong>crearne uno nuovo</strong>.
+        Frecce <kbd>←↑→↓</kbd> per spostare di 1px (con <kbd>Shift</kbd> per 10px), <kbd>Canc</kbd> per cancellare.
+        Le modifiche sono salvate in automatico nel browser.
+    </p>
+
+    <div class="layout">
+        <div class="map-wrap" id="mapWrap">
+            <img id="planImg" src="piantina_3_cut_PLUS.png" alt="planimetria">
+        </div>
+
+        <aside class="panel">
+            <section>
+                <h2>Hotspot selezionato</h2>
+                <div id="selectedPanel">
+                    <p class="empty-sel">Nessuno selezionato</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Azioni</h2>
+                <button id="exportBtn" class="primary">Esporta JS</button>
+                <button id="importBtn">Importa</button>
+                <button id="resetBtn" class="danger">Reset</button>
+            </section>
+
+            <section>
+                <h2>Export / Import</h2>
+                <p class="hint" style="margin: 4px 0 6px;">
+                    Esporta produce il blocco JS da incollare in <code>vetrine.html</code>.
+                    Importa accetta un array JSON di <code>{id,x,y,w,h,href,label}</code>.
+                </p>
+                <textarea id="ioText" spellcheck="false"
+                          placeholder="Output qui dopo Esporta; oppure incolla JSON per Importa"></textarea>
+            </section>
+        </aside>
+    </div>
+
+    <div class="list-wrap">
+        <h2>Tutti gli hotspot <span class="count" id="listCount"></span></h2>
+        <div class="list" id="hotspotList"></div>
+    </div>
+
+    <script>
+    (function () {
+        'use strict';
+
+        const MAP_W = 1400;
+        const MAP_H = 550;
+        const STORAGE_KEY = 'museo-hotspot-editor';
+
+        // Valori di default — stessi della lista `items` in vetrine.html
+        const DEFAULT_ITEMS = [
+            { id: '1',  href: 'vetrina1/info_vetrina_1.html',   x: 930,  y: 405, w: 110, h: 46, label: 'Vetrina 1 — Meccanica' },
+            { id: '2',  href: 'vetrina2/info_vetrina_2.html',   x: 1035, y: 298, w: 120, h: 42, label: 'Vetrina 2 — Meccanica' },
+            { id: '3',  href: 'vetrina3/info_vetrina_3.html',   x: 855,  y: 405, w: 110, h: 46, label: 'Vetrina 3 — Meccanica' },
+            { id: '4',  href: 'vetrina4/info_vetrina_4.html',   x: 845,  y: 295, w: 108, h: 42, label: 'Vetrina 4 — Meccanica' },
+            { id: '5',  href: 'vetrina5/info_vetrina_5.html',   x: 198,  y: 430, w: 110, h: 42, label: 'Vetrina 5 — Ottica' },
+            { id: '6',  href: 'vetrina6/info_vetrina_6.html',   x: 250,  y: 285, w: 120, h: 34, label: 'Vetrina 6 — Ottica' },
+            { id: '7',  href: 'vetrina7/info_vetrina_7.html',   x: 92,   y: 430, w: 105, h: 46, label: 'Vetrina 7 — Ottica' },
+            { id: '8',  href: 'vetrina8/info_vetrina_8.html',   x: 163,  y: 280, w: 95,  h: 34, label: 'Vetrina 8 — Ottica' },
+            { id: '9',  href: 'vetrina9/info_vetrina_9.html',   x: 915,  y: 20,  w: 120, h: 42, label: 'Vetrina 9 — Elettromagnetismo' },
+            { id: '10', href: 'vetrina10/info_vetrina_10.html', x: 791,  y: 18,  w: 110, h: 42, label: 'Vetrina 10 — Elettromagnetismo' },
+            { id: '11', href: 'vetrina11/info_vetrina_11.html', x: 646,  y: 18,  w: 110, h: 42, label: 'Vetrina 11 — Elettromagnetismo' },
+            { id: '12', href: 'vetrina12/info_vetrina_12.html', x: 408,  y: 18,  w: 80,  h: 42, label: 'Vetrina 12' },
+            { id: '13', href: 'vetrina13/info_vetrina_13.html', x: 335,  y: 18,  w: 70,  h: 42, label: 'Vetrina 13' },
+            { id: '14', href: 'vetrina14/info_vetrina_14.html', x: 268,  y: 18,  w: 65,  h: 42, label: 'Vetrina 14' },
+            { id: '15', href: 'vetrina15/info_vetrina_15.html', x: 335,  y: 205, w: 122, h: 38, label: 'Vetrina 15' },
+            { id: 'A',  href: 'esposto/strumento_32.html',      x: 1190, y: 352, w: 90,  h: 78, label: 'A — Macchina pneumatica' },
+            { id: 'B',  href: 'esposto/strumento_88.html',      x: 744,  y: 447, w: 26,  h: 26, label: 'B — Pendolo con un peso' },
+            { id: 'C',  href: 'esposto/strumento_89.html',      x: 716,  y: 414, w: 26,  h: 26, label: 'C — Pendolo reversibile' },
+            { id: 'D',  href: 'esposto/strumento_3.html',       x: 709,  y: 300, w: 26,  h: 26, label: 'D — Pendolo' },
+            { id: 'E',  href: 'esposto/strumento_90.html',      x: 737,  y: 281, w: 26,  h: 26, label: 'E — Pendolo' },
+            { id: 'F',  href: 'esposto/strumento_15.html',      x: 615,  y: 431, w: 68,  h: 38, label: 'F — Macchina di Atwood' },
+            { id: 'G',  href: 'esposto/strumento_30.html',      x: 535,  y: 433, w: 42,  h: 34, label: 'G — Macchina a doppio effetto' },
+            { id: 'H',  href: 'esposto/strumento_87.html',      x: 451,  y: 433, w: 66,  h: 38, label: 'H — Bilancia analitica' },
+            { id: 'I',  href: 'esposto/strumento_44.html',      x: 644,  y: 310, w: 28,  h: 28, label: 'I — Specchi coniugati' },
+            { id: 'L',  href: 'esposto/strumento_81.html',      x: 526,  y: 305, w: 38,  h: 34, label: 'L — Apparecchio di Dalton' },
+            { id: 'M',  href: 'esposto/strumento_48.html',      x: 216,  y: 435, w: 34,  h: 30, label: 'M — Spettroscopio' },
+            { id: 'N1', href: 'esposto/strumento_5.html',       x: 200,  y: 490, w: 21,  h: 22, label: 'N — Barometro' },
+            { id: 'N2', href: 'esposto/strumento_4.html',       x: 227,  y: 490, w: 21,  h: 22, label: 'N — Barometro' },
+            { id: 'O',  href: 'vetrina5/strumento_54.html',     x: 46,   y: 363, w: 42,  h: 52, label: 'O — Camera oscura' },
+            { id: 'P',  href: 'esposto/strumento_55.html',      x: 95,   y: 300, w: 80,  h: 40, label: 'P — Lanterna di proiezione' },
+            { id: 'Q',  href: 'esposto/strumento_16.html',      x: 625,  y: 210, w: 40,  h: 52, label: 'Q — Macchina di Wimshurst' },
+            { id: 'R',  href: 'esposto/strumento_17.html',      x: 666,  y: 210, w: 40,  h: 52, label: 'R — Macchina di Wimshurst' },
+            { id: 'S',  href: 'esposto/strumento_57.html',      x: 875,  y: 210, w: 52,  h: 52, label: 'S — Macchina elettrostatica' },
+            { id: 'T',  href: 'esposto/strumento_83.html',      x: 963,  y: 215, w: 46,  h: 34, label: 'T — Tubo di Geissler' },
+            { id: 'U',  href: 'esposto/strumento_58.html',      x: 1040, y: 180, w: 92,  h: 92, label: 'U — Macchina di Winter' },
+            { id: 'V',  href: 'esposto/strumento_77.html',      x: 583,  y: 46,  w: 20,  h: 34, label: 'V — Apparecchio di Buff' }
+        ];
+
+        // ============ Stato ============
+        let items = [];
+        let selectedId = null;
+        let drag = null;
+        let suppressUpdateFromForm = false;
+
+        // ============ DOM refs ============
+        const planImg = document.getElementById('planImg');
+        const mapWrap = document.getElementById('mapWrap');
+        const selectedPanel = document.getElementById('selectedPanel');
+        const hotspotList = document.getElementById('hotspotList');
+        const listCount = document.getElementById('listCount');
+        const ioText = document.getElementById('ioText');
+
+        // ============ Persistenza ============
+        function loadFromStorage() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return null;
+                const parsed = JSON.parse(raw);
+                return Array.isArray(parsed) ? parsed : null;
+            } catch (e) { return null; }
+        }
+        function save() {
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(items)); } catch (e) {}
+        }
+
+        // ============ Utility ============
+        function isEsposto(item) {
+            return !/^[0-9]/.test(item.id);
+        }
+        function findItem(id) {
+            return items.find(i => i.id === id);
+        }
+        function nextNewId() {
+            let n = 1;
+            while (items.some(i => i.id === 'NUOVO_' + n)) n++;
+            return 'NUOVO_' + n;
+        }
+        function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+        function round(v) { return Math.round(v); }
+
+        // Converte coordinate dello schermo a coordinate dell'immagine originale
+        function screenToImg(clientX, clientY) {
+            const r = planImg.getBoundingClientRect();
+            return {
+                x: (clientX - r.left) * MAP_W / r.width,
+                y: (clientY - r.top)  * MAP_H / r.height,
+            };
+        }
+
+        // ============ Rendering ============
+        function render() {
+            // Rimuovi gli hotspot esistenti
+            mapWrap.querySelectorAll('.hotspot').forEach(el => el.remove());
+
+            const imgRect = planImg.getBoundingClientRect();
+            const wrapRect = mapWrap.getBoundingClientRect();
+            const offsetX = imgRect.left - wrapRect.left;
+            const offsetY = imgRect.top  - wrapRect.top;
+            const scale = imgRect.width / MAP_W;
+
+            items.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'hotspot'
+                    + (isEsposto(item) ? ' esposto' : '')
+                    + (item.id === selectedId ? ' selected' : '');
+                div.dataset.id = item.id;
+                div.style.left   = (item.x * scale + offsetX) + 'px';
+                div.style.top    = (item.y * scale + offsetY) + 'px';
+                div.style.width  = (item.w * scale) + 'px';
+                div.style.height = (item.h * scale) + 'px';
+
+                const label = document.createElement('span');
+                label.className = 'label';
+                label.textContent = item.id;
+                div.appendChild(label);
+
+                ['nw', 'ne', 'sw', 'se'].forEach(h => {
+                    const hd = document.createElement('div');
+                    hd.className = 'handle ' + h;
+                    hd.dataset.handle = h;
+                    div.appendChild(hd);
+                });
+
+                mapWrap.appendChild(div);
+            });
+
+            renderSelectedPanel();
+            renderList();
+        }
+
+        function renderSelectedPanel() {
+            const sel = selectedId ? findItem(selectedId) : null;
+            if (!sel) {
+                selectedPanel.innerHTML = '<p class="empty-sel">Nessuno selezionato</p>';
+                return;
+            }
+            selectedPanel.innerHTML = ''
+                + '<label>ID</label>'
+                + '<input type="text" id="f-id" value="' + escapeAttr(sel.id) + '">'
+                + '<label>Href (file pagina)</label>'
+                + '<input type="text" id="f-href" value="' + escapeAttr(sel.href || '') + '">'
+                + '<label>Label (tooltip)</label>'
+                + '<input type="text" id="f-label" value="' + escapeAttr(sel.label || '') + '">'
+                + '<div class="coords" style="margin-top:8px">'
+                + '  <div><label>X</label><input type="number" id="f-x" value="' + round(sel.x) + '"></div>'
+                + '  <div><label>Y</label><input type="number" id="f-y" value="' + round(sel.y) + '"></div>'
+                + '  <div><label>W</label><input type="number" id="f-w" value="' + round(sel.w) + '"></div>'
+                + '  <div><label>H</label><input type="number" id="f-h" value="' + round(sel.h) + '"></div>'
+                + '</div>'
+                + '<button class="danger" id="deleteBtn" style="margin-top:10px">Elimina hotspot</button>';
+
+            ['id', 'href', 'label', 'x', 'y', 'w', 'h'].forEach(field => {
+                const el = document.getElementById('f-' + field);
+                el.addEventListener('input', () => {
+                    if (suppressUpdateFromForm) return;
+                    const cur = findItem(selectedId);
+                    if (!cur) return;
+                    if (field === 'id') {
+                        const newId = el.value.trim();
+                        if (newId && newId !== cur.id && !items.some(i => i.id === newId)) {
+                            cur.id = newId;
+                            selectedId = newId;
+                        }
+                    } else if (['x','y','w','h'].includes(field)) {
+                        cur[field] = parseFloat(el.value) || 0;
+                    } else {
+                        cur[field] = el.value;
+                    }
+                    save();
+                    render();
+                });
+            });
+            document.getElementById('deleteBtn').addEventListener('click', deleteSelected);
+        }
+
+        function renderList() {
+            listCount.textContent = '(' + items.length + ')';
+            hotspotList.innerHTML = items.map(item => {
+                const sel = item.id === selectedId ? ' selected' : '';
+                const esp = isEsposto(item) ? ' esposto' : '';
+                const desc = (item.label || item.href || '').replace(/</g, '&lt;');
+                return '<div class="list-item' + sel + esp + '" data-id="' + escapeAttr(item.id) + '">'
+                    + '  <span class="id-badge">' + escapeHtml(item.id) + '</span>'
+                    + '  <span>' + desc + '</span>'
+                    + '  <span class="coords-mini">' + round(item.x) + ',' + round(item.y) + ' · ' + round(item.w) + '×' + round(item.h) + '</span>'
+                    + '</div>';
+            }).join('');
+            hotspotList.querySelectorAll('.list-item').forEach(el => {
+                el.addEventListener('click', () => {
+                    select(el.dataset.id);
+                    el.scrollIntoView({ block: 'nearest' });
+                });
+            });
+        }
+
+        function escapeHtml(s) {
+            return String(s).replace(/[&<>]/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;' }[c]));
+        }
+        function escapeAttr(s) {
+            return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+        }
+
+        // ============ Selezione ============
+        function select(id) {
+            selectedId = id;
+            render();
+        }
+        function deleteSelected() {
+            if (!selectedId) return;
+            items = items.filter(i => i.id !== selectedId);
+            selectedId = null;
+            save();
+            render();
+        }
+
+        // ============ Mouse / drag ============
+        mapWrap.addEventListener('mousedown', onMouseDown);
+        document.addEventListener('mousemove', onMouseMove);
+        document.addEventListener('mouseup', onMouseUp);
+
+        function onMouseDown(e) {
+            if (e.button !== 0) return;
+            const target = e.target;
+            const pos = screenToImg(e.clientX, e.clientY);
+
+            if (target.classList && target.classList.contains('handle')) {
+                const hsEl = target.closest('.hotspot');
+                const id = hsEl.dataset.id;
+                const orig = Object.assign({}, findItem(id));
+                drag = { mode: 'resize', id, handle: target.dataset.handle, orig, startImg: pos };
+                select(id);
+                e.preventDefault();
+                return;
+            }
+            const hsEl = target.closest && target.closest('.hotspot');
+            if (hsEl) {
+                const id = hsEl.dataset.id;
+                const orig = Object.assign({}, findItem(id));
+                drag = { mode: 'move', id, orig, startImg: pos };
+                select(id);
+                e.preventDefault();
+                return;
+            }
+            // Area vuota: crea nuovo hotspot
+            const id = nextNewId();
+            const item = { id, href: '', label: '', x: pos.x, y: pos.y, w: 1, h: 1 };
+            items.push(item);
+            drag = { mode: 'create', id, startImg: pos };
+            select(id);
+            save();
+            e.preventDefault();
+        }
+
+        function onMouseMove(e) {
+            if (!drag) return;
+            const pos = screenToImg(e.clientX, e.clientY);
+            const item = findItem(drag.id);
+            if (!item) return;
+
+            if (drag.mode === 'move') {
+                item.x = clamp(drag.orig.x + (pos.x - drag.startImg.x), 0, MAP_W - item.w);
+                item.y = clamp(drag.orig.y + (pos.y - drag.startImg.y), 0, MAP_H - item.h);
+            } else if (drag.mode === 'resize') {
+                const dx = pos.x - drag.startImg.x;
+                const dy = pos.y - drag.startImg.y;
+                let { x, y, w, h } = drag.orig;
+                if (drag.handle === 'se') { w = Math.max(2, w + dx); h = Math.max(2, h + dy); }
+                if (drag.handle === 'sw') {
+                    const nx = Math.min(x + dx, x + w - 2);
+                    w = x + w - nx; x = nx;
+                    h = Math.max(2, h + dy);
+                }
+                if (drag.handle === 'ne') {
+                    const ny = Math.min(y + dy, y + h - 2);
+                    h = y + h - ny; y = ny;
+                    w = Math.max(2, w + dx);
+                }
+                if (drag.handle === 'nw') {
+                    const nx = Math.min(x + dx, x + w - 2);
+                    const ny = Math.min(y + dy, y + h - 2);
+                    w = x + w - nx; x = nx;
+                    h = y + h - ny; y = ny;
+                }
+                item.x = x; item.y = y; item.w = w; item.h = h;
+            } else if (drag.mode === 'create') {
+                item.x = Math.min(drag.startImg.x, pos.x);
+                item.y = Math.min(drag.startImg.y, pos.y);
+                item.w = Math.abs(pos.x - drag.startImg.x);
+                item.h = Math.abs(pos.y - drag.startImg.y);
+            }
+            render();
+        }
+
+        function onMouseUp() {
+            if (!drag) return;
+            // se create con box minuscolo, scarta
+            if (drag.mode === 'create') {
+                const item = findItem(drag.id);
+                if (item && (item.w < 5 || item.h < 5)) {
+                    items = items.filter(i => i.id !== drag.id);
+                    selectedId = null;
+                    render();
+                }
+            }
+            drag = null;
+            save();
+        }
+
+        // ============ Keyboard ============
+        document.addEventListener('keydown', e => {
+            // Ignora se l'utente sta digitando in un input/textarea
+            if (e.target.matches('input, textarea')) return;
+            if (!selectedId) return;
+            const item = findItem(selectedId);
+            if (!item) return;
+            const step = e.shiftKey ? 10 : 1;
+            if (e.key === 'ArrowLeft')  { item.x = Math.max(0, item.x - step); render(); save(); e.preventDefault(); }
+            else if (e.key === 'ArrowRight') { item.x = Math.min(MAP_W - item.w, item.x + step); render(); save(); e.preventDefault(); }
+            else if (e.key === 'ArrowUp')    { item.y = Math.max(0, item.y - step); render(); save(); e.preventDefault(); }
+            else if (e.key === 'ArrowDown')  { item.y = Math.min(MAP_H - item.h, item.y + step); render(); save(); e.preventDefault(); }
+            else if (e.key === 'Delete' || e.key === 'Backspace') { deleteSelected(); e.preventDefault(); }
+        });
+
+        // ============ Buttons ============
+        document.getElementById('exportBtn').addEventListener('click', () => {
+            const lines = items.map(i => {
+                const pad = s => (s + '                ').slice(0, Math.max(s.length, 4));
+                return '    { id: ' + JSON.stringify(i.id) + ','
+                    + ' href: ' + JSON.stringify(i.href || '') + ','
+                    + ' x: ' + round(i.x) + ', y: ' + round(i.y)
+                    + ', w: ' + round(i.w) + ', h: ' + round(i.h)
+                    + ', label: ' + JSON.stringify(i.label || '') + ' }';
+            }).join(',\n');
+            ioText.value = 'const items = [\n' + lines + '\n];';
+            ioText.focus();
+            ioText.select();
+        });
+
+        document.getElementById('importBtn').addEventListener('click', () => {
+            let text = ioText.value.trim();
+            if (!text) { alert('Incolla prima un array JSON nella textarea.'); return; }
+            // Estrai il primo array [...] dal testo (per tollerare il prefisso "const items = ")
+            const m = text.match(/\[[\s\S]*\]/);
+            if (m) text = m[0];
+            try {
+                // Permetti sia JSON puro che JS-like (con virgolette singole / chiavi non quoted).
+                // Strategia: prova JSON.parse; se fallisce, prova eval in sandbox.
+                let parsed;
+                try { parsed = JSON.parse(text); }
+                catch (_) {
+                    // eslint-disable-next-line no-new-func
+                    parsed = (new Function('return (' + text + ')'))();
+                }
+                if (!Array.isArray(parsed)) throw new Error('non e\' un array');
+                const cleaned = parsed.map((o, idx) => ({
+                    id:    String(o.id    != null ? o.id : 'X_' + idx),
+                    href:  String(o.href  != null ? o.href : ''),
+                    label: String(o.label != null ? o.label : ''),
+                    x: +o.x || 0, y: +o.y || 0, w: +o.w || 0, h: +o.h || 0,
+                }));
+                items = cleaned;
+                selectedId = null;
+                save();
+                render();
+            } catch (err) {
+                alert('Errore di parsing: ' + err.message);
+            }
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            if (!confirm('Ripristinare tutti gli hotspot ai valori di default? Le modifiche locali andranno perse.')) return;
+            items = JSON.parse(JSON.stringify(DEFAULT_ITEMS));
+            selectedId = null;
+            save();
+            render();
+        });
+
+        // ============ Init ============
+        items = loadFromStorage() || JSON.parse(JSON.stringify(DEFAULT_ITEMS));
+
+        function init() {
+            render();
+            window.addEventListener('resize', render);
+        }
+        if (planImg.complete) init();
+        else planImg.addEventListener('load', init);
+    })();
+    </script>
+</body>
+</html>
