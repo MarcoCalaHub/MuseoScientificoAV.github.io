@@ -566,24 +566,42 @@ footer .column h4 {
 }
 
 /* =========================================================
-   Mappa interattiva (vetrine.html) — hotspot cliccabili
+   Mappa interattiva (vetrine.html) — hero + hotspot cliccabili
    ========================================================= */
+.mappa-hero {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 24px 16px 8px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.mappa-hero h2 {
+    margin-bottom: 16px;
+}
+
 .mappa-interactive {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    width: 80%;
-    max-width: 80%;
-    margin: 0 auto 8px;
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
     display: block;
-    background-color: var(--bg);
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    padding: 12px;
+    box-sizing: border-box;
+    line-height: 0;
+}
+[data-theme="editorial"] .mappa-interactive,
+[data-theme="heritage"] .mappa-interactive {
+    border: 2px solid var(--accent);
 }
 .mappa-interactive .mappa-img {
     display: block;
     width: 100%;
-    max-height: 200px;
     height: auto;
-    object-fit: contain;
     margin: 0 auto;
     cursor: default;
 }
@@ -603,10 +621,112 @@ footer .column h4 {
 }
 .mappa-hint {
     text-align: center;
-    font-size: 0.9em;
+    font-size: 0.95em;
     color: var(--text-muted);
     font-style: italic;
-    margin: 0 0 20px;
+    margin: 14px 0 8px;
+}
+
+/* Pulsante "apri a schermo intero" — visibile solo su mobile */
+.mappa-zoom-trigger {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: var(--primary-on);
+    border: 2px solid var(--primary-on);
+    font-size: 1.4em;
+    font-weight: bold;
+    line-height: 1;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 50;
+    box-shadow: var(--shadow-md);
+    padding: 0;
+    transition: transform .2s ease, background-color .2s ease;
+}
+.mappa-zoom-trigger:hover,
+.mappa-zoom-trigger:focus {
+    transform: scale(1.08);
+    background-color: var(--accent);
+    outline: none;
+}
+
+/* Sotto i 768px la mappa diventa stretta: mostro il bottone fullscreen */
+@media (max-width: 768px) {
+    .mappa-hero {
+        padding: 16px 8px 4px;
+    }
+    .mappa-interactive {
+        padding: 6px;
+    }
+    .mappa-zoom-trigger {
+        display: flex;
+    }
+    .mappa-hint {
+        font-size: 0.85em;
+        margin-top: 8px;
+    }
+}
+
+/* Modale fullscreen per zoom su mobile */
+.mappa-zoom-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 20000;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.mappa-zoom-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    border: 2px solid #fff;
+    font-size: 1.8em;
+    line-height: 1;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    padding: 0;
+}
+.mappa-zoom-close:hover,
+.mappa-zoom-close:focus {
+    background: #fff;
+    color: #000;
+    outline: none;
+}
+.mappa-zoom-scroll {
+    flex: 1;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 64px 16px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mappa-interactive--zoom {
+    background: #fff;
+    width: 1400px;          /* dimensione nativa: l'utente fa swipe per esplorare */
+    max-width: none;
+    flex-shrink: 0;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+.mappa-interactive--zoom .mappa-img {
+    width: 100%;
 }
 
 /* =========================================================

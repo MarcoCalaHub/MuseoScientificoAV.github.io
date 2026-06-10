@@ -22,12 +22,18 @@
         ⚠️ Sito in costruzione - Work in Progress
     </div>
     <main>
-        <section class="gallery">
+        <section class="mappa-hero">
             <h2>Esposizione delle Vetrine</h2>
             <div class="mappa-interactive" id="mappaInterattiva">
                 <img src="piantina_3_cut_PLUS.png" alt="Mappa delle vetrine" class="mappa-img">
+                <button class="mappa-zoom-trigger" type="button" aria-label="Apri la mappa a schermo intero" title="Apri a schermo intero">
+                    <span aria-hidden="true">⤢</span>
+                </button>
             </div>
             <p class="mappa-hint">Clicca su una vetrina nella mappa per aprirne la pagina.</p>
+        </section>
+        <section class="gallery">
+            <h3 class="gallery-title">Elenco completo</h3>
             <div class="cards-container">
                 <div class="grid">
                     <a href="esposto/strumento_32.html" class="card">
@@ -242,40 +248,78 @@
             { id: 'V',  href: 'esposto/strumento_77.html',      x: 583,  y: 46,  w: 20,  h: 34, label: 'V — Apparecchio di Buff' }
         ];
 
-        const wrap = document.getElementById('mappaInterattiva');
-        const img = wrap.querySelector('.mappa-img');
-
-        const hotspots = items.map(item => {
-            const a = document.createElement('a');
-            a.className = 'hotspot';
-            a.href = item.href;
-            a.title = item.label;
-            a.setAttribute('aria-label', item.label);
-            wrap.appendChild(a);
-            return { el: a, data: item };
-        });
-
-        function position() {
-            const wrapRect = wrap.getBoundingClientRect();
-            const imgRect  = img.getBoundingClientRect();
-            const offsetX = imgRect.left - wrapRect.left;
-            const offsetY = imgRect.top  - wrapRect.top;
-            const sx = imgRect.width  / MAP_W;
-            const sy = imgRect.height / MAP_H;
-            hotspots.forEach(h => {
-                const s = h.el.style;
-                s.left   = (offsetX + h.data.x * sx) + 'px';
-                s.top    = (offsetY + h.data.y * sy) + 'px';
-                s.width  = (h.data.w * sx) + 'px';
-                s.height = (h.data.h * sy) + 'px';
+        function attachHotspots(wrapEl, imgEl) {
+            const hotspots = items.map(item => {
+                const a = document.createElement('a');
+                a.className = 'hotspot';
+                a.href = item.href;
+                a.title = item.label;
+                a.setAttribute('aria-label', item.label);
+                wrapEl.appendChild(a);
+                return { el: a, data: item };
             });
+
+            function position() {
+                const wrapRect = wrapEl.getBoundingClientRect();
+                const imgRect  = imgEl.getBoundingClientRect();
+                const offsetX = imgRect.left - wrapRect.left;
+                const offsetY = imgRect.top  - wrapRect.top;
+                const sx = imgRect.width  / MAP_W;
+                const sy = imgRect.height / MAP_H;
+                hotspots.forEach(h => {
+                    const s = h.el.style;
+                    s.left   = (offsetX + h.data.x * sx) + 'px';
+                    s.top    = (offsetY + h.data.y * sy) + 'px';
+                    s.width  = (h.data.w * sx) + 'px';
+                    s.height = (h.data.h * sy) + 'px';
+                });
+            }
+
+            if (imgEl.complete) position();
+            imgEl.addEventListener('load', position);
+            window.addEventListener('resize', position);
+            if ('ResizeObserver' in window) {
+                new ResizeObserver(position).observe(imgEl);
+            }
+            return position;
         }
 
-        if (img.complete) position();
-        img.addEventListener('load', position);
-        window.addEventListener('resize', position);
-        if ('ResizeObserver' in window) {
-            new ResizeObserver(position).observe(img);
+        // Mappa inline principale
+        const mainWrap = document.getElementById('mappaInterattiva');
+        const mainImg = mainWrap.querySelector('.mappa-img');
+        attachHotspots(mainWrap, mainImg);
+
+        // Modale fullscreen (apertura su tap del pulsante ⤢)
+        const trigger = mainWrap.querySelector('.mappa-zoom-trigger');
+        if (trigger) {
+            trigger.addEventListener('click', openZoomModal);
+        }
+
+        function openZoomModal() {
+            const modal = document.createElement('div');
+            modal.className = 'mappa-zoom-modal';
+            modal.innerHTML = '<button class="mappa-zoom-close" type="button" aria-label="Chiudi">&times;</button>'
+                + '<div class="mappa-zoom-scroll">'
+                + '  <div class="mappa-interactive mappa-interactive--zoom">'
+                + '    <img src="piantina_3_cut_PLUS.png" alt="Mappa delle vetrine" class="mappa-img">'
+                + '  </div>'
+                + '</div>';
+            document.body.appendChild(modal);
+            document.body.style.overflow = 'hidden';
+
+            const zoomWrap = modal.querySelector('.mappa-interactive');
+            const zoomImg = modal.querySelector('.mappa-img');
+            attachHotspots(zoomWrap, zoomImg);
+
+            function close() {
+                if (modal.parentNode) modal.parentNode.removeChild(modal);
+                document.body.style.overflow = '';
+                document.removeEventListener('keydown', onKey);
+            }
+            function onKey(e) { if (e.key === 'Escape') close(); }
+            modal.querySelector('.mappa-zoom-close').addEventListener('click', close);
+            modal.addEventListener('click', e => { if (e.target === modal) close(); });
+            document.addEventListener('keydown', onKey);
         }
     })();
     </script>
