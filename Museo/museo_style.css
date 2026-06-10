@@ -566,7 +566,7 @@ footer .column h4 {
 }
 
 /* =========================================================
-   Mappa interattiva (vetrine.html) — hero + hotspot cliccabili
+   Mappa interattiva (vetrine.html) — hero sticky + hotspot
    ========================================================= */
 .mappa-hero {
     width: 100%;
@@ -580,10 +580,66 @@ footer .column h4 {
     margin-bottom: 16px;
 }
 
+/* =========================================================
+   Barra-mappa compatta: position: fixed che scivola dall'alto
+   quando l'hero esce dalla viewport. Niente layout shift.
+   ========================================================= */
+.mappa-sticky-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: var(--bg);
+    padding: 8px 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-110%);
+    transition: transform .25s ease;
+    pointer-events: none;
+    text-align: center;
+    box-sizing: border-box;
+}
+.mappa-sticky-bar.is-visible {
+    transform: translateY(0);
+    pointer-events: auto;
+}
+.mappa-sticky-bar .mappa-interactive {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4px 8px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-sizing: border-box;
+    line-height: 0;
+}
+[data-theme="editorial"] .mappa-sticky-bar .mappa-interactive,
+[data-theme="heritage"] .mappa-sticky-bar .mappa-interactive {
+    border: 2px solid var(--accent);
+}
+.mappa-sticky-bar .mappa-img {
+    width: auto;
+    height: auto;
+    max-height: 180px;
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+}
+/* Pulsante zoom anche su desktop quando si e' in barra compatta */
+.mappa-sticky-bar .mappa-zoom-trigger {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    top: 4px;
+    right: 4px;
+    font-size: 1em;
+}
+
 .mappa-interactive {
     position: relative;
-    width: 100%;
-    max-width: 1400px;
+    width: fit-content;
+    max-width: 100%;
     margin: 0 auto;
     display: block;
     background-color: var(--surface);
@@ -600,8 +656,10 @@ footer .column h4 {
 }
 .mappa-interactive .mappa-img {
     display: block;
-    width: 100%;
+    width: auto;
     height: auto;
+    max-width: 100%;
+    max-height: 360px;
     margin: 0 auto;
     cursor: default;
 }
@@ -619,6 +677,42 @@ footer .column h4 {
     background-color: rgba(184, 146, 58, 0.30);
     outline-color: var(--accent);
 }
+
+/* Animazione di intro: gli hotspot lampeggiano brevemente al primo arrivo
+   nella viewport, cosi' l'utente capisce subito che la mappa e' cliccabile. */
+@keyframes hotspotIntro {
+    0%, 100% { background-color: rgba(184, 146, 58, 0); outline-color: transparent; }
+    25%, 65% { background-color: rgba(184, 146, 58, 0.45); outline-color: var(--accent); }
+}
+.mappa-interactive.is-intro .hotspot {
+    animation: hotspotIntro 1.6s ease-out 1;
+}
+
+/* Badge "Mappa interattiva" — affordance visiva sulla mappa hero */
+.mappa-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: var(--primary);
+    color: var(--primary-on);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-size: 0.82em;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    z-index: 40;
+    pointer-events: none;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+[data-theme="editorial"] .mappa-badge,
+[data-theme="heritage"] .mappa-badge {
+    border: 1px solid var(--accent);
+}
+
 .mappa-hint {
     text-align: center;
     font-size: 0.95em;
@@ -660,7 +754,11 @@ footer .column h4 {
 /* Sotto i 768px la mappa diventa stretta: mostro il bottone fullscreen */
 @media (max-width: 768px) {
     .mappa-hero {
-        padding: 16px 8px 4px;
+        padding: 14px 8px 4px;
+    }
+    .mappa-hero h2 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
     }
     .mappa-interactive {
         padding: 6px;
@@ -671,6 +769,33 @@ footer .column h4 {
     .mappa-hint {
         font-size: 0.85em;
         margin-top: 8px;
+    }
+    .mappa-badge {
+        top: 10px;
+        left: 10px;
+        padding: 4px 9px;
+        font-size: 0.7em;
+    }
+    .mappa-sticky-bar {
+        padding: 4px 6px;
+    }
+    .mappa-sticky-bar .mappa-img {
+        max-height: 110px;
+    }
+    .mappa-sticky-bar .mappa-interactive {
+        padding: 2px 4px;
+    }
+    /* Theme switcher piu' compatto su mobile */
+    .theme-switcher {
+        padding: 6px 8px;
+        gap: 8px;
+        font-size: 12px;
+    }
+    .theme-switcher__label {
+        display: none; /* etichetta nascosta su mobile per risparmiare spazio */
+    }
+    .theme-switcher button {
+        padding: 4px 8px;
     }
 }
 
