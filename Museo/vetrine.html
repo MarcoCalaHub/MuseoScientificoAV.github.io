@@ -26,6 +26,7 @@
             <h2>Esposizione delle Vetrine</h2>
             <div class="mappa-interactive" id="mappaInterattiva">
                 <img src="piantina_3_cut_PLUS.png" alt="Mappa delle vetrine" class="mappa-img">
+                <span class="mappa-badge" aria-hidden="true">Mappa interattiva</span>
                 <button class="mappa-zoom-trigger" type="button" aria-label="Apri la mappa a schermo intero" title="Apri a schermo intero">
                     <span aria-hidden="true">⤢</span>
                 </button>
@@ -210,44 +211,44 @@
         const MAP_W = 1400;
         const MAP_H = 550;
         const items = [
-            { id: '1',  href: 'vetrina1/info_vetrina_1.html',   x: 930,  y: 405, w: 110, h: 46, label: 'Vetrina 1 — Meccanica' },
-            { id: '2',  href: 'vetrina2/info_vetrina_2.html',   x: 1035, y: 298, w: 120, h: 42, label: 'Vetrina 2 — Meccanica' },
-            { id: '3',  href: 'vetrina3/info_vetrina_3.html',   x: 855,  y: 405, w: 110, h: 46, label: 'Vetrina 3 — Meccanica' },
-            { id: '4',  href: 'vetrina4/info_vetrina_4.html',   x: 845,  y: 295, w: 108, h: 42, label: 'Vetrina 4 — Meccanica' },
-            { id: '5',  href: 'vetrina5/info_vetrina_5.html',   x: 198,  y: 430, w: 110, h: 42, label: 'Vetrina 5 — Ottica' },
-            { id: '6',  href: 'vetrina6/info_vetrina_6.html',   x: 250,  y: 285, w: 120, h: 34, label: 'Vetrina 6 — Ottica' },
-            { id: '7',  href: 'vetrina7/info_vetrina_7.html',   x: 92,   y: 430, w: 105, h: 46, label: 'Vetrina 7 — Ottica' },
-            { id: '8',  href: 'vetrina8/info_vetrina_8.html',   x: 163,  y: 280, w: 95,  h: 34, label: 'Vetrina 8 — Ottica' },
-            { id: '9',  href: 'vetrina9/info_vetrina_9.html',   x: 915,  y: 20,  w: 120, h: 42, label: 'Vetrina 9 — Elettromagnetismo' },
-            { id: '10', href: 'vetrina10/info_vetrina_10.html', x: 791,  y: 18,  w: 110, h: 42, label: 'Vetrina 10 — Elettromagnetismo' },
-            { id: '11', href: 'vetrina11/info_vetrina_11.html', x: 646,  y: 18,  w: 110, h: 42, label: 'Vetrina 11 — Elettromagnetismo' },
-            { id: '12', href: 'vetrina12/info_vetrina_12.html', x: 408,  y: 18,  w: 80,  h: 42, label: 'Vetrina 12' },
-            { id: '13', href: 'vetrina13/info_vetrina_13.html', x: 335,  y: 18,  w: 70,  h: 42, label: 'Vetrina 13' },
-            { id: '14', href: 'vetrina14/info_vetrina_14.html', x: 268,  y: 18,  w: 65,  h: 42, label: 'Vetrina 14' },
-            { id: '15', href: 'vetrina15/info_vetrina_15.html', x: 335,  y: 205, w: 122, h: 38, label: 'Vetrina 15' },
-            { id: 'A',  href: 'esposto/strumento_32.html',      x: 1190, y: 352, w: 90,  h: 78, label: 'A — Macchina pneumatica' },
-            { id: 'B',  href: 'esposto/strumento_88.html',      x: 744,  y: 447, w: 26,  h: 26, label: 'B — Pendolo con un peso' },
-            { id: 'C',  href: 'esposto/strumento_89.html',      x: 716,  y: 414, w: 26,  h: 26, label: 'C — Pendolo reversibile' },
-            { id: 'D',  href: 'esposto/strumento_3.html',       x: 709,  y: 300, w: 26,  h: 26, label: 'D — Pendolo' },
-            { id: 'E',  href: 'esposto/strumento_90.html',      x: 737,  y: 281, w: 26,  h: 26, label: 'E — Pendolo' },
-            { id: 'F',  href: 'esposto/strumento_15.html',      x: 615,  y: 431, w: 68,  h: 38, label: 'F — Macchina di Atwood' },
-            { id: 'G',  href: 'esposto/strumento_30.html',      x: 535,  y: 433, w: 42,  h: 34, label: 'G — Macchina a doppio effetto' },
-            { id: 'H',  href: 'esposto/strumento_87.html',      x: 451,  y: 433, w: 66,  h: 38, label: 'H — Bilancia analitica' },
-            { id: 'I',  href: 'esposto/strumento_44.html',      x: 644,  y: 310, w: 28,  h: 28, label: 'I — Specchi coniugati' },
-            { id: 'L',  href: 'esposto/strumento_81.html',      x: 526,  y: 305, w: 38,  h: 34, label: 'L — Apparecchio di Dalton' },
-            { id: 'M',  href: 'esposto/strumento_48.html',      x: 216,  y: 435, w: 34,  h: 30, label: 'M — Spettroscopio' },
-            { id: 'N1', href: 'esposto/strumento_5.html',       x: 200,  y: 490, w: 21,  h: 22, label: 'N — Barometro' },
-            { id: 'N2', href: 'esposto/strumento_4.html',       x: 227,  y: 490, w: 21,  h: 22, label: 'N — Barometro' },
-            { id: 'O',  href: 'vetrina5/strumento_54.html',     x: 46,   y: 363, w: 42,  h: 52, label: 'O — Camera oscura' },
-            { id: 'P',  href: 'esposto/strumento_55.html',      x: 95,   y: 300, w: 80,  h: 40, label: 'P — Lanterna di proiezione' },
-            { id: 'Q',  href: 'esposto/strumento_16.html',      x: 625,  y: 210, w: 40,  h: 52, label: 'Q — Macchina di Wimshurst' },
-            { id: 'R',  href: 'esposto/strumento_17.html',      x: 666,  y: 210, w: 40,  h: 52, label: 'R — Macchina di Wimshurst' },
-            { id: 'S',  href: 'esposto/strumento_57.html',      x: 875,  y: 210, w: 52,  h: 52, label: 'S — Macchina elettrostatica' },
-            { id: 'T',  href: 'esposto/strumento_83.html',      x: 963,  y: 215, w: 46,  h: 34, label: 'T — Tubo di Geissler' },
-            { id: 'U',  href: 'esposto/strumento_58.html',      x: 1040, y: 180, w: 92,  h: 92, label: 'U — Macchina di Winter' },
-            { id: 'V',  href: 'esposto/strumento_77.html',      x: 583,  y: 46,  w: 20,  h: 34, label: 'V — Apparecchio di Buff' }
+            { id: "1", href: "vetrina1/info_vetrina_1.html", x: 983, y: 423, w: 99, h: 40, label: "Vetrina 1 — Meccanica" },
+            { id: "2", href: "vetrina2/info_vetrina_2.html", x: 975, y: 296, w: 110, h: 37, label: "Vetrina 2 — Meccanica" },
+            { id: "3", href: "vetrina3/info_vetrina_3.html", x: 848, y: 421, w: 102, h: 42, label: "Vetrina 3 — Meccanica" },
+            { id: "4", href: "vetrina4/info_vetrina_4.html", x: 845, y: 296, w: 102, h: 34, label: "Vetrina 4 — Meccanica" },
+            { id: "5", href: "vetrina5/info_vetrina_5.html", x: 282, y: 440, w: 102, h: 31, label: "Vetrina 5 — Ottica" },
+            { id: "6", href: "vetrina6/info_vetrina_6.html", x: 267, y: 289, w: 117, h: 33, label: "Vetrina 6 — Ottica" },
+            { id: "7", href: "vetrina7/info_vetrina_7.html", x: 92, y: 430, w: 105, h: 46, label: "Vetrina 7 — Ottica" },
+            { id: "8", href: "vetrina8/info_vetrina_8.html", x: 183, y: 294, w: 70, h: 28, label: "Vetrina 8 — Ottica" },
+            { id: "9", href: "vetrina9/info_vetrina_9.html", x: 885, y: 58, w: 95, h: 39, label: "Vetrina 9 — Elettromagnetismo" },
+            { id: "10", href: "vetrina10/info_vetrina_10.html", x: 774, y: 56, w: 88, h: 43, label: "Vetrina 10 — Elettromagnetismo" },
+            { id: "11", href: "vetrina11/info_vetrina_11.html", x: 662, y: 57, w: 90, h: 41, label: "Vetrina 11 — Elettromagnetismo" },
+            { id: "12", href: "vetrina12/info_vetrina_12.html", x: 443, y: 61, w: 62, h: 43, label: "Vetrina 12" },
+            { id: "13", href: "vetrina13/info_vetrina_13.html", x: 360, y: 61, w: 63, h: 41, label: "Vetrina 13" },
+            { id: "14", href: "vetrina14/info_vetrina_14.html", x: 281, y: 60, w: 65, h: 42, label: "Vetrina 14" },
+            { id: "15", href: "vetrina15/info_vetrina_15.html", x: 335, y: 211, w: 111, h: 32, label: "Vetrina 15" },
+            { id: "A", href: "esposto/strumento_32.html", x: 1150, y: 348, w: 90, h: 78, label: "A — Macchina pneumatica" },
+            { id: "B", href: "esposto/strumento_88.html", x: 757, y: 449, w: 26, h: 26, label: "B — Pendolo con un peso" },
+            { id: "C", href: "esposto/strumento_89.html", x: 719, y: 426, w: 26, h: 26, label: "C — Pendolo reversibile" },
+            { id: "D", href: "esposto/strumento_3.html", x: 709, y: 300, w: 26, h: 26, label: "D — Pendolo" },
+            { id: "E", href: "esposto/strumento_90.html", x: 737, y: 281, w: 26, h: 26, label: "E — Pendolo" },
+            { id: "F", href: "esposto/strumento_15.html", x: 615, y: 431, w: 54, h: 44, label: "F — Macchina di Atwood" },
+            { id: "G", href: "esposto/strumento_30.html", x: 534, y: 424, w: 42, h: 34, label: "G — Macchina a doppio effetto" },
+            { id: "H", href: "esposto/strumento_87.html", x: 443, y: 434, w: 66, h: 38, label: "H — Bilancia analitica" },
+            { id: "I1", href: "esposto/strumento_44.html", x: 639, y: 297, w: 28, h: 28, label: "I — Specchi coniugati" },
+            { id: "I2", href: "esposto/strumento_44.html", x: 437, y: 296, w: 35, h: 28, label: "I — Specchi coniugati" },
+            { id: "L", href: "esposto/strumento_81.html", x: 533, y: 288, w: 38, h: 34, label: "L — Apparecchio di Dalton" },
+            { id: "M", href: "esposto/strumento_48.html", x: 236, y: 438, w: 34, h: 30, label: "M — Spettroscopio" },
+            { id: "N1", href: "esposto/strumento_5.html", x: 200, y: 490, w: 21, h: 22, label: "N — Barometro" },
+            { id: "N2", href: "esposto/strumento_4.html", x: 227, y: 490, w: 21, h: 22, label: "N — Barometro" },
+            { id: "O", href: "vetrina5/strumento_54.html", x: 95, y: 384, w: 42, h: 36, label: "O — Camera oscura" },
+            { id: "P", href: "esposto/strumento_55.html", x: 100, y: 291, w: 80, h: 40, label: "P — Lanterna di proiezione" },
+            { id: "Q", href: "esposto/strumento_16.html", x: 636, y: 205, w: 39, h: 59, label: "Q — Macchina di Wimshurst" },
+            { id: "R", href: "esposto/strumento_17.html", x: 678, y: 209, w: 34, h: 51, label: "R — Macchina di Wimshurst" },
+            { id: "S", href: "esposto/strumento_57.html", x: 856, y: 196, w: 52, h: 52, label: "S — Macchina elettrostatica" },
+            { id: "T", href: "esposto/strumento_83.html", x: 938, y: 215, w: 46, h: 34, label: "T — Tubo di Geissler" },
+            { id: "U", href: "esposto/strumento_58.html", x: 1000, y: 175, w: 70, h: 71, label: "U — Macchina di Winter" },
+            { id: "V", href: "esposto/strumento_77.html", x: 580, y: 63, w: 20, h: 34, label: "V — Apparecchio di Buff" }
         ];
-
         function attachHotspots(wrapEl, imgEl) {
             const hotspots = items.map(item => {
                 const a = document.createElement('a');
@@ -289,10 +290,53 @@
         const mainImg = mainWrap.querySelector('.mappa-img');
         attachHotspots(mainWrap, mainImg);
 
+        // Animazione di intro: una pulsazione breve degli hotspot al
+        // caricamento per segnalare visivamente che la mappa e' interattiva.
+        function playIntro() {
+            mainWrap.classList.add('is-intro');
+            setTimeout(() => mainWrap.classList.remove('is-intro'), 1800);
+        }
+        if (mainImg.complete) playIntro();
+        else mainImg.addEventListener('load', playIntro, { once: true });
+
         // Modale fullscreen (apertura su tap del pulsante ⤢)
         const trigger = mainWrap.querySelector('.mappa-zoom-trigger');
         if (trigger) {
             trigger.addEventListener('click', openZoomModal);
+        }
+
+        // Barra-mappa compatta: position:fixed che scivola dall'alto quando
+        // l'hero esce dal viewport. position:fixed evita layout shift e quindi
+        // il "glitch" che si avvertiva durante lo scroll.
+        const hero = document.querySelector('.mappa-hero');
+        if (hero) {
+            const bar = document.createElement('div');
+            bar.className = 'mappa-sticky-bar';
+            bar.innerHTML =
+                '<div class="mappa-interactive">'
+                + '  <img src="piantina_3_cut_PLUS.png" alt="Mappa delle vetrine" class="mappa-img">'
+                + '  <button class="mappa-zoom-trigger" type="button" aria-label="Apri la mappa a schermo intero" title="Apri a schermo intero">'
+                + '    <span aria-hidden="true">⤢</span>'
+                + '  </button>'
+                + '</div>';
+            document.body.appendChild(bar);
+
+            const barWrap = bar.querySelector('.mappa-interactive');
+            const barImg = bar.querySelector('.mappa-img');
+            attachHotspots(barWrap, barImg);
+            bar.querySelector('.mappa-zoom-trigger').addEventListener('click', openZoomModal);
+
+            let scheduled = false;
+            function checkVisibility() {
+                // Mostra la barra quando l'hero e' praticamente uscito dalla viewport
+                bar.classList.toggle('is-visible', hero.getBoundingClientRect().bottom < 60);
+                scheduled = false;
+            }
+            window.addEventListener('scroll', () => {
+                if (!scheduled) { requestAnimationFrame(checkVisibility); scheduled = true; }
+            }, { passive: true });
+            window.addEventListener('resize', checkVisibility, { passive: true });
+            checkVisibility();
         }
 
         function openZoomModal() {
