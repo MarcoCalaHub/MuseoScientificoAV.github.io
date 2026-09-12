@@ -1,0 +1,130 @@
+Tipo,Numero,Nome,Cartella,File,Larghezza_px,Altezza_px,Rapporto_L_A,Orientamento,Megapixel,Dimensione_KB,Formato
+strumento,1,Apparecchio per le forze,vetrina4,strumento_1.png,1600,1066,1.501,orizzontale,1.71,96.9,JPEG
+strumento,2,Piano inclinato,vetrina2,strumento_2.png,1600,1066,1.501,orizzontale,1.71,132.9,JPEG
+strumento,3,Pendolo,esposto,strumento_3.png,476,1216,0.391,verticale,0.58,33.8,JPEG
+strumento,4,Barometro,esposto,strumento_4.png,1066,1600,0.666,verticale,1.71,89.5,JPEG
+strumento,5,Barometro,esposto,strumento_5.png,1066,1600,0.666,verticale,1.71,144.7,JPEG
+strumento,6,Igrometro a capello,vetrina4,strumento_6.png,398,463,0.86,verticale,0.18,302.8,PNG
+strumento,7,Cornetto acustico,vetrina6,strumento_7.png,495,736,0.673,verticale,0.36,246.3,PNG
+strumento,8,Apparecchio per riflessione e rifrazione,vetrina5,strumento_8.png,1084,1216,0.891,verticale,1.32,143.5,JPEG
+strumento,9,Bottiglia di Leyda,vetrina11,strumento_9.png,1080,1216,0.888,verticale,1.31,95.2,JPEG
+strumento,10,Batteria di bottiglie di Leyda,vetrina11,strumento_10.png,336,380,0.884,verticale,0.13,261.1,PNG
+strumento,11,Amperometro,vetrina9,strumento_11.png,1145,1194,0.959,quadrata,1.37,230.8,JPEG
+strumento,12,Sonometro,vetrina6,strumento_12.png,1600,1066,1.501,orizzontale,1.71,118.2,JPEG
+strumento,13,Piano inclinato,vetrina2,strumento_13.png,1600,1066,1.501,orizzontale,1.71,170.8,JPEG
+strumento,14,Apparecchio per le leve di primo genere,vetrina1,strumento_14.png,752,1129,0.666,verticale,0.85,60.3,JPEG
+strumento,15,Macchina di Atvood,esposto,strumento_15.png,711,1600,0.444,verticale,1.14,83.7,JPEG
+strumento,16,Macchina di Wimshurst,esposto,strumento_16.png,1337,1199,1.115,orizzontale,1.6,233.0,JPEG
+strumento,17,Macchina di Wimshurst,esposto,strumento_17.png,1152,1198,0.962,quadrata,1.38,182.6,JPEG
+strumento,18,,vetrina6,strumento_18.png,1066,1600,0.666,verticale,1.71,244.1,JPEG
+strumento,19,Macchina fotografica,vetrina6,strumento_19.png,590,394,1.497,orizzontale,0.23,292.4,PNG
+strumento,20,Vasi di Pellat,vetrina2,strumento_20.png,1066,1600,0.666,verticale,1.71,238.2,JPEG
+strumento,21,Tubo per Diavoletto di Cartesio,vetrina3,strumento_21.png,281,562,0.5,verticale,0.16,226.2,PNG
+strumento,22,Pompa aspirante,vetrina1,strumento_22.png,1066,1600,0.666,verticale,1.71,121.3,JPEG
+strumento,23,Pompa premente e aspirante,vetrina1,strumento_23.png,1484,1600,0.927,verticale,2.37,155.5,JPEG
+strumento,24,Macchina per lo studio dei moti parabolici,vetrina4,strumento_24.png,1600,1066,1.501,orizzontale,1.71,164.6,JPEG
+strumento,25,Disco eterogeneo su piano inclinato,vetrina2,strumento_25.png,1600,1066,1.501,orizzontale,1.71,137.3,JPEG
+strumento,26,Arganetto idraulico,vetrina3,strumento_26.png,775,1031,0.752,verticale,0.8,91.9,JPEG
+strumento,27,Tellurio,vetrina3,strumento_27.png,1600,1066,1.501,orizzontale,1.71,154.6,JPEG
+strumento,28,Vasi comunicanti,vetrina4,strumento_28.png,631,516,1.223,orizzontale,0.33,203.8,PNG
+strumento,29,Bilancia idrostatica,vetrina4,strumento_29.png,563,775,0.726,verticale,0.44,684.1,PNG
+strumento,30,Macchina a doppio effetto,esposto,strumento_30.png,630,425,1.482,orizzontale,0.27,563.7,PNG
+strumento,31,Macchina rotatoria,vetrina1,strumento_31.png,1600,1066,1.501,orizzontale,1.71,195.1,JPEG
+strumento,32,Macchina pneumatica a olio di Geryc o di Fleus,esposto,strumento_32.png,285,443,0.643,verticale,0.13,227.6,PNG
+strumento,33,Fontana intermittente,vetrina2,strumento_33.png,580,1120,0.518,verticale,0.65,68.1,JPEG
+strumento,34,Fontana di Erone,vetrina2,strumento_34.png,910,1600,0.569,verticale,1.46,99.4,JPEG
+strumento,35,Apparecchio per la verifica del principio di Pascal,vetrina4,strumento_35.png,750,1125,0.667,verticale,0.84,50.5,JPEG
+strumento,36,Apparecchio di Hope,vetrina3,strumento_36.png,1066,1600,0.666,verticale,1.71,166.8,JPEG
+strumento,37,Resistenza del mezzo nei gas,vetrina4,strumento_37.png,388,436,0.89,verticale,0.17,298.7,PNG
+strumento,38,Piezometro di Oersted,vetrina3,strumento_38.png,205,470,0.436,verticale,0.1,152.4,PNG
+strumento,39,Bilancia analitica,vetrina3,strumento_39.png,787,809,0.973,quadrata,0.64,105.8,JPEG
+strumento,40,Bilancia analitica,vetrina3,strumento_40.png,840,944,0.89,verticale,0.79,119.3,JPEG
+strumento,41,Anello di Gravesande,vetrina7,strumento_41.png,1547,1600,0.967,quadrata,2.48,132.2,JPEG
+strumento,42,Termoscopio dilatometro,vetrina7,strumento_42.png,590,394,1.497,orizzontale,0.23,315.5,PNG
+strumento,43,Apparecchio per le lamine vibranti,vetrina6,strumento_43.png,572,388,1.474,orizzontale,0.22,455.7,PNG
+strumento,44,Specchi coniugati,esposto,strumento_44.png,1066,1600,0.666,verticale,1.71,107.0,JPEG
+strumento,45,Colorimetro di Hellige,vetrina5,strumento_45.png,1066,1600,0.666,verticale,1.71,157.6,JPEG
+strumento,46,Colorimetro di Dubosq,vetrina5,strumento_46.png,977,1466,0.666,verticale,1.43,191.9,JPEG
+strumento,47,Eliofanografo,vetrina5,strumento_47.png,1600,1066,1.501,orizzontale,1.71,184.0,JPEG
+strumento,48,Spettroscopio,esposto,strumento_48.png,1430,954,1.499,orizzontale,1.36,169.5,JPEG
+strumento,49,Apparecchio di Tyndall,vetrina6,strumento_49.png,1600,1069,1.497,orizzontale,1.71,378.2,JPEG
+strumento,50,Microscopio solare,vetrina5,strumento_50.png,1433,955,1.501,orizzontale,1.37,160.7,JPEG
+strumento,51,Disco ottico di Hartl,vetrina5,strumento_51.png,924,1216,0.76,verticale,1.12,160.7,JPEG
+strumento,52,Modello di occhio schematico,vetrina5,strumento_52.png,656,984,0.667,verticale,0.65,80.3,JPEG
+strumento,53,Microscopio,vetrina5,strumento_53.png,628,941,0.667,verticale,0.59,83.5,JPEG
+strumento,54,Camera oscura a prisma di Chevalier,vetrina5,strumento_54.png,558,525,1.063,orizzontale,0.29,469.7,PNG
+strumento,55,Lanterna di proiezione,esposto,strumento_55.png,1600,1066,1.501,orizzontale,1.71,200.8,JPEG
+strumento,56,Proiettore a manovella,vetrina8,strumento_56.png,1066,1600,0.666,verticale,1.71,277.2,JPEG
+strumento,57,Macchina elettrostatica,esposto,strumento_57.png,1600,1600,1.0,quadrata,2.56,192.3,JPEG
+strumento,58,Macchina di Winter,esposto,strumento_58.png,1066,1600,0.666,verticale,1.71,119.9,JPEG
+strumento,59,Globo scintillante,vetrina10,strumento_59.png,688,517,1.331,orizzontale,0.36,347.3,PNG
+strumento,60,Elettroscopio condensatore,vetrina10,strumento_60.png,1084,1600,0.677,verticale,1.73,140.4,JPEG
+strumento,61,Elettrocalamita,vetrina10,strumento_61.png,337,802,0.42,verticale,0.27,278.0,PNG
+strumento,62,Elettrocalamita,vetrina10,strumento_62.png,791,1041,0.76,verticale,0.82,102.0,JPEG
+strumento,63,Elettroforo di Volta,vetrina11,strumento_63.png,968,956,1.013,quadrata,0.93,122.8,JPEG
+strumento,64,Lampada ad arco voltaico,vetrina8,strumento_64.png,1066,1600,0.666,verticale,1.71,143.8,JPEG
+strumento,65,Galvanometro a due aghi,vetrina10,strumento_65.png,668,1080,0.619,verticale,0.72,72.2,JPEG
+strumento,66,Pozzo di Beccaria,vetrina9,strumento_66.png,1066,1600,0.666,verticale,1.71,79.5,JPEG
+strumento,67,Pila termoelettrica di Melloni,vetrina7,strumento_67.png,1600,1325,1.208,orizzontale,2.12,107.0,JPEG
+strumento,68,Telegrafo Morse ricevitore,vetrina9,strumento_68.png,375,552,0.679,verticale,0.21,382.2,PNG
+strumento,69,Galvanometro astatico,vetrina10,strumento_69.png,496,773,0.642,verticale,0.38,632.8,PNG
+strumento,70,Pila a Colonna,vetrina11,strumento_70.png,544,1004,0.542,verticale,0.55,91.3,JPEG
+strumento,71,,vetrina11,strumento_71.png,1600,825,1.939,orizzontale,1.32,132.9,JPEG
+strumento,72,Pila a corona di tazze,vetrina11,strumento_72.png,1600,1066,1.501,orizzontale,1.71,256.9,JPEG
+strumento,73,Pila di Grenet,vetrina11,strumento_73.png,1063,797,1.334,orizzontale,0.85,1218.1,PNG
+strumento,74,Elettroscopio di Bohnenberger,vetrina10,strumento_74.png,776,1203,0.645,verticale,0.93,86.1,JPEG
+strumento,75,Apparecchio di Epino,vetrina9,strumento_75.png,590,444,1.329,orizzontale,0.26,621.0,PNG
+strumento,76,Reostato a tastiera,vetrina8,strumento_76.png,1066,1600,0.666,verticale,1.71,252.9,JPEG
+strumento,77,Apparecchio di Buff,esposto,strumento_77.png,247,464,0.532,verticale,0.11,175.2,PNG
+strumento,78,Scaricatore a doppia forcella,vetrina10,strumento_78.png,1100,864,1.273,orizzontale,0.95,77.9,JPEG
+strumento,79,Termoscopio di Rumford,vetrina7,strumento_79.png,1600,1066,1.501,orizzontale,1.71,144.5,JPEG
+strumento,80,Termometro differenziale,vetrina7,strumento_80.png,1066,1600,0.666,verticale,1.71,103.2,JPEG
+strumento,81,Apparecchio di Dalton per la tensione dei vapori,esposto,strumento_81.png,873,1600,0.546,verticale,1.4,155.3,JPEG
+strumento,83,Tubo di Geissler,esposto,strumento_83.png,308,462,0.667,verticale,0.14,188.9,PNG
+strumento,84,Reostato a cursore,vetrina9,strumento_84.png,1600,1066,1.501,orizzontale,1.71,169.7,JPEG
+strumento,85,Magnetini,vetrina9,strumento_85.png,1600,1066,1.501,orizzontale,1.71,202.4,JPEG
+strumento,86,Quadro scintillante,vetrina9,strumento_86.png,404,471,0.858,verticale,0.19,352.6,PNG
+strumento,87,Bilancia analitica,esposto,strumento_87.png,1299,1062,1.223,orizzontale,1.38,173.6,JPEG
+strumento,88,Pendolo con un peso,esposto,strumento_88.png,1067,1600,0.667,verticale,1.71,52.8,JPEG
+strumento,89,Pendolo reversibile,esposto,strumento_89.png,783,1174,0.667,verticale,0.92,33.9,JPEG
+strumento,90,Pendolo,esposto,strumento_90.png,1067,1600,0.667,verticale,1.71,86.5,JPEG
+strumento,91,Sostegno per magnete,vetrina10,strumento_91.png,1066,1600,0.666,verticale,1.71,95.7,JPEG
+strumento,92,Manometro di Bourdon,vetrina4,strumento_92.png,811,1216,0.667,verticale,0.99,76.4,JPEG
+strumento,93,Vasi di Pellat,vetrina1,strumento_93.png,1066,1600,0.666,verticale,1.71,128.0,JPEG
+strumento,94,Piezometro di Oersted,vetrina3,strumento_94.png,169,389,0.434,verticale,0.07,108.4,PNG
+strumento,95,Quadro elettrico,esposto,strumento_95.png,374,309,1.21,orizzontale,0.12,251.8,PNG
+strumento,96,Pannello dimostrativo di lampade in serie e parallelo,esposto,strumento_96.png,339,315,1.076,orizzontale,0.11,199.7,PNG
+strumento,97,Arco scaricatore,vetrina11,strumento_97.png,1066,1600,0.666,verticale,1.71,78.2,JPEG
+strumento,98,Baroscopio,vetrina4,strumento_98.png,687,1036,0.663,verticale,0.71,69.3,JPEG
+strumento,99,Bacchetta in vetro,vetrina11,strumento_99.png,1600,560,2.857,orizzontale,0.9,41.5,JPEG
+strumento,,,vetrina1,strumento_23old.png,562,374,1.503,orizzontale,0.21,425.0,PNG
+strumento,,,vetrina3,strumento_38_sbagliato.png,279,662,0.421,verticale,0.18,346.8,PNG
+vetrina,,vetrina_1,vetrina1,vetrina_1.jpg,1600,1200,1.333,orizzontale,1.92,262.1,JPEG
+vetrina,,vetrina_1_old,vetrina1,vetrina_1_old.jpg,1767,1325,1.334,orizzontale,2.34,783.1,JPEG
+vetrina,,vetrina_10,vetrina10,vetrina_10.jpg,1600,1200,1.333,orizzontale,1.92,178.2,JPEG
+vetrina,,vetrina_10_old,vetrina10,vetrina_10_old.jpg,1431,1908,0.75,verticale,2.73,811.9,JPEG
+vetrina,,vetrina_11,vetrina11,vetrina_11.jpg,1600,1200,1.333,orizzontale,1.92,200.9,JPEG
+vetrina,,vetrina_11_old,vetrina11,vetrina_11_old.jpg,1380,1840,0.75,verticale,2.54,860.9,JPEG
+vetrina,,vetrina_12,vetrina12,vetrina_12.jpg,1600,1200,1.333,orizzontale,1.92,126.7,JPEG
+vetrina,,vetrina_12_13_14,vetrina12,vetrina_12_13_14.jpg,2363,1267,1.865,orizzontale,2.99,984.7,JPEG
+vetrina,,vetrina_12_13_14,vetrina13,vetrina_12_13_14.jpg,2363,1267,1.865,orizzontale,2.99,984.7,JPEG
+vetrina,,vetrina_13,vetrina13,vetrina_13.jpg,1600,1200,1.333,orizzontale,1.92,116.8,JPEG
+vetrina,,vetrina_12_13_14,vetrina14,vetrina_12_13_14.jpg,2363,1267,1.865,orizzontale,2.99,984.7,JPEG
+vetrina,,vetrina_14,vetrina14,vetrina_14.jpg,1600,1200,1.333,orizzontale,1.92,143.8,JPEG
+vetrina,,vetrina_15,vetrina15,vetrina_15.jpg,1600,1200,1.333,orizzontale,1.92,143.8,JPEG
+vetrina,,vetrina_2,vetrina2,vetrina_2.jpg,1600,1200,1.333,orizzontale,1.92,237.6,JPEG
+vetrina,,vetrina_2_old,vetrina2,vetrina_2_old.jpg,1424,1898,0.75,verticale,2.7,817.9,JPEG
+vetrina,,vetrina_3,vetrina3,vetrina_3.jpg,1600,1200,1.333,orizzontale,1.92,271.4,JPEG
+vetrina,,vetrina_3_old,vetrina3,vetrina_3_old.jpg,1762,1321,1.334,orizzontale,2.33,783.7,JPEG
+vetrina,,vetrina_4,vetrina4,vetrina_4.jpg,1600,1200,1.333,orizzontale,1.92,252.0,JPEG
+vetrina,,vetrina_4_old,vetrina4,vetrina_4_old.jpg,1750,1312,1.334,orizzontale,2.3,769.6,JPEG
+vetrina,,vetrina_5,vetrina5,vetrina_5.jpg,1600,1200,1.333,orizzontale,1.92,223.5,JPEG
+vetrina,,vetrina_5_old,vetrina5,vetrina_5_old.jpg,1358,1811,0.75,verticale,2.46,857.6,JPEG
+vetrina,,vetrina_6,vetrina6,vetrina_6.jpg,1600,1200,1.333,orizzontale,1.92,215.6,JPEG
+vetrina,,vetrina_6_old,vetrina6,vetrina_6_old.jpg,1381,1841,0.75,verticale,2.54,811.9,JPEG
+vetrina,,vetrina_7,vetrina7,vetrina_7.jpg,1600,1200,1.333,orizzontale,1.92,214.2,JPEG
+vetrina,,vetrina_7_old,vetrina7,vetrina_7_old.jpg,1439,1919,0.75,verticale,2.76,840.5,JPEG
+vetrina,,vetrina_8,vetrina8,vetrina_8.jpg,1600,1200,1.333,orizzontale,1.92,127.7,JPEG
+vetrina,,vetrina_8_old,vetrina8,vetrina_8_old.jpg,1463,1951,0.75,verticale,2.85,809.8,JPEG
+vetrina,,vetrina_9,vetrina9,vetrina_9.jpg,1600,1200,1.333,orizzontale,1.92,180.8,JPEG
+vetrina,,vetrina_9_old,vetrina9,vetrina_9_old.jpg,1447,1929,0.75,verticale,2.79,820.4,JPEG
