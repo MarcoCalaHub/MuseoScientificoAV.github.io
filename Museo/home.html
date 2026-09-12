@@ -8,7 +8,9 @@
     <title>Museo Scientifico - Vetrina</title>
 
     <link rel="stylesheet" href="museo_style.css">
+    <link rel="stylesheet" href="hero-carousel.css">
 <script>try{document.documentElement.dataset.theme=localStorage.getItem("museo-theme")||"editorial"}catch(e){document.documentElement.dataset.theme="editorial"}</script><script src="theme-switcher.js" defer></script>
+<script src="hero-carousel.js" defer></script>
 </head>
 
 <body>
@@ -28,31 +30,10 @@
     </div>
     <main>
         <section class="showcase">
-            <div class="hero-carousel" role="region" aria-label="Immagini della collezione">
-                <div class="hero-slide is-active">
-                    <img src="gallery/Restauro/Proiettore con lampada.jpg" alt="Dettaglio del proiettore a manovella durante il restauro">
-                </div>
-                <div class="hero-slide">
-                    <img src="vetrina1/vetrina_1.jpg" alt="La vetrina 1, dedicata alla meccanica">
-                </div>
-                <div class="hero-slide">
-                    <img src="vetrina5/vetrina_5.jpg" alt="La vetrina 5, dedicata all'ottica">
-                </div>
-                <div class="hero-slide">
-                    <img src="esposto/strumento_57.png" alt="La macchina elettrostatica della collezione">
-                </div>
-                <div class="hero-slide">
-                    <img src="vetrina2/strumento_2.png" alt="Il piano inclinato della collezione">
-                </div>
-                <div class="hero-dots">
-                    <button class="hero-dot is-active" type="button" data-index="0" aria-label="Vai all'immagine 1"></button>
-                    <button class="hero-dot" type="button" data-index="1" aria-label="Vai all'immagine 2"></button>
-                    <button class="hero-dot" type="button" data-index="2" aria-label="Vai all'immagine 3"></button>
-                    <button class="hero-dot" type="button" data-index="3" aria-label="Vai all'immagine 4"></button>
-                    <button class="hero-dot" type="button" data-index="4" aria-label="Vai all'immagine 5"></button>
-                </div>
+            <div class="hero-carousel" role="region" aria-label="Immagini della collezione" id="heroCarousel">
+                <!-- Le slide vengono generate da hero-carousel.js a partire dall'elenco HERO_SLIDES -->
             </div>
-            <p class="hero-caption" id="heroCaption">Il proiettore a manovella dei primi del '900, uno degli strumenti restaurati della collezione.</p>
+            <p class="hero-caption" id="heroCaption"></p>
 
             <div class="stats-strip">
                 <div class="stat"><span class="stat-value">~100</span><span class="stat-label">Strumenti esposti</span></div>
@@ -110,66 +91,6 @@
     <div class="author-bar">
         Autore: <a href="https://www.linkedin.com/in/marco-calabrese-lin/" target="_blank"> Marco Calabrese</a>
     </div>
-
-    <script>
-        (function () {
-            var carousel = document.querySelector(".hero-carousel");
-            if (!carousel) return;
-
-            var slides = carousel.querySelectorAll(".hero-slide");
-            var dots = carousel.querySelectorAll(".hero-dot");
-            var caption = document.getElementById("heroCaption");
-            var captions = [
-                "Il proiettore a manovella dei primi del '900, uno degli strumenti restaurati della collezione.",
-                "La vetrina 1, dedicata alla meccanica classica.",
-                "La vetrina 5, dedicata all'ottica.",
-                "La macchina elettrostatica, tra gli strumenti di maggior pregio della collezione.",
-                "Il piano inclinato, usato per studiare l'equilibrio dei corpi su una superficie inclinata."
-            ];
-            var current = 0;
-            var timer = null;
-            var prefersReducedMotion = window.matchMedia &&
-                window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-            function show(index) {
-                slides[current].classList.remove("is-active");
-                dots[current].classList.remove("is-active");
-                current = index;
-                slides[current].classList.add("is-active");
-                dots[current].classList.add("is-active");
-                if (caption) caption.textContent = captions[current] || "";
-            }
-
-            function next() {
-                show((current + 1) % slides.length);
-            }
-
-            function start() {
-                if (prefersReducedMotion || slides.length < 2) return;
-                stop();
-                timer = setInterval(next, 8000);
-            }
-
-            function stop() {
-                if (timer) clearInterval(timer);
-                timer = null;
-            }
-
-            dots.forEach(function (dot, i) {
-                dot.addEventListener("click", function () {
-                    show(i);
-                    start();
-                });
-            });
-
-            carousel.addEventListener("mouseenter", stop);
-            carousel.addEventListener("mouseleave", start);
-            carousel.addEventListener("focusin", stop);
-            carousel.addEventListener("focusout", start);
-
-            start();
-        })();
-    </script>
 </body>
 
 </html>

@@ -1,0 +1,87 @@
+/* =========================================================
+   Hero fotografico a carosello (solo home.html)
+   Usa le variabili di tema definite in museo_style.css, quindi
+   va incluso DOPO quel foglio di stile.
+   ========================================================= */
+.hero-carousel {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background-color: var(--surface-2);
+}
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity 1.2s ease;
+}
+.hero-slide.is-active {
+    opacity: 1;
+    z-index: 1;
+}
+.hero-slide .hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(28px) brightness(0.65) saturate(1.1);
+    transform: scale(1.15);
+    cursor: default;
+    pointer-events: none;
+}
+.hero-slide .hero-fg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    cursor: default;
+    z-index: 1;
+}
+.hero-dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 20px 0 14px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.45));
+}
+.hero-dot {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    background-color: rgba(255, 255, 255, 0.35);
+    cursor: pointer;
+    transition: background-color .2s ease;
+}
+.hero-dot.is-active {
+    background-color: #fff;
+}
+.hero-dot:hover,
+.hero-dot:focus {
+    background-color: rgba(255, 255, 255, 0.7);
+    outline: none;
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero-slide {
+        transition: none;
+    }
+}
+.hero-caption {
+    text-align: center;
+    font-size: 0.9em;
+    font-style: italic;
+    color: var(--text-muted);
+    margin: 10px 0 30px;
+    min-height: 1.4em;
+}
