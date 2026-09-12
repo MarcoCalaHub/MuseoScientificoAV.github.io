@@ -526,6 +526,7 @@ footer .column h4 {
 }
 .details-content img {
     max-width: 300px;
+    max-height: 380px;
     flex-shrink: 0;
     border-radius: var(--radius);
     height: auto;
