@@ -340,14 +340,63 @@ main {
     text-decoration: underline;
 }
 
-/* Hero fotografico (home) */
-.hero-photo {
+/* Hero fotografico a carosello (home) */
+.hero-carousel {
+    position: relative;
     width: 100%;
-    max-height: 420px;
-    object-fit: cover;
+    height: 420px;
     border-radius: var(--radius);
+    overflow: hidden;
+}
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+.hero-slide.is-active {
+    opacity: 1;
+    z-index: 1;
+}
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
     cursor: default;
+}
+.hero-dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 14px;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+.hero-dot {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    background-color: rgba(255, 255, 255, 0.35);
+    cursor: pointer;
+    transition: background-color .2s ease;
+}
+.hero-dot.is-active {
+    background-color: #fff;
+}
+.hero-dot:hover,
+.hero-dot:focus {
+    background-color: rgba(255, 255, 255, 0.7);
+    outline: none;
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero-slide {
+        transition: none;
+    }
 }
 .hero-caption {
     text-align: center;
@@ -355,6 +404,7 @@ main {
     font-style: italic;
     color: var(--text-muted);
     margin: 10px 0 30px;
+    min-height: 1.4em;
 }
 
 /* Striscia "in breve" con i numeri chiave della collezione */
@@ -643,6 +693,48 @@ footer .column h4 {
 }
 .details strong {
     color: var(--heading);
+}
+
+/* =========================================================
+   Vedi anche (strumenti correlati per settore)
+   ========================================================= */
+.related-instruments {
+    flex: 1 1 100%;
+    margin-top: 10px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+.related-instruments h4 {
+    font-family: var(--font-heading);
+    color: var(--heading);
+    margin: 0 0 10px;
+    font-size: 1.1em;
+}
+.related-instruments ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.related-instruments li a {
+    display: inline-block;
+    background-color: var(--surface-2);
+    color: var(--text);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: var(--radius);
+    font-size: 0.92em;
+    transition: background-color .2s ease, color .2s ease;
+}
+.related-instruments li a:hover {
+    background-color: var(--primary);
+    color: var(--primary-on);
+}
+.related-instruments li .loc {
+    font-size: 0.85em;
+    color: var(--text-muted);
 }
 
 /* =========================================================
@@ -1008,6 +1100,73 @@ footer .column h4 {
     border-bottom: 1px solid var(--wip-border);
     line-height: 1.2;
     font-family: var(--font-body);
+}
+
+/* =========================================================
+   Indice alfabetico degli strumenti
+   ========================================================= */
+.index-jump {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin: 20px 0 40px;
+}
+.index-jump a {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    background-color: var(--surface-2);
+    color: var(--text);
+    text-decoration: none;
+    border-radius: var(--radius);
+    font-weight: 700;
+    transition: background-color .2s ease, color .2s ease;
+}
+.index-jump a:hover {
+    background-color: var(--primary);
+    color: var(--primary-on);
+}
+.index-section {
+    margin-bottom: 30px;
+}
+.index-section h3 {
+    font-size: 1.6em;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+    padding-bottom: 4px;
+    margin-bottom: 12px;
+}
+.index-list {
+    list-style: none;
+    padding: 0;
+    columns: 2;
+    column-gap: 40px;
+}
+.index-list li {
+    break-inside: avoid;
+    margin-bottom: 10px;
+}
+.index-list a {
+    color: var(--link);
+    text-decoration: none;
+    font-weight: 500;
+}
+.index-list a:hover {
+    text-decoration: underline;
+    color: var(--link-hover);
+}
+.index-list .loc {
+    display: block;
+    font-size: 0.8em;
+    color: var(--text-muted);
+}
+@media (max-width: 600px) {
+    .index-list {
+        columns: 1;
+    }
 }
 
 /* =========================================================
