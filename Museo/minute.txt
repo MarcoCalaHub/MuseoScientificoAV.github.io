@@ -29,5 +29,14 @@ Incontro del 24/05/2025
 
 
 NEW FIX TO DO:
-Immagine 18 troppo grande
-Fixare next e prev di vetrina 7,9,10,11
+Immagine 18,75 troppo grande
+Fixare next e prev di vetrina:
+  -7 ok
+  -9
+  -10
+  -11
+
+23/05
+click sulla pianitna -> mostra strumento e link per andare alla descrizione
+nella pagina dello strumento, click sull'immagine e zooma oppure on overing fare ingradire (tipo amazon)
+Aggiungere immagini e altri dettagli nella home page (vedere sito di napoli)
