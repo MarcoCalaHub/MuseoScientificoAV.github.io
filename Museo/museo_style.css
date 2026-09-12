@@ -246,6 +246,36 @@ header a img.no-zoom:hover {
     cursor: pointer;
 }
 
+/* =========================================================
+   Site nav (barra di navigazione tra le pagine principali)
+   ========================================================= */
+.site-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    background-color: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 16px;
+}
+.site-nav a {
+    color: var(--text);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: var(--radius);
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: background-color .2s ease, color .2s ease;
+}
+.site-nav a:hover {
+    background-color: var(--surface);
+    color: var(--link-hover);
+}
+.site-nav a.is-active {
+    background-color: var(--primary);
+    color: var(--primary-on);
+}
+
 /* Temi a header chiaro: testo scuro + bordo inferiore */
 [data-theme="scientific"] header,
 [data-theme="minimal"] header {
@@ -308,6 +338,79 @@ main {
 }
 .showcase ul li a:hover {
     text-decoration: underline;
+}
+
+/* Hero fotografico (home) */
+.hero-photo {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    display: block;
+    cursor: default;
+}
+.hero-caption {
+    text-align: center;
+    font-size: 0.9em;
+    font-style: italic;
+    color: var(--text-muted);
+    margin: 10px 0 30px;
+}
+
+/* Striscia "in breve" con i numeri chiave della collezione */
+.stats-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1px;
+    background-color: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin: 0 0 30px;
+}
+.stats-strip .stat {
+    background-color: var(--surface);
+    padding: 16px 12px;
+    text-align: center;
+}
+.stats-strip .stat-value {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--heading);
+}
+.stats-strip .stat-label {
+    display: block;
+    font-size: 0.78em;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* Mini-galleria fotografica (es. pagina "La Storia") */
+.photo-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 20px 0 30px;
+}
+.photo-row figure {
+    margin: 0;
+}
+.photo-row img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    display: block;
+}
+.photo-row figcaption {
+    font-size: 0.82em;
+    color: var(--text-muted);
+    margin-top: 6px;
+    text-align: center;
 }
 
 /* Minimal: rimuove cornici/sfondi delle sezioni */
