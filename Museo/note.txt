@@ -59,7 +59,7 @@ Vetrina 8:  COMPLETA
             56
             76
 Vetrina 9:
-            84 XX
+            84 85
             68 11
             86 66 75
 Vetrina 10: COMPLETA
