@@ -38,7 +38,7 @@ var TOUR_SEQUENCE = [
         "vetrina1/strumento_14.html",
         "vetrina1/strumento_31.html",
     "vetrina2/info_vetrina_2.html",
-    "vetrina2/strumento_2.html",
+        "vetrina2/strumento_2.html",
         "vetrina2/strumento_13.html",
         "vetrina2/strumento_25.html",
         "vetrina2/strumento_34.html",
