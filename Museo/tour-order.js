@@ -128,7 +128,7 @@ var TOUR_SEQUENCE = [
         "vetrina10/strumento_61.html",
     "vetrina11/info_vetrina_11.html",
         "vetrina11/strumento_10.html",
-        // manca
+        "vetrina11/strumento_97_abc.html",
         "vetrina11/strumento_73.html",
         "vetrina11/strumento_71.html",
         "vetrina11/strumento_70.html",
