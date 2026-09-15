@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Marco Calabrese" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museo Scientifico - Distillatore</title>
+
+    <link rel="stylesheet" href="../museo_style.css">
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("museo-theme")||"editorial"}catch(e){document.documentElement.dataset.theme="editorial"}</script><script src="../theme-switcher.js" defer></script>
+<script src="../related-instruments.js" defer></script>
+<script src="../tour-order.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <a href="../home.html">
+            <img class="no-zoom" src="../home.png" alt="Home page">
+        </a>
+        <h1>Museo Irpino Sezione Scientifica</h1>
+    </header>
+    <div class="wip-banner">
+        ⚠️ Sito in costruzione - Work in Progress
+    </div>
+    <main>
+        <section class="details">
+            <h2 class="details-title">Distillatore</h2>
+            <div class="details-content">
+                <img src="strumento_82.png" alt="Immagine del Distillatore">
+                <div class="details-text">
+                    <p><strong>Scuola di provenienza:</strong> Istituto agrario ""F. De Sanctis", Avellino</p>
+                    <p><strong>Settore:</strong> Termologia </p>
+                    <p><strong>Costruttori:</strong> Sconosciuto </p>
+                    <!--meglio costruttori che gli accessori-->
+                    <p><strong>Materiali:</strong> Base di legno, bicchierino di vetro, ottone, rame e alluminio </p>
+                    <p><strong>Accessori:</strong> Nessuno</p>
+                    <p><strong>Stato di conservazione:</strong> Buono </p>
+                    <p><strong>Descrizione:</strong> Si tratta di un apparecchio costituito da : 1) un vaso di rame stagnato (detta cucurbita), che contiene il liquido da distillare e la cui parte inferiore è riscaldata da un piccolo bruciatore ad alcool; 2) un “capitello” che si avvita sulla cucurbita e che permette al vapore di uscire attraverso un lungo collo laterale; 3) il serpentino che è un tubo di stagno o di rame, avvolto ad elica e collocato in un contenitore pieno di acqua fredda: il serpentino ha lo scopo di condensare il vapore raffreddandolo. Volendo, ad esempio, distillare dell’acqua per liberarla dai sali che contiene,si riempie la cucurbita per due terzi di acqua e si riscalda; l’acqua va in ebollizione e i vapori, che si svolgono, si condensano nel serpentino. L’acqua distillata, proveniente dalla condensazione si raccoglie in un recipiente, le materie fisse (i sali contenuti dall’acqua prima della distillazione) rimangono nella cucurbita. Se l’acqua del contenitore in cui pesca il serpentino diventa calda, bisogna sostituirla con acqua fredda.
+                    </p>
+                </div>
+            </div>
+            <div id="relatedInstruments"></div>
+        </section>
+    </main>
+    <div id="tourNav"></div>
+    <footer>
+        <div class="column">
+            <h4>Indirizzo</h4>
+            <p>Complesso Monumentale Carcere Borbonico<br>Piazza Alfredo De Marsico, Avellino 83100</p>
+        </div>
+        <div class="column">
+            <h4>Contatti Telefonici</h4>
+            <p>+39 0825 790 733 | 539 - Museo Irpino</p>
+        </div>
+        <div class="column">
+            <h4>Informazioni e Email</h4>
+            <p>Email: info@museoirpino.it</p>
+        </div>
+    </footer>
+    <div class="author-bar">
+        Autore: <a href="https://www.linkedin.com/in/marco-calabrese-lin/" target="_blank"> Marco Calabrese</a>
+    </div>
+    <!-- Modal per ingrandire l'immagine -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <script>
+        (function () {
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("modalImg");
+            var closeBtn = modal.querySelector(".close");
+
+            document.querySelectorAll("main img").forEach(function (img) {
+                img.onclick = function () {
+                    modal.style.display = "flex";
+                    modalImg.src = this.src;
+                    modalImg.alt = this.alt;
+                };
+            });
+
+            closeBtn.onclick = function () {
+                modal.style.display = "none";
+            };
+            modal.onclick = function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            };
+        })();
+    </script>
+</body>
+
+</html>
