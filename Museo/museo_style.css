@@ -619,6 +619,24 @@ footer .column h4 {
     border-radius: var(--radius);
     height: auto;
 }
+
+/* Galleria di piu' foto per uno stesso strumento (es. varianti/forme diverse) */
+.details-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 100%;
+}
+.details-gallery img {
+    width: 140px;
+    height: 200px;
+    max-width: none;
+    max-height: none;
+    object-fit: contain;
+    background-color: var(--surface-2);
+    border-radius: var(--radius);
+}
+
 .details-text {
     flex: 1;
     min-width: 250px;
