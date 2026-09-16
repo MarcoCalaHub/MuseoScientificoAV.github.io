@@ -133,49 +133,139 @@
 }
 
 /* =========================================================
-   Barra selettore tema (demo)
+   Pannello impostazioni (tema + dimensione testo)
+   Sostituisce la vecchia barra "Anteprima tema" sempre visibile
+   con un pulsante a ingranaggio fisso + pannello a comparsa.
    ========================================================= */
-.theme-switcher {
+.settings-toggle {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 3000;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: var(--primary-on);
+    font-size: 1.05em;
+    line-height: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 14px;
-    padding: 8px 16px;
-    background: #1a1a1a;
-    color: #fff;
-    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-    font-size: 13px;
-    flex-wrap: wrap;
-}
-.theme-switcher__label {
-    opacity: 0.55;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-size: 11px;
-}
-.theme-switcher__buttons {
-    display: flex;
-    gap: 4px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.theme-switcher button {
-    background: transparent;
-    border: 1px solid #444;
-    color: #fff;
-    padding: 5px 12px;
     cursor: pointer;
-    font: inherit;
-    border-radius: 0;
-    transition: background-color .2s, border-color .2s, color .2s;
+    box-shadow: var(--shadow-md);
+    transition: transform .2s ease, background-color .2s ease;
 }
-.theme-switcher button:hover {
-    border-color: #888;
+.settings-toggle:hover,
+.settings-toggle:focus,
+.settings-toggle.is-active {
+    background-color: var(--accent);
+    outline: none;
+    transform: scale(1.06);
 }
-.theme-switcher button.is-active {
-    background: #fff;
-    color: #000;
-    border-color: #fff;
+.settings-panel {
+    position: fixed;
+    right: 20px;
+    bottom: 64px;
+    z-index: 3000;
+    width: 225px;
+    max-width: calc(100vw - 40px);
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    padding: 12px;
+}
+.settings-panel__section + .settings-panel__section {
+    margin-top: 14px;
+}
+.settings-panel__label {
+    display: block;
+    font-size: 0.75em;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 7px;
+}
+/* Griglia con colonne fisse (non flex): il numero di colonne e la
+   larghezza dei pulsanti dipendono solo dal contenitore, non dal
+   testo. Così restano identici tra un tema e l'altro anche se
+   cambia il font-family del pulsante. */
+.settings-panel__buttons {
+    display: grid;
+    gap: 5px;
+}
+.settings-panel__buttons--theme {
+    grid-template-columns: repeat(2, 1fr);
+}
+.settings-panel__buttons--fontsize {
+    grid-template-columns: repeat(3, 1fr);
+}
+.settings-panel__buttons button {
+    min-width: 0;
+    background-color: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 4px;
+    font-family: system-ui, -apple-system, Arial, sans-serif;
+    font-size: 0.74em;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+.settings-panel__buttons button:hover {
+    border-color: var(--accent);
+}
+.settings-panel__buttons button.is-active {
+    background-color: var(--primary);
+    color: var(--primary-on);
+    border-color: var(--primary);
+}
+.settings-panel__footer {
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+.settings-panel__reset {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: system-ui, -apple-system, Arial, sans-serif;
+    font-size: 0.75em;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 4px;
+}
+.settings-panel__reset:hover {
+    color: var(--link-hover);
+}
+@media (max-width: 480px) {
+    .settings-toggle {
+        right: 14px;
+        bottom: 14px;
+        width: 36px;
+        height: 36px;
+    }
+    .settings-panel {
+        right: 14px;
+        bottom: 58px;
+    }
+}
+
+/* =========================================================
+   Dimensione testo (impostazione utente, vedi settings-panel)
+   ========================================================= */
+:root {
+    --font-size-base: 18px;
+}
+[data-font-size="small"] {
+    --font-size-base: 16px;
+}
+[data-font-size="large"] {
+    --font-size-base: 20px;
 }
 
 /* =========================================================
@@ -184,7 +274,7 @@
 body {
     font-family: var(--font-body);
     line-height: 1.7;
-    font-size: 18px;
+    font-size: var(--font-size-base);
     color: var(--text);
     background-color: var(--bg);
     margin: 0;
@@ -345,13 +435,21 @@ main {
 /* Striscia "in breve" con i numeri chiave della collezione */
 .stats-strip {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 1px;
     background-color: var(--border);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     overflow: hidden;
     margin: 0 0 30px;
+}
+/* Sono sempre 4 statistiche fisse: colonne esplicite (4 poi 2) invece
+   di "auto-fit", che a certe larghezze intermedie calcola 3 colonne
+   e lascia 2 celle vuote nella seconda riga. */
+@media (max-width: 700px) {
+    .stats-strip {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 .stats-strip .stat {
     background-color: var(--surface);
@@ -709,19 +807,25 @@ footer .column h4 {
     font-size: 1.1em;
 }
 .bottom-nav a {
+    display: inline-block;
     text-decoration: none;
     color: var(--link);
-    margin: 0 10px;
+    margin: 4px 2px;
+    padding: 8px 10px;
+    border-radius: var(--radius);
 }
 .bottom-nav a:hover {
+    background-color: var(--surface-2);
     text-decoration: underline;
     color: var(--link-hover);
 }
 .bottom-nav .disabled {
+    display: inline-block;
     color: var(--text-muted);
     cursor: not-allowed;
     text-decoration: none;
-    padding: 6px 12px;
+    margin: 4px 2px;
+    padding: 8px 10px;
 }
 
 /* =========================================================
@@ -944,18 +1048,6 @@ footer .column h4 {
     .mappa-sticky-bar .mappa-interactive {
         padding: 2px 4px;
     }
-    /* Theme switcher piu' compatto su mobile */
-    .theme-switcher {
-        padding: 6px 8px;
-        gap: 8px;
-        font-size: 12px;
-    }
-    .theme-switcher__label {
-        display: none; /* etichetta nascosta su mobile per risparmiare spazio */
-    }
-    .theme-switcher button {
-        padding: 4px 8px;
-    }
 }
 
 /* Modale fullscreen per zoom su mobile */
@@ -1076,10 +1168,11 @@ footer .column h4 {
     margin: 20px 0 40px;
 }
 .index-jump a {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: 32px;
     height: 32px;
-    line-height: 32px;
     text-align: center;
     background-color: var(--surface-2);
     color: var(--text);
@@ -1087,6 +1180,12 @@ footer .column h4 {
     border-radius: var(--radius);
     font-weight: 700;
     transition: background-color .2s ease, color .2s ease;
+}
+@media (max-width: 600px) {
+    .index-jump a {
+        width: 44px;
+        height: 44px;
+    }
 }
 .index-jump a:hover {
     background-color: var(--primary);
@@ -1206,14 +1305,13 @@ footer .column h4 {
     transform: translateY(-50%);
     width: 56px;
     height: 56px;
+    padding: 0;
     align-items: center;
     justify-content: center;
     background: rgba(0, 0, 0, 0.5);
     color: #fff;
     border: none;
     border-radius: 50%;
-    font-size: 2em;
-    line-height: 1;
     cursor: pointer;
     z-index: 10000;
     transition: background-color .2s ease;
@@ -1233,7 +1331,10 @@ footer .column h4 {
     .modal-arrow {
         width: 44px;
         height: 44px;
-        font-size: 1.5em;
+    }
+    .modal-arrow svg {
+        width: 20px;
+        height: 20px;
     }
     .modal-arrow-prev {
         left: 8px;
