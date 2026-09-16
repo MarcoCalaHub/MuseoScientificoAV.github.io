@@ -1198,6 +1198,51 @@ footer .column h4 {
     color: #bbb;
 }
 
+/* Frecce per scorrere tra piu' foto dello stesso strumento nel modal */
+.modal-arrow {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 2em;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10000;
+    transition: background-color .2s ease;
+}
+.modal-arrow:hover,
+.modal-arrow:focus {
+    background: rgba(0, 0, 0, 0.8);
+    outline: none;
+}
+.modal-arrow-prev {
+    left: 20px;
+}
+.modal-arrow-next {
+    right: 20px;
+}
+@media (max-width: 600px) {
+    .modal-arrow {
+        width: 44px;
+        height: 44px;
+        font-size: 1.5em;
+    }
+    .modal-arrow-prev {
+        left: 8px;
+    }
+    .modal-arrow-next {
+        right: 8px;
+    }
+}
+
 /* =========================================================
    Responsive
    ========================================================= */
