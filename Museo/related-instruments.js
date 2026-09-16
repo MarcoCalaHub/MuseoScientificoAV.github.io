@@ -505,6 +505,26 @@ var INSTRUMENT_CATALOG = [
         "path": "vetrina11/strumento_99.html",
         "nome": "Bacchetta in vetro",
         "settore": "Elettromagnetismo"
+    },
+    {
+        "path": "vetrina7/strumento_82.html",
+        "nome": "Distillatore",
+        "settore": "Termologia"
+    },
+    {
+        "path": "vetrina7/strumento_99.html",
+        "nome": "Densimetro con mercurio",
+        "settore": "Meccanica"
+    },
+    {
+        "path": "vetrina11/strumento_100.html",
+        "nome": "Elettroforo di Volta in ottone",
+        "settore": "Elettrostatica"
+    },
+    {
+        "path": "vetrina11/strumento_97_abc.html",
+        "nome": "Sostegno per aghi magnetici",
+        "settore": "Elettromagnetismo"
     }
 ];
 
@@ -629,6 +649,10 @@ var MANUAL_RELATED = {
     "vetrina11/strumento_97.html": [], // Arco scaricatore
     "vetrina4/strumento_98.html": [], // Baroscopio
     "vetrina11/strumento_99.html": [], // Bacchetta in vetro
+    "vetrina7/strumento_82.html": [], // Distillatore
+    "vetrina7/strumento_99.html": [], // Densimetro con mercurio
+    "vetrina11/strumento_100.html": [], // Elettroforo di Volta in ottone
+    "vetrina11/strumento_97_abc.html": [], // Sostegno per aghi magnetici
 };
 
 (function () {
