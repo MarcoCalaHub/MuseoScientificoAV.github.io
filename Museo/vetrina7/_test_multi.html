@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="author" content="Marco Calabrese" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Museo Scientifico - Pendolo</title>
+    <title>Museo Scientifico - Densimetro con mercurio</title>
 
     <link rel="stylesheet" href="../museo_style.css">
 <script>try{document.documentElement.dataset.theme=localStorage.getItem("museo-theme")||"editorial"}catch(e){document.documentElement.dataset.theme="editorial"}</script><script src="../theme-switcher.js" defer></script>
@@ -25,21 +25,25 @@
     </div>
     <main>
         <section class="details">
-            <h2 class="details-title">Pendolo</h2>
+            <h2 class="details-title">Densimetro con mercurio</h2>
             <div class="details-content">
-                <img src="strumento_90.png" alt="Immagine del Pendolo">
+                <div class="details-gallery">
+                    <img src="strumento_99_1.jpeg" alt="Densimetro con mercurio - forma 1">
+                    <img src="strumento_99_2.jpeg" alt="Densimetro con mercurio - forma 2">
+                    <img src="strumento_99_3.jpeg" alt="Densimetro con mercurio - forma 3">
+                </div>
                 <div class="details-text">
-                    <p><strong>Scuola di provenienza:</strong> Liceo Classico "P.Colletta", Avellino</p>
-                    <p><strong>Settore:</strong> Meccanica </p>
+                    <p><strong>Scuola di provenienza:</strong> Istituto agrario ""F. De Sanctis", Avellino</p>
+                    <p><strong>Settore:</strong> Meccanica</p>
                     <p><strong>Costruttori:</strong> Sconosciuto </p>
                     <!--meglio costruttori che gli accessori-->
-                    <p><strong>Materiali:</strong> Legno </p>
-                    <p><strong>Accessori:</strong> Pesetti </p>
+                    <p><strong>Materiali:</strong> Vetro e mercurio </p>
+                    <p><strong>Accessori:</strong> Nessuno</p>
                     <p><strong>Stato di conservazione:</strong> Buono </p>
-                    <p><strong>Descrizione:</strong> Il pendolo semplice o matematico è un sistema fisico costituito da un filo inestensibile e di massa trascurabile e da un piccolo corpo fissato alla sua estremità e oscillante attorno ad un asse orizzontale,
-                        detto asse di sospensione, che non passa per il suo baricentro. Il periodo del pendolo è l’intervallo di tempo impiegato a compiere un’oscillazione completa (avanti e indietro). Galileo Galilei fu il primo ad accorgersi che la
-                        durata di ogni oscillazione di un pendolo semplice è in-dipendente dall’ampiezza dell’oscillazione, purché l’ampiezza angolare sia piccola, ossia in pratica finché l’angolo mas-simo che il filo forma con la verticale non supera
-                        qualche grado, cioè sia &lt;10°. </p>
+                    <p><strong>Descrizione:</strong>  
+L’alcolometro è uno strumento che serve a misurare la quantità percentuale di alcol etilico presente nei distillati. 
+Riempito un  cilindro graduato con la quantità di liquido del quale volete misurare la gradazione, dopo essersi assicurati che l'alcolometro sia pulito, immergerlo lentamente nel liquido. La lettura si effettua sulla scala graduata del termometro (tra i 15° e i 56°C).
+                    </p>
                 </div>
             </div>
             <div id="relatedInstruments"></div>
@@ -64,11 +68,11 @@
         Autore: <a href="https://www.linkedin.com/in/marco-calabrese-lin/" target="_blank"> Marco Calabrese</a>
     </div>
     <!-- Modal per ingrandire l'immagine -->
-    <div id="imageModal" class="modal">
+    <div id="imageModal" class="modal" style="display:flex">
         <span class="close">&times;</span>
-        <button class="modal-arrow modal-arrow-prev" type="button" aria-label="Immagine precedente">&#8249;</button>
-        <img class="modal-content" id="modalImg">
-        <button class="modal-arrow modal-arrow-next" type="button" aria-label="Immagine successiva">&#8250;</button>
+        <button class="modal-arrow modal-arrow-prev" type="button" style="display:flex" aria-label="Immagine precedente">&#8249;</button>
+        <img class="modal-content" id="modalImg" src="strumento_99_1.jpeg">
+        <button class="modal-arrow modal-arrow-next" type="button" style="display:flex" aria-label="Immagine successiva">&#8250;</button>
     </div>
     <script src="../image-modal.js" defer></script>
 </body>

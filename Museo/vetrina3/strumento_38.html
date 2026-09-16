@@ -71,33 +71,11 @@
     <!-- Modal per ingrandire l'immagine -->
     <div id="imageModal" class="modal">
         <span class="close">&times;</span>
+        <button class="modal-arrow modal-arrow-prev" type="button" aria-label="Immagine precedente">&#8249;</button>
         <img class="modal-content" id="modalImg">
+        <button class="modal-arrow modal-arrow-next" type="button" aria-label="Immagine successiva">&#8250;</button>
     </div>
-
-    <script>
-        (function () {
-            var modal = document.getElementById("imageModal");
-            var modalImg = document.getElementById("modalImg");
-            var closeBtn = modal.querySelector(".close");
-
-            document.querySelectorAll("main img").forEach(function (img) {
-                img.onclick = function () {
-                    modal.style.display = "flex";
-                    modalImg.src = this.src;
-                    modalImg.alt = this.alt;
-                };
-            });
-
-            closeBtn.onclick = function () {
-                modal.style.display = "none";
-            };
-            modal.onclick = function (event) {
-                if (event.target === modal) {
-                    modal.style.display = "none";
-                }
-            };
-        })();
-    </script>
+    <script src="../image-modal.js" defer></script>
 </body>
 
 </html>
