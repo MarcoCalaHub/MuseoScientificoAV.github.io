@@ -522,8 +522,23 @@ var INSTRUMENT_CATALOG = [
         "settore": "Elettrostatica"
     },
     {
-        "path": "vetrina11/strumento_97_abc.html",
+        "path": "vetrina11/strumento_97_a.html",
         "nome": "Sostegno per aghi magnetici",
+        "settore": "Elettromagnetismo"
+    },
+    {
+        "path": "vetrina11/strumento_97_b.html",
+        "nome": "Mulinello elettrico",
+        "settore": "Elettromagnetismo"
+    },
+    {
+        "path": "vetrina11/strumento_97_c.html",
+        "nome": "Sostegno a punta",
+        "settore": "Elettromagnetismo"
+    },
+    {
+        "path": "vetrina11/strumento_97_d.html",
+        "nome": "Arganetto elettrico",
         "settore": "Elettromagnetismo"
     }
 ];
